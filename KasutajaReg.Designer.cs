@@ -48,6 +48,7 @@
             this.button1.TabIndex = 17;
             this.button1.Text = "registreerimine";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label3
             // 
@@ -55,9 +56,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
             this.label3.Location = new System.Drawing.Point(235, 31);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(312, 31);
+            this.label3.Size = new System.Drawing.Size(306, 31);
             this.label3.TabIndex = 16;
-            this.label3.Text = "Kasutaja autoriseerimine";
+            this.label3.Text = "Kasutaja registreerimine";
             // 
             // label2
             // 

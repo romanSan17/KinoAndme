@@ -42,6 +42,7 @@
             this.adminA.Text = "admin autoriseerimine";
             this.adminA.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.adminA.UseVisualStyleBackColor = true;
+            this.adminA.Click += new System.EventHandler(this.adminA_Click);
             // 
             // kasutajaR
             // 
@@ -51,6 +52,7 @@
             this.kasutajaR.TabIndex = 1;
             this.kasutajaR.Text = "kasutaja registreerimine";
             this.kasutajaR.UseVisualStyleBackColor = true;
+            this.kasutajaR.Click += new System.EventHandler(this.kasutajaR_Click);
             // 
             // kasutajaA
             // 
@@ -60,6 +62,7 @@
             this.kasutajaA.TabIndex = 2;
             this.kasutajaA.Text = "kasutaja autoriseerimine";
             this.kasutajaA.UseVisualStyleBackColor = true;
+            this.kasutajaA.Click += new System.EventHandler(this.kasutajaA_Click);
             // 
             // StartMenu
             // 

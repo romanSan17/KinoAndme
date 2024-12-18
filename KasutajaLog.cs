@@ -16,5 +16,11 @@ namespace KinoAndme
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ChooseFilm ChooseFilmForm = new ChooseFilm();
+            ChooseFilmForm.Show();
+        }
     }
 }
