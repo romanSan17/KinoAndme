@@ -408,44 +408,44 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="KinoFormDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="KinoFormDataSet" msprop:Generator_DataSetName="KinoFormDataSet">
+  <xs:element name="KinoFormDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="KinoFormDataSet" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="KinoFormDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Filmid" msprop:Generator_RowEvHandlerName="FilmidRowChangeEventHandler" msprop:Generator_RowDeletedName="FilmidRowDeleted" msprop:Generator_RowDeletingName="FilmidRowDeleting" msprop:Generator_RowEvArgName="FilmidRowChangeEvent" msprop:Generator_TablePropName="Filmid" msprop:Generator_RowChangedName="FilmidRowChanged" msprop:Generator_RowChangingName="FilmidRowChanging" msprop:Generator_TableClassName="FilmidDataTable" msprop:Generator_RowClassName="FilmidRow" msprop:Generator_TableVarName="tableFilmid" msprop:Generator_UserTableName="Filmid">
+        <xs:element name="Filmid" msprop:Generator_RowClassName="FilmidRow" msprop:Generator_RowEvHandlerName="FilmidRowChangeEventHandler" msprop:Generator_RowDeletedName="FilmidRowDeleted" msprop:Generator_RowDeletingName="FilmidRowDeleting" msprop:Generator_RowEvArgName="FilmidRowChangeEvent" msprop:Generator_TablePropName="Filmid" msprop:Generator_RowChangedName="FilmidRowChanged" msprop:Generator_UserTableName="Filmid" msprop:Generator_RowChangingName="FilmidRowChanging" msprop:Generator_TableClassName="FilmidDataTable" msprop:Generator_TableVarName="tableFilmid">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="filID" msprop:Generator_ColumnPropNameInRow="filID" msprop:Generator_ColumnPropNameInTable="filIDColumn" msprop:Generator_ColumnVarNameInTable="columnfilID" msprop:Generator_UserColumnName="filID" type="xs:int" />
-              <xs:element name="pealkiri" msprop:Generator_ColumnPropNameInRow="pealkiri" msprop:Generator_ColumnPropNameInTable="pealkiriColumn" msprop:Generator_ColumnVarNameInTable="columnpealkiri" msprop:Generator_UserColumnName="pealkiri">
+              <xs:element name="filID" msprop:Generator_UserColumnName="filID" msprop:Generator_ColumnPropNameInTable="filIDColumn" msprop:Generator_ColumnPropNameInRow="filID" msprop:Generator_ColumnVarNameInTable="columnfilID" type="xs:int" />
+              <xs:element name="pealkiri" msprop:Generator_UserColumnName="pealkiri" msprop:Generator_ColumnPropNameInTable="pealkiriColumn" msprop:Generator_ColumnPropNameInRow="pealkiri" msprop:Generator_ColumnVarNameInTable="columnpealkiri">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="zanr" msprop:Generator_ColumnPropNameInRow="zanr" msprop:Generator_ColumnPropNameInTable="zanrColumn" msprop:Generator_ColumnVarNameInTable="columnzanr" msprop:Generator_UserColumnName="zanr">
+              <xs:element name="zanr" msprop:Generator_UserColumnName="zanr" msprop:Generator_ColumnPropNameInTable="zanrColumn" msprop:Generator_ColumnPropNameInRow="zanr" msprop:Generator_ColumnVarNameInTable="columnzanr">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="30" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="aeg" msprop:Generator_ColumnPropNameInRow="aeg" msprop:Generator_ColumnPropNameInTable="aegColumn" msprop:Generator_ColumnVarNameInTable="columnaeg" msprop:Generator_UserColumnName="aeg" type="xs:duration" />
+              <xs:element name="aeg" msprop:Generator_UserColumnName="aeg" msprop:Generator_ColumnPropNameInTable="aegColumn" msprop:Generator_ColumnPropNameInRow="aeg" msprop:Generator_ColumnVarNameInTable="columnaeg" type="xs:duration" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Kasutaja" msprop:Generator_RowEvHandlerName="KasutajaRowChangeEventHandler" msprop:Generator_RowDeletedName="KasutajaRowDeleted" msprop:Generator_RowDeletingName="KasutajaRowDeleting" msprop:Generator_RowEvArgName="KasutajaRowChangeEvent" msprop:Generator_TablePropName="Kasutaja" msprop:Generator_RowChangedName="KasutajaRowChanged" msprop:Generator_RowChangingName="KasutajaRowChanging" msprop:Generator_TableClassName="KasutajaDataTable" msprop:Generator_RowClassName="KasutajaRow" msprop:Generator_TableVarName="tableKasutaja" msprop:Generator_UserTableName="Kasutaja">
+        <xs:element name="Kasutaja" msprop:Generator_RowClassName="KasutajaRow" msprop:Generator_RowEvHandlerName="KasutajaRowChangeEventHandler" msprop:Generator_RowDeletedName="KasutajaRowDeleted" msprop:Generator_RowDeletingName="KasutajaRowDeleting" msprop:Generator_RowEvArgName="KasutajaRowChangeEvent" msprop:Generator_TablePropName="Kasutaja" msprop:Generator_RowChangedName="KasutajaRowChanged" msprop:Generator_UserTableName="Kasutaja" msprop:Generator_RowChangingName="KasutajaRowChanging" msprop:Generator_TableClassName="KasutajaDataTable" msprop:Generator_TableVarName="tableKasutaja">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="kasID" msprop:Generator_ColumnPropNameInRow="kasID" msprop:Generator_ColumnPropNameInTable="kasIDColumn" msprop:Generator_ColumnVarNameInTable="columnkasID" msprop:Generator_UserColumnName="kasID" type="xs:int" />
-              <xs:element name="nimi" msprop:Generator_ColumnPropNameInRow="nimi" msprop:Generator_ColumnPropNameInTable="nimiColumn" msprop:Generator_ColumnVarNameInTable="columnnimi" msprop:Generator_UserColumnName="nimi">
+              <xs:element name="kasID" msprop:Generator_UserColumnName="kasID" msprop:Generator_ColumnPropNameInTable="kasIDColumn" msprop:Generator_ColumnPropNameInRow="kasID" msprop:Generator_ColumnVarNameInTable="columnkasID" type="xs:int" />
+              <xs:element name="nimi" msprop:Generator_UserColumnName="nimi" msprop:Generator_ColumnPropNameInTable="nimiColumn" msprop:Generator_ColumnPropNameInRow="nimi" msprop:Generator_ColumnVarNameInTable="columnnimi">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="parool" msprop:Generator_ColumnPropNameInRow="parool" msprop:Generator_ColumnPropNameInTable="paroolColumn" msprop:Generator_ColumnVarNameInTable="columnparool" msprop:Generator_UserColumnName="parool" type="xs:int" />
-              <xs:element name="rool" msprop:Generator_ColumnPropNameInRow="rool" msprop:Generator_ColumnPropNameInTable="roolColumn" msprop:Generator_ColumnVarNameInTable="columnrool" msprop:Generator_UserColumnName="rool">
+              <xs:element name="parool" msprop:Generator_UserColumnName="parool" msprop:Generator_ColumnPropNameInTable="paroolColumn" msprop:Generator_ColumnPropNameInRow="parool" msprop:Generator_ColumnVarNameInTable="columnparool" type="xs:int" />
+              <xs:element name="rool" msprop:Generator_UserColumnName="rool" msprop:Generator_ColumnPropNameInTable="roolColumn" msprop:Generator_ColumnPropNameInRow="rool" msprop:Generator_ColumnVarNameInTable="columnrool">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="10" />
@@ -455,51 +455,51 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Kohad" msprop:Generator_RowEvHandlerName="KohadRowChangeEventHandler" msprop:Generator_RowDeletedName="KohadRowDeleted" msprop:Generator_RowDeletingName="KohadRowDeleting" msprop:Generator_RowEvArgName="KohadRowChangeEvent" msprop:Generator_TablePropName="Kohad" msprop:Generator_RowChangedName="KohadRowChanged" msprop:Generator_RowChangingName="KohadRowChanging" msprop:Generator_TableClassName="KohadDataTable" msprop:Generator_RowClassName="KohadRow" msprop:Generator_TableVarName="tableKohad" msprop:Generator_UserTableName="Kohad">
+        <xs:element name="Kohad" msprop:Generator_RowClassName="KohadRow" msprop:Generator_RowEvHandlerName="KohadRowChangeEventHandler" msprop:Generator_RowDeletedName="KohadRowDeleted" msprop:Generator_RowDeletingName="KohadRowDeleting" msprop:Generator_RowEvArgName="KohadRowChangeEvent" msprop:Generator_TablePropName="Kohad" msprop:Generator_RowChangedName="KohadRowChanged" msprop:Generator_UserTableName="Kohad" msprop:Generator_RowChangingName="KohadRowChanging" msprop:Generator_TableClassName="KohadDataTable" msprop:Generator_TableVarName="tableKohad">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="kohID" msprop:Generator_ColumnPropNameInRow="kohID" msprop:Generator_ColumnPropNameInTable="kohIDColumn" msprop:Generator_ColumnVarNameInTable="columnkohID" msprop:Generator_UserColumnName="kohID" type="xs:int" />
-              <xs:element name="Saalid_saaID" msprop:Generator_ColumnPropNameInRow="Saalid_saaID" msprop:Generator_ColumnPropNameInTable="Saalid_saaIDColumn" msprop:Generator_ColumnVarNameInTable="columnSaalid_saaID" msprop:Generator_UserColumnName="Saalid_saaID" type="xs:int" />
-              <xs:element name="rida" msprop:Generator_ColumnPropNameInRow="rida" msprop:Generator_ColumnPropNameInTable="ridaColumn" msprop:Generator_ColumnVarNameInTable="columnrida" msprop:Generator_UserColumnName="rida" type="xs:int" />
-              <xs:element name="koha_number" msprop:Generator_ColumnPropNameInRow="koha_number" msprop:Generator_ColumnPropNameInTable="koha_numberColumn" msprop:Generator_ColumnVarNameInTable="columnkoha_number" msprop:Generator_UserColumnName="koha_number" type="xs:int" />
+              <xs:element name="kohID" msprop:Generator_UserColumnName="kohID" msprop:Generator_ColumnPropNameInTable="kohIDColumn" msprop:Generator_ColumnPropNameInRow="kohID" msprop:Generator_ColumnVarNameInTable="columnkohID" type="xs:int" />
+              <xs:element name="Saalid_saaID" msprop:Generator_UserColumnName="Saalid_saaID" msprop:Generator_ColumnPropNameInTable="Saalid_saaIDColumn" msprop:Generator_ColumnPropNameInRow="Saalid_saaID" msprop:Generator_ColumnVarNameInTable="columnSaalid_saaID" type="xs:int" />
+              <xs:element name="rida" msprop:Generator_UserColumnName="rida" msprop:Generator_ColumnPropNameInTable="ridaColumn" msprop:Generator_ColumnPropNameInRow="rida" msprop:Generator_ColumnVarNameInTable="columnrida" type="xs:int" />
+              <xs:element name="koha_number" msprop:Generator_UserColumnName="koha_number" msprop:Generator_ColumnPropNameInTable="koha_numberColumn" msprop:Generator_ColumnPropNameInRow="koha_number" msprop:Generator_ColumnVarNameInTable="columnkoha_number" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Piletid" msprop:Generator_RowEvHandlerName="PiletidRowChangeEventHandler" msprop:Generator_RowDeletedName="PiletidRowDeleted" msprop:Generator_RowDeletingName="PiletidRowDeleting" msprop:Generator_RowEvArgName="PiletidRowChangeEvent" msprop:Generator_TablePropName="Piletid" msprop:Generator_RowChangedName="PiletidRowChanged" msprop:Generator_RowChangingName="PiletidRowChanging" msprop:Generator_TableClassName="PiletidDataTable" msprop:Generator_RowClassName="PiletidRow" msprop:Generator_TableVarName="tablePiletid" msprop:Generator_UserTableName="Piletid">
+        <xs:element name="Piletid" msprop:Generator_RowClassName="PiletidRow" msprop:Generator_RowEvHandlerName="PiletidRowChangeEventHandler" msprop:Generator_RowDeletedName="PiletidRowDeleted" msprop:Generator_RowDeletingName="PiletidRowDeleting" msprop:Generator_RowEvArgName="PiletidRowChangeEvent" msprop:Generator_TablePropName="Piletid" msprop:Generator_RowChangedName="PiletidRowChanged" msprop:Generator_UserTableName="Piletid" msprop:Generator_RowChangingName="PiletidRowChanging" msprop:Generator_TableClassName="PiletidDataTable" msprop:Generator_TableVarName="tablePiletid">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="pilId" msprop:Generator_ColumnPropNameInRow="pilId" msprop:Generator_ColumnPropNameInTable="pilIdColumn" msprop:Generator_ColumnVarNameInTable="columnpilId" msprop:Generator_UserColumnName="pilId" type="xs:int" />
-              <xs:element name="Seansid_seaID" msprop:Generator_ColumnPropNameInRow="Seansid_seaID" msprop:Generator_ColumnPropNameInTable="Seansid_seaIDColumn" msprop:Generator_ColumnVarNameInTable="columnSeansid_seaID" msprop:Generator_UserColumnName="Seansid_seaID" type="xs:int" />
+              <xs:element name="pilId" msprop:Generator_UserColumnName="pilId" msprop:Generator_ColumnPropNameInTable="pilIdColumn" msprop:Generator_ColumnPropNameInRow="pilId" msprop:Generator_ColumnVarNameInTable="columnpilId" type="xs:int" />
+              <xs:element name="Seansid_seaID" msprop:Generator_UserColumnName="Seansid_seaID" msprop:Generator_ColumnPropNameInTable="Seansid_seaIDColumn" msprop:Generator_ColumnPropNameInRow="Seansid_seaID" msprop:Generator_ColumnVarNameInTable="columnSeansid_seaID" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Saalid" msprop:Generator_RowEvHandlerName="SaalidRowChangeEventHandler" msprop:Generator_RowDeletedName="SaalidRowDeleted" msprop:Generator_RowDeletingName="SaalidRowDeleting" msprop:Generator_RowEvArgName="SaalidRowChangeEvent" msprop:Generator_TablePropName="Saalid" msprop:Generator_RowChangedName="SaalidRowChanged" msprop:Generator_RowChangingName="SaalidRowChanging" msprop:Generator_TableClassName="SaalidDataTable" msprop:Generator_RowClassName="SaalidRow" msprop:Generator_TableVarName="tableSaalid" msprop:Generator_UserTableName="Saalid">
+        <xs:element name="Saalid" msprop:Generator_RowClassName="SaalidRow" msprop:Generator_RowEvHandlerName="SaalidRowChangeEventHandler" msprop:Generator_RowDeletedName="SaalidRowDeleted" msprop:Generator_RowDeletingName="SaalidRowDeleting" msprop:Generator_RowEvArgName="SaalidRowChangeEvent" msprop:Generator_TablePropName="Saalid" msprop:Generator_RowChangedName="SaalidRowChanged" msprop:Generator_UserTableName="Saalid" msprop:Generator_RowChangingName="SaalidRowChanging" msprop:Generator_TableClassName="SaalidDataTable" msprop:Generator_TableVarName="tableSaalid">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="saaID" msprop:Generator_ColumnPropNameInRow="saaID" msprop:Generator_ColumnPropNameInTable="saaIDColumn" msprop:Generator_ColumnVarNameInTable="columnsaaID" msprop:Generator_UserColumnName="saaID" type="xs:int" />
-              <xs:element name="number" msprop:Generator_ColumnPropNameInRow="number" msprop:Generator_ColumnPropNameInTable="numberColumn" msprop:Generator_ColumnVarNameInTable="columnnumber" msprop:Generator_UserColumnName="number" type="xs:int" />
-              <xs:element name="kohtade_arv" msprop:Generator_ColumnPropNameInRow="kohtade_arv" msprop:Generator_ColumnPropNameInTable="kohtade_arvColumn" msprop:Generator_ColumnVarNameInTable="columnkohtade_arv" msprop:Generator_UserColumnName="kohtade_arv" type="xs:int" />
+              <xs:element name="saaID" msprop:Generator_UserColumnName="saaID" msprop:Generator_ColumnPropNameInTable="saaIDColumn" msprop:Generator_ColumnPropNameInRow="saaID" msprop:Generator_ColumnVarNameInTable="columnsaaID" type="xs:int" />
+              <xs:element name="number" msprop:Generator_UserColumnName="number" msprop:Generator_ColumnPropNameInTable="numberColumn" msprop:Generator_ColumnPropNameInRow="number" msprop:Generator_ColumnVarNameInTable="columnnumber" type="xs:int" />
+              <xs:element name="kohtade_arv" msprop:Generator_UserColumnName="kohtade_arv" msprop:Generator_ColumnPropNameInTable="kohtade_arvColumn" msprop:Generator_ColumnPropNameInRow="kohtade_arv" msprop:Generator_ColumnVarNameInTable="columnkohtade_arv" type="xs:int" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Seansid" msprop:Generator_RowEvHandlerName="SeansidRowChangeEventHandler" msprop:Generator_RowDeletedName="SeansidRowDeleted" msprop:Generator_RowDeletingName="SeansidRowDeleting" msprop:Generator_RowEvArgName="SeansidRowChangeEvent" msprop:Generator_TablePropName="Seansid" msprop:Generator_RowChangedName="SeansidRowChanged" msprop:Generator_RowChangingName="SeansidRowChanging" msprop:Generator_TableClassName="SeansidDataTable" msprop:Generator_RowClassName="SeansidRow" msprop:Generator_TableVarName="tableSeansid" msprop:Generator_UserTableName="Seansid">
+        <xs:element name="Seansid" msprop:Generator_RowClassName="SeansidRow" msprop:Generator_RowEvHandlerName="SeansidRowChangeEventHandler" msprop:Generator_RowDeletedName="SeansidRowDeleted" msprop:Generator_RowDeletingName="SeansidRowDeleting" msprop:Generator_RowEvArgName="SeansidRowChangeEvent" msprop:Generator_TablePropName="Seansid" msprop:Generator_RowChangedName="SeansidRowChanged" msprop:Generator_UserTableName="Seansid" msprop:Generator_RowChangingName="SeansidRowChanging" msprop:Generator_TableClassName="SeansidDataTable" msprop:Generator_TableVarName="tableSeansid">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="seaID" msprop:Generator_ColumnPropNameInRow="seaID" msprop:Generator_ColumnPropNameInTable="seaIDColumn" msprop:Generator_ColumnVarNameInTable="columnseaID" msprop:Generator_UserColumnName="seaID" type="xs:int" />
-              <xs:element name="Filmid_filID" msprop:Generator_ColumnPropNameInRow="Filmid_filID" msprop:Generator_ColumnPropNameInTable="Filmid_filIDColumn" msprop:Generator_ColumnVarNameInTable="columnFilmid_filID" msprop:Generator_UserColumnName="Filmid_filID" type="xs:int" />
-              <xs:element name="Saalid_saaID" msprop:Generator_ColumnPropNameInRow="Saalid_saaID" msprop:Generator_ColumnPropNameInTable="Saalid_saaIDColumn" msprop:Generator_ColumnVarNameInTable="columnSaalid_saaID" msprop:Generator_UserColumnName="Saalid_saaID" type="xs:int" />
-              <xs:element name="date" msprop:Generator_ColumnPropNameInRow="date" msprop:Generator_ColumnPropNameInTable="dateColumn" msprop:Generator_ColumnVarNameInTable="columndate" msprop:Generator_UserColumnName="date" type="xs:dateTime" />
+              <xs:element name="seaID" msprop:Generator_UserColumnName="seaID" msprop:Generator_ColumnPropNameInTable="seaIDColumn" msprop:Generator_ColumnPropNameInRow="seaID" msprop:Generator_ColumnVarNameInTable="columnseaID" type="xs:int" />
+              <xs:element name="Filmid_filID" msprop:Generator_UserColumnName="Filmid_filID" msprop:Generator_ColumnPropNameInTable="Filmid_filIDColumn" msprop:Generator_ColumnPropNameInRow="Filmid_filID" msprop:Generator_ColumnVarNameInTable="columnFilmid_filID" type="xs:int" />
+              <xs:element name="Saalid_saaID" msprop:Generator_UserColumnName="Saalid_saaID" msprop:Generator_ColumnPropNameInTable="Saalid_saaIDColumn" msprop:Generator_ColumnPropNameInRow="Saalid_saaID" msprop:Generator_ColumnVarNameInTable="columnSaalid_saaID" type="xs:int" />
+              <xs:element name="date" msprop:Generator_UserColumnName="date" msprop:Generator_ColumnPropNameInTable="dateColumn" msprop:Generator_ColumnPropNameInRow="date" msprop:Generator_ColumnVarNameInTable="columndate" type="xs:dateTime" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Tellimused" msprop:Generator_RowEvHandlerName="TellimusedRowChangeEventHandler" msprop:Generator_RowDeletedName="TellimusedRowDeleted" msprop:Generator_RowDeletingName="TellimusedRowDeleting" msprop:Generator_RowEvArgName="TellimusedRowChangeEvent" msprop:Generator_TablePropName="Tellimused" msprop:Generator_RowChangedName="TellimusedRowChanged" msprop:Generator_RowChangingName="TellimusedRowChanging" msprop:Generator_TableClassName="TellimusedDataTable" msprop:Generator_RowClassName="TellimusedRow" msprop:Generator_TableVarName="tableTellimused" msprop:Generator_UserTableName="Tellimused">
+        <xs:element name="Tellimused" msprop:Generator_RowClassName="TellimusedRow" msprop:Generator_RowEvHandlerName="TellimusedRowChangeEventHandler" msprop:Generator_RowDeletedName="TellimusedRowDeleted" msprop:Generator_RowDeletingName="TellimusedRowDeleting" msprop:Generator_RowEvArgName="TellimusedRowChangeEvent" msprop:Generator_TablePropName="Tellimused" msprop:Generator_RowChangedName="TellimusedRowChanged" msprop:Generator_UserTableName="Tellimused" msprop:Generator_RowChangingName="TellimusedRowChanging" msprop:Generator_TableClassName="TellimusedDataTable" msprop:Generator_TableVarName="tableTellimused">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="telID" msprop:Generator_ColumnPropNameInRow="telID" msprop:Generator_ColumnPropNameInTable="telIDColumn" msprop:Generator_ColumnVarNameInTable="columntelID" msprop:Generator_UserColumnName="telID" type="xs:int" />
-              <xs:element name="Piletid_pilId" msprop:Generator_ColumnPropNameInRow="Piletid_pilId" msprop:Generator_ColumnPropNameInTable="Piletid_pilIdColumn" msprop:Generator_ColumnVarNameInTable="columnPiletid_pilId" msprop:Generator_UserColumnName="Piletid_pilId" type="xs:int" />
-              <xs:element name="Kasutaja_kasID" msprop:Generator_ColumnPropNameInRow="Kasutaja_kasID" msprop:Generator_ColumnPropNameInTable="Kasutaja_kasIDColumn" msprop:Generator_ColumnVarNameInTable="columnKasutaja_kasID" msprop:Generator_UserColumnName="Kasutaja_kasID" type="xs:int" />
-              <xs:element name="vaartus" msprop:Generator_ColumnPropNameInRow="vaartus" msprop:Generator_ColumnPropNameInTable="vaartusColumn" msprop:Generator_ColumnVarNameInTable="columnvaartus" msprop:Generator_UserColumnName="vaartus" type="xs:int" />
-              <xs:element name="status" msprop:Generator_ColumnPropNameInRow="status" msprop:Generator_ColumnPropNameInTable="statusColumn" msprop:Generator_ColumnVarNameInTable="columnstatus" msprop:Generator_UserColumnName="status">
+              <xs:element name="telID" msprop:Generator_UserColumnName="telID" msprop:Generator_ColumnPropNameInTable="telIDColumn" msprop:Generator_ColumnPropNameInRow="telID" msprop:Generator_ColumnVarNameInTable="columntelID" type="xs:int" />
+              <xs:element name="Piletid_pilId" msprop:Generator_UserColumnName="Piletid_pilId" msprop:Generator_ColumnPropNameInTable="Piletid_pilIdColumn" msprop:Generator_ColumnPropNameInRow="Piletid_pilId" msprop:Generator_ColumnVarNameInTable="columnPiletid_pilId" type="xs:int" />
+              <xs:element name="Kasutaja_kasID" msprop:Generator_UserColumnName="Kasutaja_kasID" msprop:Generator_ColumnPropNameInTable="Kasutaja_kasIDColumn" msprop:Generator_ColumnPropNameInRow="Kasutaja_kasID" msprop:Generator_ColumnVarNameInTable="columnKasutaja_kasID" type="xs:int" />
+              <xs:element name="vaartus" msprop:Generator_UserColumnName="vaartus" msprop:Generator_ColumnPropNameInTable="vaartusColumn" msprop:Generator_ColumnPropNameInRow="vaartus" msprop:Generator_ColumnVarNameInTable="columnvaartus" type="xs:int" />
+              <xs:element name="status" msprop:Generator_UserColumnName="status" msprop:Generator_ColumnPropNameInTable="statusColumn" msprop:Generator_ColumnPropNameInRow="status" msprop:Generator_ColumnVarNameInTable="columnstatus">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="30" />
@@ -542,12 +542,12 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="Kohad_Saalid" msdata:parent="Saalid" msdata:child="Kohad" msdata:parentkey="saaID" msdata:childkey="Saalid_saaID" msprop:Generator_UserParentTable="Saalid" msprop:Generator_UserChildTable="Kohad" msprop:Generator_RelationVarName="relationKohad_Saalid" msprop:Generator_UserRelationName="Kohad_Saalid" msprop:Generator_ChildPropName="GetKohadRows" msprop:Generator_ParentPropName="SaalidRow" />
-      <msdata:Relationship name="Piletid_Seansid" msdata:parent="Seansid" msdata:child="Piletid" msdata:parentkey="seaID" msdata:childkey="Seansid_seaID" msprop:Generator_UserParentTable="Seansid" msprop:Generator_UserChildTable="Piletid" msprop:Generator_RelationVarName="relationPiletid_Seansid" msprop:Generator_UserRelationName="Piletid_Seansid" msprop:Generator_ChildPropName="GetPiletidRows" msprop:Generator_ParentPropName="SeansidRow" />
-      <msdata:Relationship name="Seansid_Filmid" msdata:parent="Filmid" msdata:child="Seansid" msdata:parentkey="filID" msdata:childkey="Filmid_filID" msprop:Generator_UserParentTable="Filmid" msprop:Generator_UserChildTable="Seansid" msprop:Generator_RelationVarName="relationSeansid_Filmid" msprop:Generator_ChildPropName="GetSeansidRows" msprop:Generator_ParentPropName="FilmidRow" msprop:Generator_UserRelationName="Seansid_Filmid" />
-      <msdata:Relationship name="Seansid_Saalid" msdata:parent="Saalid" msdata:child="Seansid" msdata:parentkey="saaID" msdata:childkey="Saalid_saaID" msprop:Generator_UserParentTable="Saalid" msprop:Generator_UserChildTable="Seansid" msprop:Generator_RelationVarName="relationSeansid_Saalid" msprop:Generator_ChildPropName="GetSeansidRows" msprop:Generator_ParentPropName="SaalidRow" msprop:Generator_UserRelationName="Seansid_Saalid" />
-      <msdata:Relationship name="Tellimused_Kasutaja" msdata:parent="Kasutaja" msdata:child="Tellimused" msdata:parentkey="kasID" msdata:childkey="Kasutaja_kasID" msprop:Generator_UserParentTable="Kasutaja" msprop:Generator_UserChildTable="Tellimused" msprop:Generator_RelationVarName="relationTellimused_Kasutaja" msprop:Generator_ChildPropName="GetTellimusedRows" msprop:Generator_ParentPropName="KasutajaRow" msprop:Generator_UserRelationName="Tellimused_Kasutaja" />
-      <msdata:Relationship name="Tellimused_Piletid" msdata:parent="Piletid" msdata:child="Tellimused" msdata:parentkey="pilId" msdata:childkey="Piletid_pilId" msprop:Generator_UserParentTable="Piletid" msprop:Generator_UserChildTable="Tellimused" msprop:Generator_RelationVarName="relationTellimused_Piletid" msprop:Generator_ChildPropName="GetTellimusedRows" msprop:Generator_ParentPropName="PiletidRow" msprop:Generator_UserRelationName="Tellimused_Piletid" />
+      <msdata:Relationship name="Kohad_Saalid" msdata:parent="Saalid" msdata:child="Kohad" msdata:parentkey="saaID" msdata:childkey="Saalid_saaID" msprop:Generator_UserParentTable="Saalid" msprop:Generator_UserChildTable="Kohad" msprop:Generator_RelationVarName="relationKohad_Saalid" msprop:Generator_ChildPropName="GetKohadRows" msprop:Generator_ParentPropName="SaalidRow" msprop:Generator_UserRelationName="Kohad_Saalid" />
+      <msdata:Relationship name="Piletid_Seansid" msdata:parent="Seansid" msdata:child="Piletid" msdata:parentkey="seaID" msdata:childkey="Seansid_seaID" msprop:Generator_UserParentTable="Seansid" msprop:Generator_UserChildTable="Piletid" msprop:Generator_RelationVarName="relationPiletid_Seansid" msprop:Generator_ChildPropName="GetPiletidRows" msprop:Generator_ParentPropName="SeansidRow" msprop:Generator_UserRelationName="Piletid_Seansid" />
+      <msdata:Relationship name="Seansid_Filmid" msdata:parent="Filmid" msdata:child="Seansid" msdata:parentkey="filID" msdata:childkey="Filmid_filID" msprop:Generator_UserParentTable="Filmid" msprop:Generator_UserChildTable="Seansid" msprop:Generator_RelationVarName="relationSeansid_Filmid" msprop:Generator_ChildPropName="GetSeansidRows" msprop:Generator_UserRelationName="Seansid_Filmid" msprop:Generator_ParentPropName="FilmidRow" />
+      <msdata:Relationship name="Seansid_Saalid" msdata:parent="Saalid" msdata:child="Seansid" msdata:parentkey="saaID" msdata:childkey="Saalid_saaID" msprop:Generator_UserParentTable="Saalid" msprop:Generator_UserChildTable="Seansid" msprop:Generator_RelationVarName="relationSeansid_Saalid" msprop:Generator_ChildPropName="GetSeansidRows" msprop:Generator_UserRelationName="Seansid_Saalid" msprop:Generator_ParentPropName="SaalidRow" />
+      <msdata:Relationship name="Tellimused_Kasutaja" msdata:parent="Kasutaja" msdata:child="Tellimused" msdata:parentkey="kasID" msdata:childkey="Kasutaja_kasID" msprop:Generator_UserParentTable="Kasutaja" msprop:Generator_UserChildTable="Tellimused" msprop:Generator_RelationVarName="relationTellimused_Kasutaja" msprop:Generator_ChildPropName="GetTellimusedRows" msprop:Generator_UserRelationName="Tellimused_Kasutaja" msprop:Generator_ParentPropName="KasutajaRow" />
+      <msdata:Relationship name="Tellimused_Piletid" msdata:parent="Piletid" msdata:child="Tellimused" msdata:parentkey="pilId" msdata:childkey="Piletid_pilId" msprop:Generator_UserParentTable="Piletid" msprop:Generator_UserChildTable="Tellimused" msprop:Generator_RelationVarName="relationTellimused_Piletid" msprop:Generator_ChildPropName="GetTellimusedRows" msprop:Generator_UserRelationName="Tellimused_Piletid" msprop:Generator_ParentPropName="PiletidRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>
