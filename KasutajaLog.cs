@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using KinoAndme.KinoDataSetTableAdapters;
 
 namespace KinoAndme
+
 {
     public partial class KasutajaLog : Form
     {
+        private KinoDataSetTableAdapters.KasutajaTableAdapter kasutajaTableAdapter = new KinoDataSetTableAdapters.KasutajaTableAdapter();
         public KasutajaLog()
         {
             InitializeComponent();
@@ -19,8 +22,34 @@ namespace KinoAndme
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ChooseFilm ChooseFilmForm = new ChooseFilm();
-            ChooseFilmForm.Show();
+            string login = loginL.Text;
+            string password = paroolL.Text;
+
+            if (IsValidUser(login, password))
+            {
+                ChooseFilm chooseFilmForm = new ChooseFilm();
+                chooseFilmForm.Show();
+                this.Hide(); 
+            }
+            else
+            {
+                MessageBox.Show("Неверный логин или пароль.");
+            }
+        }
+        private bool IsValidUser(string login, string password)
+        {
+            try
+            {
+                var user = this.kasutajaTableAdapter.GetData()
+                         .FirstOrDefault(u => u.logi == login && u.parool == password);
+
+                return user != null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при проверке данных: {ex.Message}");
+                return false;
+            }
         }
     }
 }

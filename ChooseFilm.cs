@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KinoAndme.KinoDataSetTableAdapters;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,9 +14,11 @@ namespace KinoAndme
 {
     public partial class ChooseFilm : Form
     {
-        private int currentImageIndex = 0;
+        
+        private int currentFilmIndex = 0;
+        private KinoDataSet.FilmidDataTable filmidTable;
+        private FilmidTableAdapter filmidAdapter = new FilmidTableAdapter();
 
-        // Указываем правильный относительный путь к изображениям
         private string[] filmPosters =
         {
             @"poster\It.jpg",
@@ -27,35 +30,63 @@ namespace KinoAndme
         public ChooseFilm()
         {
             InitializeComponent();
-            UpdatePoster();  // Загружаем первое изображение при старте
+            LoadFilmData(); 
+            UpdateFilmInfo(); 
         }
+        private void LoadFilmData()
+        {
+            try
+            {
+                filmidTable = filmidAdapter.GetData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при загрузке данных: {ex.Message}");
+            }
+        }
+
+        private void UpdateFilmInfo()
+        {
+            if (filmidTable == null || filmidTable.Rows.Count == 0)
+            {
+                MessageBox.Show("Данные о фильмах отсутствуют.");
+                return;
+            }
+
+            var currentFilm = filmidTable[currentFilmIndex];
+
+
+            labelPealkiri.Text = $"Название: {currentFilm.pealkiri}";
+            labelZanr.Text = $"Жанр: {currentFilm.zanr}";
+            labelAeg.Text = $"Время сеанса: {currentFilm.aeg}";
+
+
+            try
+            {
+                pictureBox1.Image = Image.FromFile($@"poster\{currentFilm.pealkiri}.jpg");
+            }
+            catch (FileNotFoundException)
+            {
+                pictureBox1.Image = null;
+                MessageBox.Show($"Постер для фильма '{currentFilm.pealkiri}' не найден.");
+            }
+        }
+
 
         private void forward_Click(object sender, EventArgs e)
         {
-            currentImageIndex++;
-            if (currentImageIndex >= filmPosters.Length) currentImageIndex = 0;  // Перелистывание, если индекс выходит за пределы
-            UpdatePoster();  // Обновляем изображение
+            currentFilmIndex++;
+            if (currentFilmIndex >= filmidTable.Rows.Count) currentFilmIndex = 0;
+            UpdateFilmInfo();
         }
 
         private void back_Click(object sender, EventArgs e)
         {
-            currentImageIndex--;
-            if (currentImageIndex < 0) currentImageIndex = filmPosters.Length - 1;  // Если индекс отрицательный, возвращаем на последний постер
-            UpdatePoster();  // Обновляем изображение
+            currentFilmIndex--;
+            if (currentFilmIndex < 0) currentFilmIndex = filmidTable.Rows.Count - 1;
+            UpdateFilmInfo();
         }
 
-        // Метод для обновления изображения в pictureBox
-        private void UpdatePoster()
-        {
-            try
-            {
-                // Загружаем изображение из файла по текущему индексу
-                pictureBox1.Image = Image.FromFile(filmPosters[currentImageIndex]);
-            }
-            catch (FileNotFoundException)
-            {
-                MessageBox.Show("Изображение не найдено. Проверьте путь к файлам.");
-            }
-        }
+
     }
 }

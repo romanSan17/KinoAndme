@@ -62,12 +62,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminLog.cs">
-      <SubType>Form</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="AdminLog.Designer.cs">
       <DependentUpon>AdminLog.cs</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="AdminPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminPanel.Designer.cs">
+      <DependentUpon>AdminPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="ChooseFilm.cs">
       <SubType>Form</SubType>
@@ -87,13 +93,10 @@
     <Compile Include="KasutajaReg.Designer.cs">
       <DependentUpon>KasutajaReg.cs</DependentUpon>
     </Compile>
-    <Compile Include="KinoFormDataSet.cs">
-      <DependentUpon>KinoFormDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="KinoFormDataSet.Designer.cs">
+    <Compile Include="KinoDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>KinoFormDataSet.xsd</DependentUpon>
+      <DependentUpon>KinoDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="StartMenu.cs">
       <SubType>Form</SubType>
@@ -128,16 +131,16 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="KinoFormDataSet.xsc">
-      <DependentUpon>KinoFormDataSet.xsd</DependentUpon>
+    <None Include="KinoDataSet.xsc">
+      <DependentUpon>KinoDataSet.xsd</DependentUpon>
     </None>
-    <None Include="KinoFormDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>KinoFormDataSet.Designer.cs</LastGenOutput>
+    <None Include="KinoDataSet.xsd">
       <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>KinoDataSet.Designer.cs</LastGenOutput>
     </None>
-    <None Include="KinoFormDataSet.xss">
-      <DependentUpon>KinoFormDataSet.xsd</DependentUpon>
+    <None Include="KinoDataSet.xss">
+      <DependentUpon>KinoDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -171,7 +174,7 @@
     <Content Include="poster\It.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="poster\Pulp-fiction.jpg">
+    <Content Include="poster\Pulp fiction.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="poster\Spider-man.jpg">

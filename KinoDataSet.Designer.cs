@@ -20,9 +20,9 @@ namespace KinoAndme {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("KinoFormDataSet")]
+    [global::System.Xml.Serialization.XmlRootAttribute("KinoDataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class KinoFormDataSet : global::System.Data.DataSet {
+    public partial class KinoDataSet : global::System.Data.DataSet {
         
         private FilmidDataTable tableFilmid;
         
@@ -54,7 +54,7 @@ namespace KinoAndme {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public KinoFormDataSet() {
+        public KinoDataSet() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -65,7 +65,7 @@ namespace KinoAndme {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected KinoFormDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected KinoDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -229,7 +229,7 @@ namespace KinoAndme {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            KinoFormDataSet cln = ((KinoFormDataSet)(base.Clone()));
+            KinoDataSet cln = ((KinoDataSet)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -361,9 +361,9 @@ namespace KinoAndme {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "KinoFormDataSet";
+            this.DataSetName = "KinoDataSet";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/KinoFormDataSet.xsd";
+            this.Namespace = "http://tempuri.org/KinoDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableFilmid = new FilmidDataTable();
@@ -459,7 +459,7 @@ namespace KinoAndme {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            KinoFormDataSet ds = new KinoFormDataSet();
+            KinoDataSet ds = new KinoDataSet();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -641,10 +641,10 @@ namespace KinoAndme {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public FilmidRow AddFilmidRow(int filID, string pealkiri, string zanr, System.TimeSpan aeg) {
+            public FilmidRow AddFilmidRow(string pealkiri, string zanr, System.TimeSpan aeg) {
                 FilmidRow rowFilmidRow = ((FilmidRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        filID,
+                        null,
                         pealkiri,
                         zanr,
                         aeg};
@@ -696,7 +696,11 @@ namespace KinoAndme {
                 base.Columns.Add(this.columnaeg);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnfilID}, true));
+                this.columnfilID.AutoIncrement = true;
+                this.columnfilID.AutoIncrementSeed = -1;
+                this.columnfilID.AutoIncrementStep = -1;
                 this.columnfilID.AllowDBNull = false;
+                this.columnfilID.ReadOnly = true;
                 this.columnfilID.Unique = true;
                 this.columnpealkiri.AllowDBNull = false;
                 this.columnpealkiri.MaxLength = 50;
@@ -770,7 +774,7 @@ namespace KinoAndme {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                KinoFormDataSet ds = new KinoFormDataSet();
+                KinoDataSet ds = new KinoDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -840,6 +844,8 @@ namespace KinoAndme {
             
             private global::System.Data.DataColumn columnnimi;
             
+            private global::System.Data.DataColumn columnlogi;
+            
             private global::System.Data.DataColumn columnparool;
             
             private global::System.Data.DataColumn columnrool;
@@ -890,6 +896,14 @@ namespace KinoAndme {
             public global::System.Data.DataColumn nimiColumn {
                 get {
                     return this.columnnimi;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn logiColumn {
+                get {
+                    return this.columnlogi;
                 }
             }
             
@@ -946,11 +960,12 @@ namespace KinoAndme {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public KasutajaRow AddKasutajaRow(int kasID, string nimi, int parool, string rool) {
+            public KasutajaRow AddKasutajaRow(string nimi, string logi, string parool, string rool) {
                 KasutajaRow rowKasutajaRow = ((KasutajaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        kasID,
+                        null,
                         nimi,
+                        logi,
                         parool,
                         rool};
                 rowKasutajaRow.ItemArray = columnValuesArray;
@@ -984,6 +999,7 @@ namespace KinoAndme {
             internal void InitVars() {
                 this.columnkasID = base.Columns["kasID"];
                 this.columnnimi = base.Columns["nimi"];
+                this.columnlogi = base.Columns["logi"];
                 this.columnparool = base.Columns["parool"];
                 this.columnrool = base.Columns["rool"];
             }
@@ -995,17 +1011,25 @@ namespace KinoAndme {
                 base.Columns.Add(this.columnkasID);
                 this.columnnimi = new global::System.Data.DataColumn("nimi", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnimi);
-                this.columnparool = new global::System.Data.DataColumn("parool", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnlogi = new global::System.Data.DataColumn("logi", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnlogi);
+                this.columnparool = new global::System.Data.DataColumn("parool", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnparool);
                 this.columnrool = new global::System.Data.DataColumn("rool", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnrool);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnkasID}, true));
+                this.columnkasID.AutoIncrement = true;
+                this.columnkasID.AutoIncrementSeed = -1;
+                this.columnkasID.AutoIncrementStep = -1;
                 this.columnkasID.AllowDBNull = false;
+                this.columnkasID.ReadOnly = true;
                 this.columnkasID.Unique = true;
                 this.columnnimi.AllowDBNull = false;
                 this.columnnimi.MaxLength = 50;
-                this.columnparool.AllowDBNull = false;
+                this.columnlogi.AllowDBNull = false;
+                this.columnlogi.MaxLength = 20;
+                this.columnparool.MaxLength = 50;
                 this.columnrool.AllowDBNull = false;
                 this.columnrool.MaxLength = 10;
             }
@@ -1075,7 +1099,7 @@ namespace KinoAndme {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                KinoFormDataSet ds = new KinoFormDataSet();
+                KinoDataSet ds = new KinoDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1251,10 +1275,10 @@ namespace KinoAndme {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public KohadRow AddKohadRow(int kohID, SaalidRow parentSaalidRowByKohad_Saalid, int rida, int koha_number) {
+            public KohadRow AddKohadRow(SaalidRow parentSaalidRowByKohad_Saalid, int rida, int koha_number) {
                 KohadRow rowKohadRow = ((KohadRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        kohID,
+                        null,
                         null,
                         rida,
                         koha_number};
@@ -1309,7 +1333,11 @@ namespace KinoAndme {
                 base.Columns.Add(this.columnkoha_number);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnkohID}, true));
+                this.columnkohID.AutoIncrement = true;
+                this.columnkohID.AutoIncrementSeed = -1;
+                this.columnkohID.AutoIncrementStep = -1;
                 this.columnkohID.AllowDBNull = false;
+                this.columnkohID.ReadOnly = true;
                 this.columnkohID.Unique = true;
                 this.columnSaalid_saaID.AllowDBNull = false;
                 this.columnrida.AllowDBNull = false;
@@ -1381,7 +1409,7 @@ namespace KinoAndme {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                KinoFormDataSet ds = new KinoFormDataSet();
+                KinoDataSet ds = new KinoDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1537,10 +1565,10 @@ namespace KinoAndme {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public PiletidRow AddPiletidRow(int pilId, SeansidRow parentSeansidRowByPiletid_Seansid) {
+            public PiletidRow AddPiletidRow(SeansidRow parentSeansidRowByPiletid_Seansid) {
                 PiletidRow rowPiletidRow = ((PiletidRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        pilId,
+                        null,
                         null};
                 if ((parentSeansidRowByPiletid_Seansid != null)) {
                     columnValuesArray[1] = parentSeansidRowByPiletid_Seansid[0];
@@ -1587,7 +1615,11 @@ namespace KinoAndme {
                 base.Columns.Add(this.columnSeansid_seaID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnpilId}, true));
+                this.columnpilId.AutoIncrement = true;
+                this.columnpilId.AutoIncrementSeed = -1;
+                this.columnpilId.AutoIncrementStep = -1;
                 this.columnpilId.AllowDBNull = false;
+                this.columnpilId.ReadOnly = true;
                 this.columnpilId.Unique = true;
                 this.columnSeansid_seaID.AllowDBNull = false;
             }
@@ -1657,7 +1689,7 @@ namespace KinoAndme {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                KinoFormDataSet ds = new KinoFormDataSet();
+                KinoDataSet ds = new KinoDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -1823,10 +1855,10 @@ namespace KinoAndme {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SaalidRow AddSaalidRow(int saaID, int number, int kohtade_arv) {
+            public SaalidRow AddSaalidRow(int number, int kohtade_arv) {
                 SaalidRow rowSaalidRow = ((SaalidRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        saaID,
+                        null,
                         number,
                         kohtade_arv};
                 rowSaalidRow.ItemArray = columnValuesArray;
@@ -1874,7 +1906,11 @@ namespace KinoAndme {
                 base.Columns.Add(this.columnkohtade_arv);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnsaaID}, true));
+                this.columnsaaID.AutoIncrement = true;
+                this.columnsaaID.AutoIncrementSeed = -1;
+                this.columnsaaID.AutoIncrementStep = -1;
                 this.columnsaaID.AllowDBNull = false;
+                this.columnsaaID.ReadOnly = true;
                 this.columnsaaID.Unique = true;
                 this.columnnumber.AllowDBNull = false;
                 this.columnkohtade_arv.AllowDBNull = false;
@@ -1945,7 +1981,7 @@ namespace KinoAndme {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                KinoFormDataSet ds = new KinoFormDataSet();
+                KinoDataSet ds = new KinoDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2121,10 +2157,10 @@ namespace KinoAndme {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SeansidRow AddSeansidRow(int seaID, FilmidRow parentFilmidRowBySeansid_Filmid, SaalidRow parentSaalidRowBySeansid_Saalid, System.DateTime date) {
+            public SeansidRow AddSeansidRow(FilmidRow parentFilmidRowBySeansid_Filmid, SaalidRow parentSaalidRowBySeansid_Saalid, System.DateTime date) {
                 SeansidRow rowSeansidRow = ((SeansidRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        seaID,
+                        null,
                         null,
                         null,
                         date};
@@ -2182,7 +2218,11 @@ namespace KinoAndme {
                 base.Columns.Add(this.columndate);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnseaID}, true));
+                this.columnseaID.AutoIncrement = true;
+                this.columnseaID.AutoIncrementSeed = -1;
+                this.columnseaID.AutoIncrementStep = -1;
                 this.columnseaID.AllowDBNull = false;
+                this.columnseaID.ReadOnly = true;
                 this.columnseaID.Unique = true;
                 this.columnFilmid_filID.AllowDBNull = false;
                 this.columnSaalid_saaID.AllowDBNull = false;
@@ -2254,7 +2294,7 @@ namespace KinoAndme {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                KinoFormDataSet ds = new KinoFormDataSet();
+                KinoDataSet ds = new KinoDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2440,10 +2480,10 @@ namespace KinoAndme {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public TellimusedRow AddTellimusedRow(int telID, PiletidRow parentPiletidRowByTellimused_Piletid, KasutajaRow parentKasutajaRowByTellimused_Kasutaja, int vaartus, string status) {
+            public TellimusedRow AddTellimusedRow(PiletidRow parentPiletidRowByTellimused_Piletid, KasutajaRow parentKasutajaRowByTellimused_Kasutaja, int vaartus, string status) {
                 TellimusedRow rowTellimusedRow = ((TellimusedRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        telID,
+                        null,
                         null,
                         null,
                         vaartus,
@@ -2505,7 +2545,11 @@ namespace KinoAndme {
                 base.Columns.Add(this.columnstatus);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columntelID}, true));
+                this.columntelID.AutoIncrement = true;
+                this.columntelID.AutoIncrementSeed = -1;
+                this.columntelID.AutoIncrementStep = -1;
                 this.columntelID.AllowDBNull = false;
+                this.columntelID.ReadOnly = true;
                 this.columntelID.Unique = true;
                 this.columnPiletid_pilId.AllowDBNull = false;
                 this.columnKasutaja_kasID.AllowDBNull = false;
@@ -2579,7 +2623,7 @@ namespace KinoAndme {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                KinoFormDataSet ds = new KinoFormDataSet();
+                KinoDataSet ds = new KinoDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -2746,9 +2790,25 @@ namespace KinoAndme {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int parool {
+            public string logi {
                 get {
-                    return ((int)(this[this.tableKasutaja.paroolColumn]));
+                    return ((string)(this[this.tableKasutaja.logiColumn]));
+                }
+                set {
+                    this[this.tableKasutaja.logiColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string parool {
+                get {
+                    try {
+                        return ((string)(this[this.tableKasutaja.paroolColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'parool\' в таблице \'Kasutaja\' равно DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableKasutaja.paroolColumn] = value;
@@ -2764,6 +2824,18 @@ namespace KinoAndme {
                 set {
                     this[this.tableKasutaja.roolColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsparoolNull() {
+                return this.IsNull(this.tableKasutaja.paroolColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetparoolNull() {
+                this[this.tableKasutaja.paroolColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3400,7 +3472,7 @@ namespace KinoAndme {
         }
     }
 }
-namespace KinoAndme.KinoFormDataSetTableAdapters {
+namespace KinoAndme.KinoDataSetTableAdapters {
     
     
     /// <summary>
@@ -3540,20 +3612,18 @@ namespace KinoAndme.KinoFormDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_aeg", global::System.Data.SqlDbType.Time, 0, global::System.Data.ParameterDirection.Input, 0, 0, "aeg", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Filmid] ([filID], [pealkiri], [zanr], [aeg]) VALUES (@filID, @" +
-                "pealkiri, @zanr, @aeg);\r\nSELECT filID, pealkiri, zanr, aeg FROM Filmid WHERE (fi" +
-                "lID = @filID)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Filmid] ([pealkiri], [zanr], [aeg]) VALUES (@pealkiri, @zanr, " +
+                "@aeg);\r\nSELECT filID, pealkiri, zanr, aeg FROM Filmid WHERE (filID = SCOPE_IDENT" +
+                "ITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@filID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "filID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pealkiri", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pealkiri", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@zanr", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "zanr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@aeg", global::System.Data.SqlDbType.Time, 0, global::System.Data.ParameterDirection.Input, 0, 0, "aeg", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Filmid] SET [filID] = @filID, [pealkiri] = @pealkiri, [zanr] = @zanr, [aeg] = @aeg WHERE (([filID] = @Original_filID) AND ([pealkiri] = @Original_pealkiri) AND ([zanr] = @Original_zanr) AND ([aeg] = @Original_aeg));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Filmid] SET [pealkiri] = @pealkiri, [zanr] = @zanr, [aeg] = @aeg WHERE (([filID] = @Original_filID) AND ([pealkiri] = @Original_pealkiri) AND ([zanr] = @Original_zanr) AND ([aeg] = @Original_aeg));
 SELECT filID, pealkiri, zanr, aeg FROM Filmid WHERE (filID = @filID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@filID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "filID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pealkiri", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pealkiri", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@zanr", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "zanr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@aeg", global::System.Data.SqlDbType.Time, 0, global::System.Data.ParameterDirection.Input, 0, 0, "aeg", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -3561,13 +3631,14 @@ SELECT filID, pealkiri, zanr, aeg FROM Filmid WHERE (filID = @filID)";
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_pealkiri", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pealkiri", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_zanr", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "zanr", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_aeg", global::System.Data.SqlDbType.Time, 0, global::System.Data.ParameterDirection.Input, 0, 0, "aeg", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@filID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "filID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::KinoAndme.Properties.Settings.Default.KinoFormConnectionString;
+            this._connection.ConnectionString = global::KinoAndme.Properties.Settings.Default.KinoConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3584,7 +3655,7 @@ SELECT filID, pealkiri, zanr, aeg FROM Filmid WHERE (filID = @filID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(KinoFormDataSet.FilmidDataTable dataTable) {
+        public virtual int Fill(KinoDataSet.FilmidDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -3597,9 +3668,9 @@ SELECT filID, pealkiri, zanr, aeg FROM Filmid WHERE (filID = @filID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual KinoFormDataSet.FilmidDataTable GetData() {
+        public virtual KinoDataSet.FilmidDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            KinoFormDataSet.FilmidDataTable dataTable = new KinoFormDataSet.FilmidDataTable();
+            KinoDataSet.FilmidDataTable dataTable = new KinoDataSet.FilmidDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3607,14 +3678,14 @@ SELECT filID, pealkiri, zanr, aeg FROM Filmid WHERE (filID = @filID)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(KinoFormDataSet.FilmidDataTable dataTable) {
+        public virtual int Update(KinoDataSet.FilmidDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(KinoFormDataSet dataSet) {
+        public virtual int Update(KinoDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Filmid");
         }
         
@@ -3672,21 +3743,20 @@ SELECT filID, pealkiri, zanr, aeg FROM Filmid WHERE (filID = @filID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int filID, string pealkiri, string zanr, System.TimeSpan aeg) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(filID));
+        public virtual int Insert(string pealkiri, string zanr, System.TimeSpan aeg) {
             if ((pealkiri == null)) {
                 throw new global::System.ArgumentNullException("pealkiri");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(pealkiri));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(pealkiri));
             }
             if ((zanr == null)) {
                 throw new global::System.ArgumentNullException("zanr");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(zanr));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(zanr));
             }
-            this.Adapter.InsertCommand.Parameters[3].Value = ((System.TimeSpan)(aeg));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((System.TimeSpan)(aeg));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3707,35 +3777,35 @@ SELECT filID, pealkiri, zanr, aeg FROM Filmid WHERE (filID = @filID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int filID, string pealkiri, string zanr, System.TimeSpan aeg, int Original_filID, string Original_pealkiri, string Original_zanr, System.TimeSpan Original_aeg) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(filID));
+        public virtual int Update(string pealkiri, string zanr, System.TimeSpan aeg, int Original_filID, string Original_pealkiri, string Original_zanr, System.TimeSpan Original_aeg, int filID) {
             if ((pealkiri == null)) {
                 throw new global::System.ArgumentNullException("pealkiri");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(pealkiri));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(pealkiri));
             }
             if ((zanr == null)) {
                 throw new global::System.ArgumentNullException("zanr");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(zanr));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(zanr));
             }
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((System.TimeSpan)(aeg));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_filID));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((System.TimeSpan)(aeg));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_filID));
             if ((Original_pealkiri == null)) {
                 throw new global::System.ArgumentNullException("Original_pealkiri");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_pealkiri));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_pealkiri));
             }
             if ((Original_zanr == null)) {
                 throw new global::System.ArgumentNullException("Original_zanr");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_zanr));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_zanr));
             }
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((System.TimeSpan)(Original_aeg));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((System.TimeSpan)(Original_aeg));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(filID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3757,7 +3827,7 @@ SELECT filID, pealkiri, zanr, aeg FROM Filmid WHERE (filID = @filID)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string pealkiri, string zanr, System.TimeSpan aeg, int Original_filID, string Original_pealkiri, string Original_zanr, System.TimeSpan Original_aeg) {
-            return this.Update(Original_filID, pealkiri, zanr, aeg, Original_filID, Original_pealkiri, Original_zanr, Original_aeg);
+            return this.Update(pealkiri, zanr, aeg, Original_filID, Original_pealkiri, Original_zanr, Original_aeg, Original_filID);
         }
     }
     
@@ -3884,65 +3954,94 @@ SELECT filID, pealkiri, zanr, aeg FROM Filmid WHERE (filID = @filID)";
             tableMapping.DataSetTable = "Kasutaja";
             tableMapping.ColumnMappings.Add("kasID", "kasID");
             tableMapping.ColumnMappings.Add("nimi", "nimi");
+            tableMapping.ColumnMappings.Add("logi", "logi");
             tableMapping.ColumnMappings.Add("parool", "parool");
             tableMapping.ColumnMappings.Add("rool", "rool");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
             this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Kasutaja] WHERE (([kasID] = @Original_kasID) AND ([nimi] = @Or" +
-                "iginal_nimi) AND ([parool] = @Original_parool) AND ([rool] = @Original_rool))";
+                "iginal_nimi) AND ([logi] = @Original_logi) AND ((@IsNull_parool = 1 AND [parool]" +
+                " IS NULL) OR ([parool] = @Original_parool)) AND ([rool] = @Original_rool))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_kasID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kasID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_nimi", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nimi", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_parool", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "parool", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_logi", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "logi", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_parool", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "parool", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_parool", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "parool", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_rool", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "rool", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Kasutaja] ([kasID], [nimi], [parool], [rool]) VALUES (@kasID, " +
-                "@nimi, @parool, @rool);\r\nSELECT kasID, nimi, parool, rool FROM Kasutaja WHERE (k" +
-                "asID = @kasID)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Kasutaja] ([nimi], [logi], [parool], [rool]) VALUES (@nimi, @l" +
+                "ogi, @parool, @rool);\r\nSELECT kasID, nimi, logi, parool, rool FROM Kasutaja WHER" +
+                "E (kasID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@kasID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kasID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nimi", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nimi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@parool", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "parool", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@logi", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "logi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@parool", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "parool", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@rool", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "rool", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Kasutaja] SET [kasID] = @kasID, [nimi] = @nimi, [parool] = @parool, [rool] = @rool WHERE (([kasID] = @Original_kasID) AND ([nimi] = @Original_nimi) AND ([parool] = @Original_parool) AND ([rool] = @Original_rool));
-SELECT kasID, nimi, parool, rool FROM Kasutaja WHERE (kasID = @kasID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Kasutaja] SET [nimi] = @nimi, [logi] = @logi, [parool] = @parool, [rool] = @rool WHERE (([kasID] = @Original_kasID) AND ([nimi] = @Original_nimi) AND ([logi] = @Original_logi) AND ((@IsNull_parool = 1 AND [parool] IS NULL) OR ([parool] = @Original_parool)) AND ([rool] = @Original_rool));
+SELECT kasID, nimi, logi, parool, rool FROM Kasutaja WHERE (kasID = @kasID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@kasID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kasID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nimi", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nimi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@parool", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "parool", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@logi", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "logi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@parool", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "parool", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@rool", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "rool", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_kasID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kasID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_nimi", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nimi", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_parool", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "parool", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_logi", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "logi", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_parool", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "parool", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_parool", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "parool", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_rool", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "rool", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@kasID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "kasID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::KinoAndme.Properties.Settings.Default.KinoFormConnectionString;
+            this._connection.ConnectionString = global::KinoAndme.Properties.Settings.Default.KinoConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT kasID, nimi, parool, rool FROM dbo.Kasutaja";
+            this._commandCollection[0].CommandText = "SELECT kasID, nimi, logi, parool, rool FROM dbo.Kasutaja";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "dbo.CheckUserLogin";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.StoredProcedure;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@logi", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@parool", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "dbo.GetUserRole";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.StoredProcedure;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@logi", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "dbo.InsertKasutaja";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.StoredProcedure;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.ReturnValue, 10, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nimi", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@logi", global::System.Data.SqlDbType.VarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@parool", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@rool", global::System.Data.SqlDbType.VarChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(KinoFormDataSet.KasutajaDataTable dataTable) {
+        public virtual int Fill(KinoDataSet.KasutajaDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -3955,9 +4054,9 @@ SELECT kasID, nimi, parool, rool FROM Kasutaja WHERE (kasID = @kasID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual KinoFormDataSet.KasutajaDataTable GetData() {
+        public virtual KinoDataSet.KasutajaDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            KinoFormDataSet.KasutajaDataTable dataTable = new KinoFormDataSet.KasutajaDataTable();
+            KinoDataSet.KasutajaDataTable dataTable = new KinoDataSet.KasutajaDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -3965,14 +4064,14 @@ SELECT kasID, nimi, parool, rool FROM Kasutaja WHERE (kasID = @kasID)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(KinoFormDataSet.KasutajaDataTable dataTable) {
+        public virtual int Update(KinoDataSet.KasutajaDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(KinoFormDataSet dataSet) {
+        public virtual int Update(KinoDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Kasutaja");
         }
         
@@ -3995,7 +4094,7 @@ SELECT kasID, nimi, parool, rool FROM Kasutaja WHERE (kasID = @kasID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_kasID, string Original_nimi, int Original_parool, string Original_rool) {
+        public virtual int Delete(int Original_kasID, string Original_nimi, string Original_logi, string Original_parool, string Original_rool) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_kasID));
             if ((Original_nimi == null)) {
                 throw new global::System.ArgumentNullException("Original_nimi");
@@ -4003,12 +4102,25 @@ SELECT kasID, nimi, parool, rool FROM Kasutaja WHERE (kasID = @kasID)";
             else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_nimi));
             }
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_parool));
+            if ((Original_logi == null)) {
+                throw new global::System.ArgumentNullException("Original_logi");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_logi));
+            }
+            if ((Original_parool == null)) {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_parool));
+            }
             if ((Original_rool == null)) {
                 throw new global::System.ArgumentNullException("Original_rool");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_rool));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_rool));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -4030,15 +4142,25 @@ SELECT kasID, nimi, parool, rool FROM Kasutaja WHERE (kasID = @kasID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int kasID, string nimi, int parool, string rool) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(kasID));
+        public virtual int Insert(string nimi, string logi, string parool, string rool) {
             if ((nimi == null)) {
                 throw new global::System.ArgumentNullException("nimi");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(nimi));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(nimi));
             }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(parool));
+            if ((logi == null)) {
+                throw new global::System.ArgumentNullException("logi");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(logi));
+            }
+            if ((parool == null)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(parool));
+            }
             if ((rool == null)) {
                 throw new global::System.ArgumentNullException("rool");
             }
@@ -4065,15 +4187,25 @@ SELECT kasID, nimi, parool, rool FROM Kasutaja WHERE (kasID = @kasID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int kasID, string nimi, int parool, string rool, int Original_kasID, string Original_nimi, int Original_parool, string Original_rool) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(kasID));
+        public virtual int Update(string nimi, string logi, string parool, string rool, int Original_kasID, string Original_nimi, string Original_logi, string Original_parool, string Original_rool, int kasID) {
             if ((nimi == null)) {
                 throw new global::System.ArgumentNullException("nimi");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(nimi));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(nimi));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(parool));
+            if ((logi == null)) {
+                throw new global::System.ArgumentNullException("logi");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(logi));
+            }
+            if ((parool == null)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(parool));
+            }
             if ((rool == null)) {
                 throw new global::System.ArgumentNullException("rool");
             }
@@ -4087,13 +4219,27 @@ SELECT kasID, nimi, parool, rool FROM Kasutaja WHERE (kasID = @kasID)";
             else {
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_nimi));
             }
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_parool));
+            if ((Original_logi == null)) {
+                throw new global::System.ArgumentNullException("Original_logi");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_logi));
+            }
+            if ((Original_parool == null)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_parool));
+            }
             if ((Original_rool == null)) {
                 throw new global::System.ArgumentNullException("Original_rool");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_rool));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_rool));
             }
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(kasID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4114,8 +4260,129 @@ SELECT kasID, nimi, parool, rool FROM Kasutaja WHERE (kasID = @kasID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string nimi, int parool, string rool, int Original_kasID, string Original_nimi, int Original_parool, string Original_rool) {
-            return this.Update(Original_kasID, nimi, parool, rool, Original_kasID, Original_nimi, Original_parool, Original_rool);
+        public virtual int Update(string nimi, string logi, string parool, string rool, int Original_kasID, string Original_nimi, string Original_logi, string Original_parool, string Original_rool) {
+            return this.Update(nimi, logi, parool, rool, Original_kasID, Original_nimi, Original_logi, Original_parool, Original_rool, Original_kasID);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual object CheckUserLogin(string logi, string parool) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            if ((logi == null)) {
+                command.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[1].Value = ((string)(logi));
+            }
+            if ((parool == null)) {
+                command.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[2].Value = ((string)(parool));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return null;
+            }
+            else {
+                return ((object)(returnValue));
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual object GetUserRole(string logi) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            if ((logi == null)) {
+                command.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[1].Value = ((string)(logi));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return null;
+            }
+            else {
+                return ((object)(returnValue));
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int InsertKasutaja(string nimi, string logi, string parool, string rool) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
+            if ((nimi == null)) {
+                command.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[1].Value = ((string)(nimi));
+            }
+            if ((logi == null)) {
+                command.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[2].Value = ((string)(logi));
+            }
+            if ((parool == null)) {
+                command.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[3].Value = ((string)(parool));
+            }
+            if ((rool == null)) {
+                command.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[4].Value = ((string)(rool));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     
@@ -4257,20 +4524,18 @@ SELECT kasID, nimi, parool, rool FROM Kasutaja WHERE (kasID = @kasID)";
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_koha_number", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "koha_number", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Kohad] ([kohID], [Saalid_saaID], [rida], [koha_number]) VALUES" +
-                " (@kohID, @Saalid_saaID, @rida, @koha_number);\r\nSELECT kohID, Saalid_saaID, rida" +
-                ", koha_number FROM Kohad WHERE (kohID = @kohID)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Kohad] ([Saalid_saaID], [rida], [koha_number]) VALUES (@Saalid" +
+                "_saaID, @rida, @koha_number);\r\nSELECT kohID, Saalid_saaID, rida, koha_number FRO" +
+                "M Kohad WHERE (kohID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@kohID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kohID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Saalid_saaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Saalid_saaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@rida", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "rida", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@koha_number", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "koha_number", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Kohad] SET [kohID] = @kohID, [Saalid_saaID] = @Saalid_saaID, [rida] = @rida, [koha_number] = @koha_number WHERE (([kohID] = @Original_kohID) AND ([Saalid_saaID] = @Original_Saalid_saaID) AND ([rida] = @Original_rida) AND ([koha_number] = @Original_koha_number));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Kohad] SET [Saalid_saaID] = @Saalid_saaID, [rida] = @rida, [koha_number] = @koha_number WHERE (([kohID] = @Original_kohID) AND ([Saalid_saaID] = @Original_Saalid_saaID) AND ([rida] = @Original_rida) AND ([koha_number] = @Original_koha_number));
 SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@kohID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kohID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Saalid_saaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Saalid_saaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@rida", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "rida", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@koha_number", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "koha_number", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -4278,13 +4543,14 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Saalid_saaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Saalid_saaID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_rida", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "rida", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_koha_number", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "koha_number", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@kohID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "kohID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::KinoAndme.Properties.Settings.Default.KinoFormConnectionString;
+            this._connection.ConnectionString = global::KinoAndme.Properties.Settings.Default.KinoConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4301,7 +4567,7 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(KinoFormDataSet.KohadDataTable dataTable) {
+        public virtual int Fill(KinoDataSet.KohadDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -4314,9 +4580,9 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual KinoFormDataSet.KohadDataTable GetData() {
+        public virtual KinoDataSet.KohadDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            KinoFormDataSet.KohadDataTable dataTable = new KinoFormDataSet.KohadDataTable();
+            KinoDataSet.KohadDataTable dataTable = new KinoDataSet.KohadDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4324,14 +4590,14 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(KinoFormDataSet.KohadDataTable dataTable) {
+        public virtual int Update(KinoDataSet.KohadDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(KinoFormDataSet dataSet) {
+        public virtual int Update(KinoDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Kohad");
         }
         
@@ -4379,11 +4645,10 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int kohID, int Saalid_saaID, int rida, int koha_number) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(kohID));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(Saalid_saaID));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(rida));
-            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(koha_number));
+        public virtual int Insert(int Saalid_saaID, int rida, int koha_number) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Saalid_saaID));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(rida));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(koha_number));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4404,15 +4669,15 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int kohID, int Saalid_saaID, int rida, int koha_number, int Original_kohID, int Original_Saalid_saaID, int Original_rida, int Original_koha_number) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(kohID));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Saalid_saaID));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(rida));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(koha_number));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_kohID));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Saalid_saaID));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_rida));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_koha_number));
+        public virtual int Update(int Saalid_saaID, int rida, int koha_number, int Original_kohID, int Original_Saalid_saaID, int Original_rida, int Original_koha_number, int kohID) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Saalid_saaID));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(rida));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(koha_number));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_kohID));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Saalid_saaID));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_rida));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_koha_number));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(kohID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4434,7 +4699,7 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(int Saalid_saaID, int rida, int koha_number, int Original_kohID, int Original_Saalid_saaID, int Original_rida, int Original_koha_number) {
-            return this.Update(Original_kohID, Saalid_saaID, rida, koha_number, Original_kohID, Original_Saalid_saaID, Original_rida, Original_koha_number);
+            return this.Update(Saalid_saaID, rida, koha_number, Original_kohID, Original_Saalid_saaID, Original_rida, Original_koha_number, Original_kohID);
         }
     }
     
@@ -4571,28 +4836,27 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Seansid_seaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Seansid_seaID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Piletid] ([pilId], [Seansid_seaID]) VALUES (@pilId, @Seansid_s" +
-                "eaID);\r\nSELECT pilId, Seansid_seaID FROM Piletid WHERE (pilId = @pilId)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Piletid] ([Seansid_seaID]) VALUES (@Seansid_seaID);\r\nSELECT pi" +
+                "lId, Seansid_seaID FROM Piletid WHERE (pilId = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pilId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pilId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Seansid_seaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Seansid_seaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Piletid] SET [pilId] = @pilId, [Seansid_seaID] = @Seansid_seaID WHE" +
-                "RE (([pilId] = @Original_pilId) AND ([Seansid_seaID] = @Original_Seansid_seaID))" +
-                ";\r\nSELECT pilId, Seansid_seaID FROM Piletid WHERE (pilId = @pilId)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Piletid] SET [Seansid_seaID] = @Seansid_seaID WHERE (([pilId] = @Or" +
+                "iginal_pilId) AND ([Seansid_seaID] = @Original_Seansid_seaID));\r\nSELECT pilId, S" +
+                "eansid_seaID FROM Piletid WHERE (pilId = @pilId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pilId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pilId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Seansid_seaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Seansid_seaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_pilId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pilId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Seansid_seaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Seansid_seaID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pilId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "pilId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::KinoAndme.Properties.Settings.Default.KinoFormConnectionString;
+            this._connection.ConnectionString = global::KinoAndme.Properties.Settings.Default.KinoConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4609,7 +4873,7 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(KinoFormDataSet.PiletidDataTable dataTable) {
+        public virtual int Fill(KinoDataSet.PiletidDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -4622,9 +4886,9 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual KinoFormDataSet.PiletidDataTable GetData() {
+        public virtual KinoDataSet.PiletidDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            KinoFormDataSet.PiletidDataTable dataTable = new KinoFormDataSet.PiletidDataTable();
+            KinoDataSet.PiletidDataTable dataTable = new KinoDataSet.PiletidDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4632,14 +4896,14 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(KinoFormDataSet.PiletidDataTable dataTable) {
+        public virtual int Update(KinoDataSet.PiletidDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(KinoFormDataSet dataSet) {
+        public virtual int Update(KinoDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Piletid");
         }
         
@@ -4685,9 +4949,8 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int pilId, int Seansid_seaID) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(pilId));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(Seansid_seaID));
+        public virtual int Insert(int Seansid_seaID) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Seansid_seaID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4708,11 +4971,11 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int pilId, int Seansid_seaID, int Original_pilId, int Original_Seansid_seaID) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(pilId));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Seansid_seaID));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_pilId));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_Seansid_seaID));
+        public virtual int Update(int Seansid_seaID, int Original_pilId, int Original_Seansid_seaID, int pilId) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Seansid_seaID));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_pilId));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_Seansid_seaID));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(pilId));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4734,7 +4997,7 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(int Seansid_seaID, int Original_pilId, int Original_Seansid_seaID) {
-            return this.Update(Original_pilId, Seansid_seaID, Original_pilId, Original_Seansid_seaID);
+            return this.Update(Seansid_seaID, Original_pilId, Original_Seansid_seaID, Original_pilId);
         }
     }
     
@@ -4873,31 +5136,30 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_kohtade_arv", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kohtade_arv", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Saalid] ([saaID], [number], [kohtade_arv]) VALUES (@saaID, @nu" +
-                "mber, @kohtade_arv);\r\nSELECT saaID, number, kohtade_arv FROM Saalid WHERE (saaID" +
-                " = @saaID)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Saalid] ([number], [kohtade_arv]) VALUES (@number, @kohtade_ar" +
+                "v);\r\nSELECT saaID, number, kohtade_arv FROM Saalid WHERE (saaID = SCOPE_IDENTITY" +
+                "())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@saaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "saaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@number", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "number", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@kohtade_arv", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kohtade_arv", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Saalid] SET [saaID] = @saaID, [number] = @number, [kohtade_arv] = @kohtade_arv WHERE (([saaID] = @Original_saaID) AND ([number] = @Original_number) AND ([kohtade_arv] = @Original_kohtade_arv));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Saalid] SET [number] = @number, [kohtade_arv] = @kohtade_arv WHERE (([saaID] = @Original_saaID) AND ([number] = @Original_number) AND ([kohtade_arv] = @Original_kohtade_arv));
 SELECT saaID, number, kohtade_arv FROM Saalid WHERE (saaID = @saaID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@saaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "saaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@number", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "number", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@kohtade_arv", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kohtade_arv", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_saaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "saaID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_number", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "number", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_kohtade_arv", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kohtade_arv", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@saaID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "saaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::KinoAndme.Properties.Settings.Default.KinoFormConnectionString;
+            this._connection.ConnectionString = global::KinoAndme.Properties.Settings.Default.KinoConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4914,7 +5176,7 @@ SELECT saaID, number, kohtade_arv FROM Saalid WHERE (saaID = @saaID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(KinoFormDataSet.SaalidDataTable dataTable) {
+        public virtual int Fill(KinoDataSet.SaalidDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -4927,9 +5189,9 @@ SELECT saaID, number, kohtade_arv FROM Saalid WHERE (saaID = @saaID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual KinoFormDataSet.SaalidDataTable GetData() {
+        public virtual KinoDataSet.SaalidDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            KinoFormDataSet.SaalidDataTable dataTable = new KinoFormDataSet.SaalidDataTable();
+            KinoDataSet.SaalidDataTable dataTable = new KinoDataSet.SaalidDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4937,14 +5199,14 @@ SELECT saaID, number, kohtade_arv FROM Saalid WHERE (saaID = @saaID)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(KinoFormDataSet.SaalidDataTable dataTable) {
+        public virtual int Update(KinoDataSet.SaalidDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(KinoFormDataSet dataSet) {
+        public virtual int Update(KinoDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Saalid");
         }
         
@@ -4991,10 +5253,9 @@ SELECT saaID, number, kohtade_arv FROM Saalid WHERE (saaID = @saaID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int saaID, int number, int kohtade_arv) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(saaID));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(number));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(kohtade_arv));
+        public virtual int Insert(int number, int kohtade_arv) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(number));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(kohtade_arv));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5015,13 +5276,13 @@ SELECT saaID, number, kohtade_arv FROM Saalid WHERE (saaID = @saaID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int saaID, int number, int kohtade_arv, int Original_saaID, int Original_number, int Original_kohtade_arv) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(saaID));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(number));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(kohtade_arv));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_saaID));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_number));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_kohtade_arv));
+        public virtual int Update(int number, int kohtade_arv, int Original_saaID, int Original_number, int Original_kohtade_arv, int saaID) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(number));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(kohtade_arv));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_saaID));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_number));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_kohtade_arv));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(saaID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5043,7 +5304,7 @@ SELECT saaID, number, kohtade_arv FROM Saalid WHERE (saaID = @saaID)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(int number, int kohtade_arv, int Original_saaID, int Original_number, int Original_kohtade_arv) {
-            return this.Update(Original_saaID, number, kohtade_arv, Original_saaID, Original_number, Original_kohtade_arv);
+            return this.Update(number, kohtade_arv, Original_saaID, Original_number, Original_kohtade_arv, Original_saaID);
         }
     }
     
@@ -5185,20 +5446,18 @@ SELECT saaID, number, kohtade_arv FROM Saalid WHERE (saaID = @saaID)";
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_date", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Seansid] ([seaID], [Filmid_filID], [Saalid_saaID], [date]) VAL" +
-                "UES (@seaID, @Filmid_filID, @Saalid_saaID, @date);\r\nSELECT seaID, Filmid_filID, " +
-                "Saalid_saaID, date FROM Seansid WHERE (seaID = @seaID)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Seansid] ([Filmid_filID], [Saalid_saaID], [date]) VALUES (@Fil" +
+                "mid_filID, @Saalid_saaID, @date);\r\nSELECT seaID, Filmid_filID, Saalid_saaID, dat" +
+                "e FROM Seansid WHERE (seaID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@seaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "seaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Filmid_filID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Filmid_filID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Saalid_saaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Saalid_saaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Seansid] SET [seaID] = @seaID, [Filmid_filID] = @Filmid_filID, [Saalid_saaID] = @Saalid_saaID, [date] = @date WHERE (([seaID] = @Original_seaID) AND ([Filmid_filID] = @Original_Filmid_filID) AND ([Saalid_saaID] = @Original_Saalid_saaID) AND ([date] = @Original_date));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Seansid] SET [Filmid_filID] = @Filmid_filID, [Saalid_saaID] = @Saalid_saaID, [date] = @date WHERE (([seaID] = @Original_seaID) AND ([Filmid_filID] = @Original_Filmid_filID) AND ([Saalid_saaID] = @Original_Saalid_saaID) AND ([date] = @Original_date));
 SELECT seaID, Filmid_filID, Saalid_saaID, date FROM Seansid WHERE (seaID = @seaID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@seaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "seaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Filmid_filID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Filmid_filID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Saalid_saaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Saalid_saaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -5206,13 +5465,14 @@ SELECT seaID, Filmid_filID, Saalid_saaID, date FROM Seansid WHERE (seaID = @seaI
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Filmid_filID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Filmid_filID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Saalid_saaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Saalid_saaID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_date", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@seaID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "seaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::KinoAndme.Properties.Settings.Default.KinoFormConnectionString;
+            this._connection.ConnectionString = global::KinoAndme.Properties.Settings.Default.KinoConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5229,7 +5489,7 @@ SELECT seaID, Filmid_filID, Saalid_saaID, date FROM Seansid WHERE (seaID = @seaI
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(KinoFormDataSet.SeansidDataTable dataTable) {
+        public virtual int Fill(KinoDataSet.SeansidDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -5242,9 +5502,9 @@ SELECT seaID, Filmid_filID, Saalid_saaID, date FROM Seansid WHERE (seaID = @seaI
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual KinoFormDataSet.SeansidDataTable GetData() {
+        public virtual KinoDataSet.SeansidDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            KinoFormDataSet.SeansidDataTable dataTable = new KinoFormDataSet.SeansidDataTable();
+            KinoDataSet.SeansidDataTable dataTable = new KinoDataSet.SeansidDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -5252,14 +5512,14 @@ SELECT seaID, Filmid_filID, Saalid_saaID, date FROM Seansid WHERE (seaID = @seaI
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(KinoFormDataSet.SeansidDataTable dataTable) {
+        public virtual int Update(KinoDataSet.SeansidDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(KinoFormDataSet dataSet) {
+        public virtual int Update(KinoDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Seansid");
         }
         
@@ -5307,11 +5567,10 @@ SELECT seaID, Filmid_filID, Saalid_saaID, date FROM Seansid WHERE (seaID = @seaI
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int seaID, int Filmid_filID, int Saalid_saaID, System.DateTime date) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(seaID));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(Filmid_filID));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(Saalid_saaID));
-            this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(date));
+        public virtual int Insert(int Filmid_filID, int Saalid_saaID, System.DateTime date) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Filmid_filID));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(Saalid_saaID));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((System.DateTime)(date));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5332,15 +5591,15 @@ SELECT seaID, Filmid_filID, Saalid_saaID, date FROM Seansid WHERE (seaID = @seaI
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int seaID, int Filmid_filID, int Saalid_saaID, System.DateTime date, int Original_seaID, int Original_Filmid_filID, int Original_Saalid_saaID, System.DateTime Original_date) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(seaID));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Filmid_filID));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Saalid_saaID));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(date));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_seaID));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Filmid_filID));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_Saalid_saaID));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((System.DateTime)(Original_date));
+        public virtual int Update(int Filmid_filID, int Saalid_saaID, System.DateTime date, int Original_seaID, int Original_Filmid_filID, int Original_Saalid_saaID, System.DateTime Original_date, int seaID) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Filmid_filID));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Saalid_saaID));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((System.DateTime)(date));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_seaID));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Filmid_filID));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Saalid_saaID));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((System.DateTime)(Original_date));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(seaID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5362,7 +5621,7 @@ SELECT seaID, Filmid_filID, Saalid_saaID, date FROM Seansid WHERE (seaID = @seaI
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(int Filmid_filID, int Saalid_saaID, System.DateTime date, int Original_seaID, int Original_Filmid_filID, int Original_Saalid_saaID, System.DateTime Original_date) {
-            return this.Update(Original_seaID, Filmid_filID, Saalid_saaID, date, Original_seaID, Original_Filmid_filID, Original_Saalid_saaID, Original_date);
+            return this.Update(Filmid_filID, Saalid_saaID, date, Original_seaID, Original_Filmid_filID, Original_Saalid_saaID, Original_date, Original_seaID);
         }
     }
     
@@ -5506,20 +5765,18 @@ SELECT seaID, Filmid_filID, Saalid_saaID, date FROM Seansid WHERE (seaID = @seaI
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_status", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "status", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Tellimused] ([telID], [Piletid_pilId], [Kasutaja_kasID], [vaartus], [status]) VALUES (@telID, @Piletid_pilId, @Kasutaja_kasID, @vaartus, @status);
-SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHERE (telID = @telID)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Tellimused] ([Piletid_pilId], [Kasutaja_kasID], [vaartus], [status]) VALUES (@Piletid_pilId, @Kasutaja_kasID, @vaartus, @status);
+SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHERE (telID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@telID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "telID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Piletid_pilId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Piletid_pilId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Kasutaja_kasID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kasutaja_kasID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@vaartus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vaartus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@status", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "status", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Tellimused] SET [telID] = @telID, [Piletid_pilId] = @Piletid_pilId, [Kasutaja_kasID] = @Kasutaja_kasID, [vaartus] = @vaartus, [status] = @status WHERE (([telID] = @Original_telID) AND ([Piletid_pilId] = @Original_Piletid_pilId) AND ([Kasutaja_kasID] = @Original_Kasutaja_kasID) AND ([vaartus] = @Original_vaartus) AND ([status] = @Original_status));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Tellimused] SET [Piletid_pilId] = @Piletid_pilId, [Kasutaja_kasID] = @Kasutaja_kasID, [vaartus] = @vaartus, [status] = @status WHERE (([telID] = @Original_telID) AND ([Piletid_pilId] = @Original_Piletid_pilId) AND ([Kasutaja_kasID] = @Original_Kasutaja_kasID) AND ([vaartus] = @Original_vaartus) AND ([status] = @Original_status));
 SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHERE (telID = @telID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@telID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "telID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Piletid_pilId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Piletid_pilId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Kasutaja_kasID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kasutaja_kasID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@vaartus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vaartus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -5529,13 +5786,14 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Kasutaja_kasID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Kasutaja_kasID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_vaartus", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "vaartus", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_status", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "status", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@telID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "telID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::KinoAndme.Properties.Settings.Default.KinoFormConnectionString;
+            this._connection.ConnectionString = global::KinoAndme.Properties.Settings.Default.KinoConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5552,7 +5810,7 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(KinoFormDataSet.TellimusedDataTable dataTable) {
+        public virtual int Fill(KinoDataSet.TellimusedDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -5565,9 +5823,9 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual KinoFormDataSet.TellimusedDataTable GetData() {
+        public virtual KinoDataSet.TellimusedDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            KinoFormDataSet.TellimusedDataTable dataTable = new KinoFormDataSet.TellimusedDataTable();
+            KinoDataSet.TellimusedDataTable dataTable = new KinoDataSet.TellimusedDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -5575,14 +5833,14 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(KinoFormDataSet.TellimusedDataTable dataTable) {
+        public virtual int Update(KinoDataSet.TellimusedDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(KinoFormDataSet dataSet) {
+        public virtual int Update(KinoDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Tellimused");
         }
         
@@ -5636,16 +5894,15 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int telID, int Piletid_pilId, int Kasutaja_kasID, int vaartus, string status) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(telID));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(Piletid_pilId));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(Kasutaja_kasID));
-            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(vaartus));
+        public virtual int Insert(int Piletid_pilId, int Kasutaja_kasID, int vaartus, string status) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Piletid_pilId));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(Kasutaja_kasID));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(vaartus));
             if ((status == null)) {
                 throw new global::System.ArgumentNullException("status");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(status));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(status));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -5667,27 +5924,27 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int telID, int Piletid_pilId, int Kasutaja_kasID, int vaartus, string status, int Original_telID, int Original_Piletid_pilId, int Original_Kasutaja_kasID, int Original_vaartus, string Original_status) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(telID));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Piletid_pilId));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Kasutaja_kasID));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(vaartus));
+        public virtual int Update(int Piletid_pilId, int Kasutaja_kasID, int vaartus, string status, int Original_telID, int Original_Piletid_pilId, int Original_Kasutaja_kasID, int Original_vaartus, string Original_status, int telID) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Piletid_pilId));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Kasutaja_kasID));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(vaartus));
             if ((status == null)) {
                 throw new global::System.ArgumentNullException("status");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(status));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(status));
             }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_telID));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_Piletid_pilId));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_Kasutaja_kasID));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_vaartus));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_telID));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Piletid_pilId));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_Kasutaja_kasID));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_vaartus));
             if ((Original_status == null)) {
                 throw new global::System.ArgumentNullException("Original_status");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_status));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_status));
             }
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(telID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5709,7 +5966,7 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(int Piletid_pilId, int Kasutaja_kasID, int vaartus, string status, int Original_telID, int Original_Piletid_pilId, int Original_Kasutaja_kasID, int Original_vaartus, string Original_status) {
-            return this.Update(Original_telID, Piletid_pilId, Kasutaja_kasID, vaartus, status, Original_telID, Original_Piletid_pilId, Original_Kasutaja_kasID, Original_vaartus, Original_status);
+            return this.Update(Piletid_pilId, Kasutaja_kasID, vaartus, status, Original_telID, Original_Piletid_pilId, Original_Kasutaja_kasID, Original_vaartus, Original_status, Original_telID);
         }
     }
     
@@ -5942,7 +6199,7 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateUpdatedRows(KinoFormDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(KinoDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._filmidTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Filmid.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
@@ -6015,7 +6272,7 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateInsertedRows(KinoFormDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(KinoDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._filmidTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Filmid.Select(null, null, global::System.Data.DataViewRowState.Added);
@@ -6081,7 +6338,7 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateDeletedRows(KinoFormDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(KinoDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._tellimusedTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Tellimused.Select(null, null, global::System.Data.DataViewRowState.Deleted);
@@ -6171,7 +6428,7 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public virtual int UpdateAll(KinoFormDataSet dataSet) {
+        public virtual int UpdateAll(KinoDataSet dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

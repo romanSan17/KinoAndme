@@ -32,8 +32,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.paroolL = new System.Windows.Forms.TextBox();
+            this.loginL = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -76,19 +76,19 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "login";
             // 
-            // textBox2
+            // paroolL
             // 
-            this.textBox2.Location = new System.Drawing.Point(172, 187);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 7;
+            this.paroolL.Location = new System.Drawing.Point(172, 187);
+            this.paroolL.Name = "paroolL";
+            this.paroolL.Size = new System.Drawing.Size(100, 20);
+            this.paroolL.TabIndex = 7;
             // 
-            // textBox1
+            // loginL
             // 
-            this.textBox1.Location = new System.Drawing.Point(172, 139);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 6;
+            this.loginL.Location = new System.Drawing.Point(172, 139);
+            this.loginL.Name = "loginL";
+            this.loginL.Size = new System.Drawing.Size(100, 20);
+            this.loginL.TabIndex = 6;
             // 
             // KasutajaLog
             // 
@@ -100,8 +100,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.paroolL);
+            this.Controls.Add(this.loginL);
             this.Name = "KasutajaLog";
             this.Text = "KasutajaLog";
             this.ResumeLayout(false);
@@ -115,7 +115,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox paroolL;
+        private System.Windows.Forms.TextBox loginL;
     }
 }
