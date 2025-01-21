@@ -93,16 +93,19 @@
     <Compile Include="KasutajaReg.Designer.cs">
       <DependentUpon>KasutajaReg.cs</DependentUpon>
     </Compile>
+    <Compile Include="KinoDataSet.cs">
+      <DependentUpon>KinoDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="KinoDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>KinoDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="KinoZal.cs">
+    <Compile Include="Seats.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="KinoZal.Designer.cs">
-      <DependentUpon>KinoZal.cs</DependentUpon>
+    <Compile Include="Seats.Designer.cs">
+      <DependentUpon>Seats.cs</DependentUpon>
     </Compile>
     <Compile Include="StartMenu.cs">
       <SubType>Form</SubType>
@@ -125,8 +128,8 @@
     <EmbeddedResource Include="KasutajaReg.resx">
       <DependentUpon>KasutajaReg.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="KinoZal.resx">
-      <DependentUpon>KinoZal.cs</DependentUpon>
+    <EmbeddedResource Include="Seats.resx">
+      <DependentUpon>Seats.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StartMenu.resx">
       <DependentUpon>StartMenu.cs</DependentUpon>

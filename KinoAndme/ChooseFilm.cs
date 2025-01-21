@@ -87,6 +87,13 @@ namespace KinoAndme
             UpdateFilmInfo();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Seats seatsForm = new Seats();
 
+            seatsForm.Show();
+
+            this.Hide();
+        }
     }
 }
