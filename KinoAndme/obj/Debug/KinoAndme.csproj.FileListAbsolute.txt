@@ -20,3 +20,25 @@ C:\Users\Gigabyte\Source\Repos\KinoAndme\obj\Debug\KinoAndme.exe
 C:\Users\Gigabyte\Source\Repos\KinoAndme\obj\Debug\KinoAndme.pdb
 C:\Users\Gigabyte\Source\Repos\KinoAndme\bin\Debug\poster\Pulp fiction.jpg
 C:\Users\Gigabyte\source\repos\KinoAndme\obj\Debug\KinoAndme.Seats.resources
+C:\Users\opilane\source\repos\KinoAndme\KinoAndme\bin\Debug\poster\Godzilla.jpg
+C:\Users\opilane\source\repos\KinoAndme\KinoAndme\bin\Debug\poster\It.jpg
+C:\Users\opilane\source\repos\KinoAndme\KinoAndme\bin\Debug\poster\Pulp fiction.jpg
+C:\Users\opilane\source\repos\KinoAndme\KinoAndme\bin\Debug\poster\Spider-man.jpg
+C:\Users\opilane\source\repos\KinoAndme\KinoAndme\bin\Debug\AdminLog.resx
+C:\Users\opilane\source\repos\KinoAndme\KinoAndme\bin\Debug\AdminLog.cs
+C:\Users\opilane\source\repos\KinoAndme\KinoAndme\bin\Debug\AdminLog.Designer.cs
+C:\Users\opilane\source\repos\KinoAndme\KinoAndme\bin\Debug\KinoAndme.exe.config
+C:\Users\opilane\source\repos\KinoAndme\KinoAndme\bin\Debug\KinoAndme.exe
+C:\Users\opilane\source\repos\KinoAndme\KinoAndme\bin\Debug\KinoAndme.pdb
+C:\Users\opilane\source\repos\KinoAndme\KinoAndme\obj\Debug\KinoAndme.csproj.AssemblyReference.cache
+C:\Users\opilane\source\repos\KinoAndme\KinoAndme\obj\Debug\KinoAndme.AdminLog.resources
+C:\Users\opilane\source\repos\KinoAndme\KinoAndme\obj\Debug\KinoAndme.ChooseFilm.resources
+C:\Users\opilane\source\repos\KinoAndme\KinoAndme\obj\Debug\KinoAndme.KasutajaLog.resources
+C:\Users\opilane\source\repos\KinoAndme\KinoAndme\obj\Debug\KinoAndme.KasutajaReg.resources
+C:\Users\opilane\source\repos\KinoAndme\KinoAndme\obj\Debug\KinoAndme.Seats.resources
+C:\Users\opilane\source\repos\KinoAndme\KinoAndme\obj\Debug\KinoAndme.StartMenu.resources
+C:\Users\opilane\source\repos\KinoAndme\KinoAndme\obj\Debug\KinoAndme.Properties.Resources.resources
+C:\Users\opilane\source\repos\KinoAndme\KinoAndme\obj\Debug\KinoAndme.csproj.GenerateResource.cache
+C:\Users\opilane\source\repos\KinoAndme\KinoAndme\obj\Debug\KinoAndme.csproj.CoreCompileInputs.cache
+C:\Users\opilane\source\repos\KinoAndme\KinoAndme\obj\Debug\KinoAndme.exe
+C:\Users\opilane\source\repos\KinoAndme\KinoAndme\obj\Debug\KinoAndme.pdb

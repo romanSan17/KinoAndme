@@ -10,147 +10,129 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-
 namespace KinoAndme
 {
     public partial class Seats : Form
     {
-        // Список для хранения выбранных мест
-        private List<string> selectedSeats = new List<string>();
+        private string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Kino;Integrated Security=True;Connect Timeout=30;Encrypt=False;";
 
-        // Подключение к базе данных
-        private string connectionString = "your_connection_string"; // Поменяй на свою строку подключения
+        private Dictionary<Button, int> seatButtons = new Dictionary<Button, int>();
+        private List<int> selectedSeats = new List<int>();
 
         public Seats()
         {
             InitializeComponent();
+            InitializeSeats();
+            LoadSeatStatuses();
+        }
 
-            // Подключаем обработчик для всех кнопок
-            foreach (Control control in this.Controls)
+        // Инициализация кнопок и их привязка к номерам мест
+        private void InitializeSeats()
+        {
+            seatButtons.Add(button1, 1);
+            seatButtons.Add(button2, 2);
+            seatButtons.Add(button3, 3);
+            seatButtons.Add(button4, 4);
+            seatButtons.Add(button5, 5);
+            seatButtons.Add(button6, 6);
+            seatButtons.Add(button7, 7);
+            seatButtons.Add(button8, 8);
+            seatButtons.Add(button9, 9);
+            seatButtons.Add(button10, 10);
+            seatButtons.Add(button11, 11);
+            seatButtons.Add(button12, 12);
+
+            foreach (var button in seatButtons.Keys)
             {
-                if (control is Button button && button.Name.StartsWith("button"))
-                {
-                    button.Click += SeatButton_Click;
-                }
+                button.Click += SeatButton_Click;
             }
         }
 
+        // Обработчик клика по кнопкам мест
         private void SeatButton_Click(object sender, EventArgs e)
         {
-            // Получаем кнопку, на которую нажали
             Button clickedButton = sender as Button;
+            if (clickedButton == null) return;
 
-            if (clickedButton != null)
+            int seatNumber = seatButtons[clickedButton];
+
+            if (selectedSeats.Contains(seatNumber))
             {
-                string seatNumber = clickedButton.Text;
-
-                // Проверка, занято ли место
-                if (!IsSeatBooked(seatNumber))
-                {
-                    if (!selectedSeats.Contains(seatNumber))
-                    {
-                        // Добавляем место в список выбранных и меняем цвет кнопки
-                        selectedSeats.Add(seatNumber);
-                        clickedButton.BackColor = System.Drawing.Color.Green; // Место выбрано
-                    }
-                    else
-                    {
-                        // Убираем место из списка выбранных и возвращаем цвет кнопки
-                        selectedSeats.Remove(seatNumber);
-                        clickedButton.BackColor = System.Drawing.Color.LightGray; // Место отменено
-                    }
-                }
-                else
-                {
-                    MessageBox.Show($"Место {seatNumber} уже забронировано.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-        private void confirmButton_Click_1(object sender, EventArgs e)
-        {
-            // Проверяем, выбраны ли места
-            if (selectedSeats.Count > 0)
-            {
-                // Пытаемся забронировать места
-                if (BookSelectedSeats())
-                {
-                    MessageBox.Show("Вы успешно забронировали места: " + string.Join(", ", selectedSeats), "Бронирование");
-                    this.Close(); // Закрываем форму после бронирования
-                }
-                else
-                {
-                    MessageBox.Show("Ошибка при бронировании мест. Возможно, некоторые места уже забронированы.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                selectedSeats.Remove(seatNumber);
+                clickedButton.BackColor = Color.LightGray; // Вернуть цвет в изначальное состояние
             }
             else
             {
-                MessageBox.Show("Выберите хотя бы одно место!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                selectedSeats.Add(seatNumber);
+                clickedButton.BackColor = Color.LightBlue; // Выделить место
             }
         }
 
-        private bool IsSeatBooked(string seatNumber)
+        // Загрузка статусов мест из базы данных
+        private void LoadSeatStatuses()
         {
-            try
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                // Правильная строка подключения
-                string connectionString = "Server=localhost;Database=YourDatabase;User Id=YourUsername;Password=YourPassword;";
+                string query = "SELECT koha_number, status FROM Kohad";
+                SqlCommand command = new SqlCommand(query, connection);
 
-                using (SqlConnection connection = new SqlConnection(connectionString))
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    string query = "SELECT COUNT(*) FROM Kohad WHERE koha_number = @seatNumber AND status = 'booked'";
-                    SqlCommand cmd = new SqlCommand(query, connection);
-                    cmd.Parameters.AddWithValue("@seatNumber", seatNumber);
+                    int seatNumber = reader.GetInt32(0);
+                    string status = reader.GetString(1);
 
-                    connection.Open(); // Открываем соединение
-                    int bookedCount = (int)cmd.ExecuteScalar(); // Получаем количество занятых мест
-
-                    return bookedCount > 0; // Возвращаем true, если место забронировано
+                    foreach (var pair in seatButtons)
+                    {
+                        if (pair.Value == seatNumber)
+                        {
+                            if (status == "occupied")
+                            {
+                                pair.Key.BackColor = Color.Red; // Занятое место
+                                pair.Key.Enabled = false; // Отключить кнопку
+                            }
+                            else
+                            {
+                                pair.Key.BackColor = Color.LightGray; // Свободное место
+                            }
+                        }
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ошибка подключения: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+
+                reader.Close();
+                connection.Close();
             }
         }
 
-        private bool BookSelectedSeats()
+        // Обработка нажатия кнопки подтверждения
+        private void confirmButton_Click_1(object sender, EventArgs e)
         {
-            // Бронируем все выбранные места в базе данных
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                SqlTransaction transaction = connection.BeginTransaction();
 
-                try
+                foreach (int seatNumber in selectedSeats)
                 {
-                    foreach (string seatNumber in selectedSeats)
-                    {
-                        // Обновляем статус на "booked" только для мест, которые свободны
-                        string query = "UPDATE Kohad SET status = 'booked' WHERE koha_number = @seatNumber AND status = 'free'";
-                        SqlCommand cmd = new SqlCommand(query, connection, transaction);
-                        cmd.Parameters.AddWithValue("@seatNumber", seatNumber);
-                        int rowsAffected = cmd.ExecuteNonQuery();
+                    string query = "UPDATE Kohad SET status = 'occupied' WHERE koha_number = @koha_number";
+                    SqlCommand command = new SqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@koha_number", seatNumber);
+                    command.ExecuteNonQuery();
 
-                        // Если место уже занято, откатываем транзакцию
-                        if (rowsAffected == 0)
+                    // Обновить состояние кнопок
+                    foreach (var pair in seatButtons)
+                    {
+                        if (pair.Value == seatNumber)
                         {
-                            transaction.Rollback();
-                            return false; // Не удалось забронировать, место уже занято
+                            pair.Key.BackColor = Color.Red; // Пометить занятым
+                            pair.Key.Enabled = false; // Отключить кнопку
                         }
                     }
+                }
 
-                    // Подтверждаем транзакцию
-                    transaction.Commit();
-                    return true;
-                }
-                catch
-                {
-                    // Откатываем транзакцию в случае ошибки
-                    transaction.Rollback();
-                    return false;
-                }
+                selectedSeats.Clear(); // Очистить выбор
+                MessageBox.Show("Места успешно забронированы!");
             }
         }
     }
