@@ -1,139 +1,140 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
 
 namespace KinoAndme
 {
     public partial class Seats : Form
     {
-        private string connectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Kino;Integrated Security=True;Connect Timeout=30;Encrypt=False;";
-
-        private Dictionary<Button, int> seatButtons = new Dictionary<Button, int>();
+        private int filmID;
+        private int sessionID;
+        private string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Kino;Integrated Security=True;Connect Timeout=30;";
         private List<int> selectedSeats = new List<int>();
 
-        public Seats()
+        public Seats(int filmID, int sessionID)
         {
             InitializeComponent();
-            InitializeSeats();
-            LoadSeatStatuses();
+            this.filmID = filmID;
+            this.sessionID = sessionID;
+            LoadSeatsData();
         }
 
-        // Инициализация кнопок и их привязка к номерам мест
-        private void InitializeSeats()
+        private void LoadSeatsData()
         {
-            seatButtons.Add(button1, 1);
-            seatButtons.Add(button2, 2);
-            seatButtons.Add(button3, 3);
-            seatButtons.Add(button4, 4);
-            seatButtons.Add(button5, 5);
-            seatButtons.Add(button6, 6);
-            seatButtons.Add(button7, 7);
-            seatButtons.Add(button8, 8);
-            seatButtons.Add(button9, 9);
-            seatButtons.Add(button10, 10);
-            seatButtons.Add(button11, 11);
-            seatButtons.Add(button12, 12);
-
-            foreach (var button in seatButtons.Keys)
+            try
             {
-                button.Click += SeatButton_Click;
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = @"
+                    SELECT kohID, rida, koha_number, status 
+                    FROM Kohad 
+                    WHERE Saalid_saaID IN (
+                        SELECT Saalid_saaID 
+                        FROM Seansid 
+                        WHERE Filmid_filID = @filmID AND seaID = @sessionID
+                    )";
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@filmID", filmID);
+                    cmd.Parameters.AddWithValue("@sessionID", sessionID);
+
+                    connection.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        int kohID = reader.GetInt32(0);
+                        int rida = reader.GetInt32(1);
+                        int kohaNumber = reader.GetInt32(2);
+                        string status = reader.GetString(3);
+
+                        Button seatButton = this.Controls.Find($"button{kohaNumber}", true).FirstOrDefault() as Button;
+
+                        if (seatButton != null)
+                        {
+                            seatButton.Tag = kohID;
+                            seatButton.BackColor = status == "free" ? Color.LightGray : Color.Red;
+                            seatButton.Enabled = status == "free";
+                            seatButton.Click += SeatButton_Click;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка при загрузке мест: " + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // Обработчик клика по кнопкам мест
         private void SeatButton_Click(object sender, EventArgs e)
         {
-            Button clickedButton = sender as Button;
-            if (clickedButton == null) return;
+            Button seatButton = sender as Button;
+            if (seatButton == null) return;
 
-            int seatNumber = seatButtons[clickedButton];
+            int kohID = (int)seatButton.Tag;
 
-            if (selectedSeats.Contains(seatNumber))
+            if (selectedSeats.Contains(kohID))
             {
-                selectedSeats.Remove(seatNumber);
-                clickedButton.BackColor = Color.LightGray; // Вернуть цвет в изначальное состояние
+                selectedSeats.Remove(kohID);
+                seatButton.BackColor = Color.LightGray;
             }
             else
             {
-                selectedSeats.Add(seatNumber);
-                clickedButton.BackColor = Color.LightBlue; // Выделить место
+                selectedSeats.Add(kohID);
+                seatButton.BackColor = Color.Green;
             }
         }
 
-        // Загрузка статусов мест из базы данных
-        private void LoadSeatStatuses()
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                string query = "SELECT koha_number, status FROM Kohad";
-                SqlCommand command = new SqlCommand(query, connection);
-
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    int seatNumber = reader.GetInt32(0);
-                    string status = reader.GetString(1);
-
-                    foreach (var pair in seatButtons)
-                    {
-                        if (pair.Value == seatNumber)
-                        {
-                            if (status == "occupied")
-                            {
-                                pair.Key.BackColor = Color.Red; // Занятое место
-                                pair.Key.Enabled = false; // Отключить кнопку
-                            }
-                            else
-                            {
-                                pair.Key.BackColor = Color.LightGray; // Свободное место
-                            }
-                        }
-                    }
-                }
-
-                reader.Close();
-                connection.Close();
-            }
-        }
-
-        // Обработка нажатия кнопки подтверждения
         private void confirmButton_Click_1(object sender, EventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            if (selectedSeats.Count == 0)
             {
-                connection.Open();
+                MessageBox.Show("Выберите хотя бы одно место!");
+                return;
+            }
 
-                foreach (int seatNumber in selectedSeats)
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    string query = "UPDATE Kohad SET status = 'occupied' WHERE koha_number = @koha_number";
-                    SqlCommand command = new SqlCommand(query, connection);
-                    command.Parameters.AddWithValue("@koha_number", seatNumber);
-                    command.ExecuteNonQuery();
+                    connection.Open();
+                    SqlTransaction transaction = connection.BeginTransaction();
 
-                    // Обновить состояние кнопок
-                    foreach (var pair in seatButtons)
+                    try
                     {
-                        if (pair.Value == seatNumber)
+                        foreach (int seatID in selectedSeats)
                         {
-                            pair.Key.BackColor = Color.Red; // Пометить занятым
-                            pair.Key.Enabled = false; // Отключить кнопку
+                            string query = "UPDATE Kohad SET status = 'booked' WHERE kohID = @kohID";
+                            SqlCommand cmd = new SqlCommand(query, connection, transaction);
+                            cmd.Parameters.AddWithValue("@kohID", seatID);
+                            cmd.ExecuteNonQuery();
                         }
+
+                        transaction.Commit();
+                        MessageBox.Show("Места успешно забронированы!");
+                        LoadSeatsData();
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show("Ошибка при бронировании мест.");
                     }
                 }
-
-                selectedSeats.Clear(); // Очистить выбор
-                MessageBox.Show("Места успешно забронированы!");
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка подключения к базе данных: " + ex.Message);
+            }
+        }
+        private void exit_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            // Создаём экземпляр ChooseFilm и показываем его
+            ChooseFilm chooseFilmForm = new ChooseFilm();
+            chooseFilmForm.Show();
         }
     }
 }

@@ -81,11 +81,6 @@
     <Compile Include="ChooseFilm.Designer.cs">
       <DependentUpon>ChooseFilm.cs</DependentUpon>
     </Compile>
-    <Compile Include="KinoDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>KinoDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="KasutajaLog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,13 +93,13 @@
     <Compile Include="KasutajaReg.Designer.cs">
       <DependentUpon>KasutajaReg.cs</DependentUpon>
     </Compile>
-    <Compile Include="KinoDataSet1.cs">
-      <DependentUpon>KinoDataSet1.xsd</DependentUpon>
+    <Compile Include="KinoDataSet.cs">
+      <DependentUpon>KinoDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="KinoDataSet1.Designer.cs">
+    <Compile Include="KinoDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>KinoDataSet1.xsd</DependentUpon>
+      <DependentUpon>KinoDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Seats.cs">
       <SubType>Form</SubType>
@@ -158,17 +153,6 @@
     </None>
     <None Include="KinoDataSet.xss">
       <DependentUpon>KinoDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="KinoDataSet1.xsc">
-      <DependentUpon>KinoDataSet1.xsd</DependentUpon>
-    </None>
-    <None Include="KinoDataSet1.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>KinoDataSet1.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="KinoDataSet1.xss">
-      <DependentUpon>KinoDataSet1.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
