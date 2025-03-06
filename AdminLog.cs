@@ -44,24 +44,24 @@ namespace KinoAndme
 
                     if (role == "admin")
                     {
-                        MessageBox.Show("Добро пожаловать, админ!");
+                        MessageBox.Show("Tere tulemast, admin!");
                         AdminPanel adminPanel = new AdminPanel();
                         adminPanel.Show();
                         this.Hide();
                     }
                     else
                     {
-                        MessageBox.Show("Доступ разрешен только для администратора.");
+                        MessageBox.Show("Juurdepääs on lubatud ainult administraatorile.");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Неверный логин или пароль.");
+                    MessageBox.Show("Vale sisselogimine või salasõna.");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Произошла ошибка: {ex.Message}");
+                MessageBox.Show($"Viga: {ex.Message}");
             }
         }
     }

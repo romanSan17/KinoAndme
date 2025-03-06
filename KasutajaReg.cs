@@ -28,14 +28,14 @@ namespace KinoAndme
 
             if (string.IsNullOrWhiteSpace(nimi) || string.IsNullOrWhiteSpace(logi) || string.IsNullOrWhiteSpace(parool))
             {
-                MessageBox.Show("Все поля должны быть заполнены!", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Kõik väljad peavad olema täidetud", "Viga", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             try
             {
                 kasutajaAdapter.InsertKasutaja(nimi, logi, parool, rool);
-                MessageBox.Show("Регистрация прошла успешно!", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Registreerimine oli edukas!", "Edu", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 nimiR.Clear();
                 loginR.Clear();
@@ -43,7 +43,7 @@ namespace KinoAndme
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка при регистрации: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Registreerimisviga: {ex.Message}", "Viga", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

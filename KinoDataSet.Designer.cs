@@ -24,31 +24,39 @@ namespace KinoAndme {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class KinoDataSet : global::System.Data.DataSet {
         
-        private FilmidDataTable tableFilmid;
-        
         private KasutajaDataTable tableKasutaja;
         
-        private KohadDataTable tableKohad;
+        private SaalidDataTable tableSaalid;
         
         private PiletidDataTable tablePiletid;
         
-        private SaalidDataTable tableSaalid;
+        private KohadDataTable tableKohad;
+        
+        private FilmidDataTable tableFilmid;
+        
+        private BronidDataTable tableBronid;
         
         private SeansidDataTable tableSeansid;
         
         private TellimusedDataTable tableTellimused;
         
+        private global::System.Data.DataRelation relationPiletid_Seansid;
+        
         private global::System.Data.DataRelation relationKohad_Saalid;
         
-        private global::System.Data.DataRelation relationPiletid_Seansid;
+        private global::System.Data.DataRelation relationFK__Bronid__kohID__72C60C4A;
+        
+        private global::System.Data.DataRelation relationFK__Bronid__seansID__73BA3083;
         
         private global::System.Data.DataRelation relationSeansid_Filmid;
         
         private global::System.Data.DataRelation relationSeansid_Saalid;
         
-        private global::System.Data.DataRelation relationTellimused_Kasutaja;
-        
         private global::System.Data.DataRelation relationTellimused_Piletid;
+        
+        private global::System.Data.DataRelation relationFK__Bronid__kasutaja__71D1E811;
+        
+        private global::System.Data.DataRelation relationTellimused_Kasutaja;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -78,20 +86,23 @@ namespace KinoAndme {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["Filmid"] != null)) {
-                    base.Tables.Add(new FilmidDataTable(ds.Tables["Filmid"]));
-                }
                 if ((ds.Tables["Kasutaja"] != null)) {
                     base.Tables.Add(new KasutajaDataTable(ds.Tables["Kasutaja"]));
                 }
-                if ((ds.Tables["Kohad"] != null)) {
-                    base.Tables.Add(new KohadDataTable(ds.Tables["Kohad"]));
+                if ((ds.Tables["Saalid"] != null)) {
+                    base.Tables.Add(new SaalidDataTable(ds.Tables["Saalid"]));
                 }
                 if ((ds.Tables["Piletid"] != null)) {
                     base.Tables.Add(new PiletidDataTable(ds.Tables["Piletid"]));
                 }
-                if ((ds.Tables["Saalid"] != null)) {
-                    base.Tables.Add(new SaalidDataTable(ds.Tables["Saalid"]));
+                if ((ds.Tables["Kohad"] != null)) {
+                    base.Tables.Add(new KohadDataTable(ds.Tables["Kohad"]));
+                }
+                if ((ds.Tables["Filmid"] != null)) {
+                    base.Tables.Add(new FilmidDataTable(ds.Tables["Filmid"]));
+                }
+                if ((ds.Tables["Bronid"] != null)) {
+                    base.Tables.Add(new BronidDataTable(ds.Tables["Bronid"]));
                 }
                 if ((ds.Tables["Seansid"] != null)) {
                     base.Tables.Add(new SeansidDataTable(ds.Tables["Seansid"]));
@@ -121,16 +132,6 @@ namespace KinoAndme {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public FilmidDataTable Filmid {
-            get {
-                return this.tableFilmid;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public KasutajaDataTable Kasutaja {
             get {
                 return this.tableKasutaja;
@@ -141,9 +142,9 @@ namespace KinoAndme {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public KohadDataTable Kohad {
+        public SaalidDataTable Saalid {
             get {
-                return this.tableKohad;
+                return this.tableSaalid;
             }
         }
         
@@ -161,9 +162,29 @@ namespace KinoAndme {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public SaalidDataTable Saalid {
+        public KohadDataTable Kohad {
             get {
-                return this.tableSaalid;
+                return this.tableKohad;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public FilmidDataTable Filmid {
+            get {
+                return this.tableFilmid;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public BronidDataTable Bronid {
+            get {
+                return this.tableBronid;
             }
         }
         
@@ -254,20 +275,23 @@ namespace KinoAndme {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["Filmid"] != null)) {
-                    base.Tables.Add(new FilmidDataTable(ds.Tables["Filmid"]));
-                }
                 if ((ds.Tables["Kasutaja"] != null)) {
                     base.Tables.Add(new KasutajaDataTable(ds.Tables["Kasutaja"]));
                 }
-                if ((ds.Tables["Kohad"] != null)) {
-                    base.Tables.Add(new KohadDataTable(ds.Tables["Kohad"]));
+                if ((ds.Tables["Saalid"] != null)) {
+                    base.Tables.Add(new SaalidDataTable(ds.Tables["Saalid"]));
                 }
                 if ((ds.Tables["Piletid"] != null)) {
                     base.Tables.Add(new PiletidDataTable(ds.Tables["Piletid"]));
                 }
-                if ((ds.Tables["Saalid"] != null)) {
-                    base.Tables.Add(new SaalidDataTable(ds.Tables["Saalid"]));
+                if ((ds.Tables["Kohad"] != null)) {
+                    base.Tables.Add(new KohadDataTable(ds.Tables["Kohad"]));
+                }
+                if ((ds.Tables["Filmid"] != null)) {
+                    base.Tables.Add(new FilmidDataTable(ds.Tables["Filmid"]));
+                }
+                if ((ds.Tables["Bronid"] != null)) {
+                    base.Tables.Add(new BronidDataTable(ds.Tables["Bronid"]));
                 }
                 if ((ds.Tables["Seansid"] != null)) {
                     base.Tables.Add(new SeansidDataTable(ds.Tables["Seansid"]));
@@ -308,22 +332,16 @@ namespace KinoAndme {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableFilmid = ((FilmidDataTable)(base.Tables["Filmid"]));
-            if ((initTable == true)) {
-                if ((this.tableFilmid != null)) {
-                    this.tableFilmid.InitVars();
-                }
-            }
             this.tableKasutaja = ((KasutajaDataTable)(base.Tables["Kasutaja"]));
             if ((initTable == true)) {
                 if ((this.tableKasutaja != null)) {
                     this.tableKasutaja.InitVars();
                 }
             }
-            this.tableKohad = ((KohadDataTable)(base.Tables["Kohad"]));
+            this.tableSaalid = ((SaalidDataTable)(base.Tables["Saalid"]));
             if ((initTable == true)) {
-                if ((this.tableKohad != null)) {
-                    this.tableKohad.InitVars();
+                if ((this.tableSaalid != null)) {
+                    this.tableSaalid.InitVars();
                 }
             }
             this.tablePiletid = ((PiletidDataTable)(base.Tables["Piletid"]));
@@ -332,10 +350,22 @@ namespace KinoAndme {
                     this.tablePiletid.InitVars();
                 }
             }
-            this.tableSaalid = ((SaalidDataTable)(base.Tables["Saalid"]));
+            this.tableKohad = ((KohadDataTable)(base.Tables["Kohad"]));
             if ((initTable == true)) {
-                if ((this.tableSaalid != null)) {
-                    this.tableSaalid.InitVars();
+                if ((this.tableKohad != null)) {
+                    this.tableKohad.InitVars();
+                }
+            }
+            this.tableFilmid = ((FilmidDataTable)(base.Tables["Filmid"]));
+            if ((initTable == true)) {
+                if ((this.tableFilmid != null)) {
+                    this.tableFilmid.InitVars();
+                }
+            }
+            this.tableBronid = ((BronidDataTable)(base.Tables["Bronid"]));
+            if ((initTable == true)) {
+                if ((this.tableBronid != null)) {
+                    this.tableBronid.InitVars();
                 }
             }
             this.tableSeansid = ((SeansidDataTable)(base.Tables["Seansid"]));
@@ -350,12 +380,15 @@ namespace KinoAndme {
                     this.tableTellimused.InitVars();
                 }
             }
-            this.relationKohad_Saalid = this.Relations["Kohad_Saalid"];
             this.relationPiletid_Seansid = this.Relations["Piletid_Seansid"];
+            this.relationKohad_Saalid = this.Relations["Kohad_Saalid"];
+            this.relationFK__Bronid__kohID__72C60C4A = this.Relations["FK__Bronid__kohID__72C60C4A"];
+            this.relationFK__Bronid__seansID__73BA3083 = this.Relations["FK__Bronid__seansID__73BA3083"];
             this.relationSeansid_Filmid = this.Relations["Seansid_Filmid"];
             this.relationSeansid_Saalid = this.Relations["Seansid_Saalid"];
-            this.relationTellimused_Kasutaja = this.Relations["Tellimused_Kasutaja"];
             this.relationTellimused_Piletid = this.Relations["Tellimused_Piletid"];
+            this.relationFK__Bronid__kasutaja__71D1E811 = this.Relations["FK__Bronid__kasutaja__71D1E811"];
+            this.relationTellimused_Kasutaja = this.Relations["Tellimused_Kasutaja"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -366,28 +399,38 @@ namespace KinoAndme {
             this.Namespace = "http://tempuri.org/KinoDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableFilmid = new FilmidDataTable();
-            base.Tables.Add(this.tableFilmid);
             this.tableKasutaja = new KasutajaDataTable();
             base.Tables.Add(this.tableKasutaja);
-            this.tableKohad = new KohadDataTable();
-            base.Tables.Add(this.tableKohad);
-            this.tablePiletid = new PiletidDataTable();
-            base.Tables.Add(this.tablePiletid);
             this.tableSaalid = new SaalidDataTable();
             base.Tables.Add(this.tableSaalid);
+            this.tablePiletid = new PiletidDataTable();
+            base.Tables.Add(this.tablePiletid);
+            this.tableKohad = new KohadDataTable();
+            base.Tables.Add(this.tableKohad);
+            this.tableFilmid = new FilmidDataTable();
+            base.Tables.Add(this.tableFilmid);
+            this.tableBronid = new BronidDataTable();
+            base.Tables.Add(this.tableBronid);
             this.tableSeansid = new SeansidDataTable();
             base.Tables.Add(this.tableSeansid);
             this.tableTellimused = new TellimusedDataTable();
             base.Tables.Add(this.tableTellimused);
-            this.relationKohad_Saalid = new global::System.Data.DataRelation("Kohad_Saalid", new global::System.Data.DataColumn[] {
-                        this.tableSaalid.saaIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableKohad.Saalid_saaIDColumn}, false);
-            this.Relations.Add(this.relationKohad_Saalid);
             this.relationPiletid_Seansid = new global::System.Data.DataRelation("Piletid_Seansid", new global::System.Data.DataColumn[] {
                         this.tableSeansid.seaIDColumn}, new global::System.Data.DataColumn[] {
                         this.tablePiletid.Seansid_seaIDColumn}, false);
             this.Relations.Add(this.relationPiletid_Seansid);
+            this.relationKohad_Saalid = new global::System.Data.DataRelation("Kohad_Saalid", new global::System.Data.DataColumn[] {
+                        this.tableSaalid.saaIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableKohad.Saalid_saaIDColumn}, false);
+            this.Relations.Add(this.relationKohad_Saalid);
+            this.relationFK__Bronid__kohID__72C60C4A = new global::System.Data.DataRelation("FK__Bronid__kohID__72C60C4A", new global::System.Data.DataColumn[] {
+                        this.tableKohad.kohIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableBronid.kohIDColumn}, false);
+            this.Relations.Add(this.relationFK__Bronid__kohID__72C60C4A);
+            this.relationFK__Bronid__seansID__73BA3083 = new global::System.Data.DataRelation("FK__Bronid__seansID__73BA3083", new global::System.Data.DataColumn[] {
+                        this.tableSeansid.seaIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableBronid.seansIDColumn}, false);
+            this.Relations.Add(this.relationFK__Bronid__seansID__73BA3083);
             this.relationSeansid_Filmid = new global::System.Data.DataRelation("Seansid_Filmid", new global::System.Data.DataColumn[] {
                         this.tableFilmid.filIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableSeansid.Filmid_filIDColumn}, false);
@@ -396,20 +439,18 @@ namespace KinoAndme {
                         this.tableSaalid.saaIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableSeansid.Saalid_saaIDColumn}, false);
             this.Relations.Add(this.relationSeansid_Saalid);
-            this.relationTellimused_Kasutaja = new global::System.Data.DataRelation("Tellimused_Kasutaja", new global::System.Data.DataColumn[] {
-                        this.tableKasutaja.kasIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableTellimused.Kasutaja_kasIDColumn}, false);
-            this.Relations.Add(this.relationTellimused_Kasutaja);
             this.relationTellimused_Piletid = new global::System.Data.DataRelation("Tellimused_Piletid", new global::System.Data.DataColumn[] {
                         this.tablePiletid.pilIdColumn}, new global::System.Data.DataColumn[] {
                         this.tableTellimused.Piletid_pilIdColumn}, false);
             this.Relations.Add(this.relationTellimused_Piletid);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeFilmid() {
-            return false;
+            this.relationFK__Bronid__kasutaja__71D1E811 = new global::System.Data.DataRelation("FK__Bronid__kasutaja__71D1E811", new global::System.Data.DataColumn[] {
+                        this.tableKasutaja.kasIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableBronid.kasutajaIDColumn}, false);
+            this.Relations.Add(this.relationFK__Bronid__kasutaja__71D1E811);
+            this.relationTellimused_Kasutaja = new global::System.Data.DataRelation("Tellimused_Kasutaja", new global::System.Data.DataColumn[] {
+                        this.tableKasutaja.kasIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableTellimused.Kasutaja_kasIDColumn}, false);
+            this.Relations.Add(this.relationTellimused_Kasutaja);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -420,7 +461,7 @@ namespace KinoAndme {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeKohad() {
+        private bool ShouldSerializeSaalid() {
             return false;
         }
         
@@ -432,7 +473,19 @@ namespace KinoAndme {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private bool ShouldSerializeSaalid() {
+        private bool ShouldSerializeKohad() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private bool ShouldSerializeFilmid() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private bool ShouldSerializeBronid() {
             return false;
         }
         
@@ -504,334 +557,28 @@ namespace KinoAndme {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void FilmidRowChangeEventHandler(object sender, FilmidRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void KasutajaRowChangeEventHandler(object sender, KasutajaRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void KohadRowChangeEventHandler(object sender, KohadRowChangeEvent e);
+        public delegate void SaalidRowChangeEventHandler(object sender, SaalidRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void PiletidRowChangeEventHandler(object sender, PiletidRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public delegate void SaalidRowChangeEventHandler(object sender, SaalidRowChangeEvent e);
+        public delegate void KohadRowChangeEventHandler(object sender, KohadRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public delegate void FilmidRowChangeEventHandler(object sender, FilmidRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public delegate void BronidRowChangeEventHandler(object sender, BronidRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void SeansidRowChangeEventHandler(object sender, SeansidRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public delegate void TellimusedRowChangeEventHandler(object sender, TellimusedRowChangeEvent e);
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class FilmidDataTable : global::System.Data.TypedTableBase<FilmidRow> {
-            
-            private global::System.Data.DataColumn columnfilID;
-            
-            private global::System.Data.DataColumn columnpealkiri;
-            
-            private global::System.Data.DataColumn columnzanr;
-            
-            private global::System.Data.DataColumn columnaeg;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public FilmidDataTable() {
-                this.TableName = "Filmid";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal FilmidDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected FilmidDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn filIDColumn {
-                get {
-                    return this.columnfilID;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn pealkiriColumn {
-                get {
-                    return this.columnpealkiri;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn zanrColumn {
-                get {
-                    return this.columnzanr;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn aegColumn {
-                get {
-                    return this.columnaeg;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public FilmidRow this[int index] {
-                get {
-                    return ((FilmidRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event FilmidRowChangeEventHandler FilmidRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event FilmidRowChangeEventHandler FilmidRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event FilmidRowChangeEventHandler FilmidRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event FilmidRowChangeEventHandler FilmidRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddFilmidRow(FilmidRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public FilmidRow AddFilmidRow(string pealkiri, string zanr, System.TimeSpan aeg) {
-                FilmidRow rowFilmidRow = ((FilmidRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        pealkiri,
-                        zanr,
-                        aeg};
-                rowFilmidRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowFilmidRow);
-                return rowFilmidRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public FilmidRow FindByfilID(int filID) {
-                return ((FilmidRow)(this.Rows.Find(new object[] {
-                            filID})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                FilmidDataTable cln = ((FilmidDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new FilmidDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal void InitVars() {
-                this.columnfilID = base.Columns["filID"];
-                this.columnpealkiri = base.Columns["pealkiri"];
-                this.columnzanr = base.Columns["zanr"];
-                this.columnaeg = base.Columns["aeg"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            private void InitClass() {
-                this.columnfilID = new global::System.Data.DataColumn("filID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnfilID);
-                this.columnpealkiri = new global::System.Data.DataColumn("pealkiri", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnpealkiri);
-                this.columnzanr = new global::System.Data.DataColumn("zanr", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnzanr);
-                this.columnaeg = new global::System.Data.DataColumn("aeg", typeof(global::System.TimeSpan), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnaeg);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnfilID}, true));
-                this.columnfilID.AutoIncrement = true;
-                this.columnfilID.AutoIncrementSeed = -1;
-                this.columnfilID.AutoIncrementStep = -1;
-                this.columnfilID.AllowDBNull = false;
-                this.columnfilID.ReadOnly = true;
-                this.columnfilID.Unique = true;
-                this.columnpealkiri.AllowDBNull = false;
-                this.columnpealkiri.MaxLength = 50;
-                this.columnzanr.AllowDBNull = false;
-                this.columnzanr.MaxLength = 30;
-                this.columnaeg.AllowDBNull = false;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public FilmidRow NewFilmidRow() {
-                return ((FilmidRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new FilmidRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(FilmidRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.FilmidRowChanged != null)) {
-                    this.FilmidRowChanged(this, new FilmidRowChangeEvent(((FilmidRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.FilmidRowChanging != null)) {
-                    this.FilmidRowChanging(this, new FilmidRowChangeEvent(((FilmidRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.FilmidRowDeleted != null)) {
-                    this.FilmidRowDeleted(this, new FilmidRowChangeEvent(((FilmidRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.FilmidRowDeleting != null)) {
-                    this.FilmidRowDeleting(this, new FilmidRowChangeEvent(((FilmidRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveFilmidRow(FilmidRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                KinoDataSet ds = new KinoDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "FilmidDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1118,6 +865,578 @@ namespace KinoAndme {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "KasutajaDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class SaalidDataTable : global::System.Data.TypedTableBase<SaalidRow> {
+            
+            private global::System.Data.DataColumn columnsaaID;
+            
+            private global::System.Data.DataColumn columnnumber;
+            
+            private global::System.Data.DataColumn columnkohtade_arv;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public SaalidDataTable() {
+                this.TableName = "Saalid";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal SaalidDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected SaalidDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn saaIDColumn {
+                get {
+                    return this.columnsaaID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn numberColumn {
+                get {
+                    return this.columnnumber;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn kohtade_arvColumn {
+                get {
+                    return this.columnkohtade_arv;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public SaalidRow this[int index] {
+                get {
+                    return ((SaalidRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event SaalidRowChangeEventHandler SaalidRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event SaalidRowChangeEventHandler SaalidRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event SaalidRowChangeEventHandler SaalidRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event SaalidRowChangeEventHandler SaalidRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void AddSaalidRow(SaalidRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public SaalidRow AddSaalidRow(int number, int kohtade_arv) {
+                SaalidRow rowSaalidRow = ((SaalidRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        number,
+                        kohtade_arv};
+                rowSaalidRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowSaalidRow);
+                return rowSaalidRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public SaalidRow FindBysaaID(int saaID) {
+                return ((SaalidRow)(this.Rows.Find(new object[] {
+                            saaID})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                SaalidDataTable cln = ((SaalidDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new SaalidDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal void InitVars() {
+                this.columnsaaID = base.Columns["saaID"];
+                this.columnnumber = base.Columns["number"];
+                this.columnkohtade_arv = base.Columns["kohtade_arv"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitClass() {
+                this.columnsaaID = new global::System.Data.DataColumn("saaID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsaaID);
+                this.columnnumber = new global::System.Data.DataColumn("number", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnnumber);
+                this.columnkohtade_arv = new global::System.Data.DataColumn("kohtade_arv", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnkohtade_arv);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnsaaID}, true));
+                this.columnsaaID.AutoIncrement = true;
+                this.columnsaaID.AutoIncrementSeed = -1;
+                this.columnsaaID.AutoIncrementStep = -1;
+                this.columnsaaID.AllowDBNull = false;
+                this.columnsaaID.ReadOnly = true;
+                this.columnsaaID.Unique = true;
+                this.columnnumber.AllowDBNull = false;
+                this.columnkohtade_arv.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public SaalidRow NewSaalidRow() {
+                return ((SaalidRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new SaalidRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(SaalidRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.SaalidRowChanged != null)) {
+                    this.SaalidRowChanged(this, new SaalidRowChangeEvent(((SaalidRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.SaalidRowChanging != null)) {
+                    this.SaalidRowChanging(this, new SaalidRowChangeEvent(((SaalidRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.SaalidRowDeleted != null)) {
+                    this.SaalidRowDeleted(this, new SaalidRowChangeEvent(((SaalidRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.SaalidRowDeleting != null)) {
+                    this.SaalidRowDeleting(this, new SaalidRowChangeEvent(((SaalidRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void RemoveSaalidRow(SaalidRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                KinoDataSet ds = new KinoDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "SaalidDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class PiletidDataTable : global::System.Data.TypedTableBase<PiletidRow> {
+            
+            private global::System.Data.DataColumn columnpilId;
+            
+            private global::System.Data.DataColumn columnSeansid_seaID;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public PiletidDataTable() {
+                this.TableName = "Piletid";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal PiletidDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected PiletidDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn pilIdColumn {
+                get {
+                    return this.columnpilId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn Seansid_seaIDColumn {
+                get {
+                    return this.columnSeansid_seaID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public PiletidRow this[int index] {
+                get {
+                    return ((PiletidRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event PiletidRowChangeEventHandler PiletidRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event PiletidRowChangeEventHandler PiletidRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event PiletidRowChangeEventHandler PiletidRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public event PiletidRowChangeEventHandler PiletidRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void AddPiletidRow(PiletidRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public PiletidRow AddPiletidRow(SeansidRow parentSeansidRowByPiletid_Seansid) {
+                PiletidRow rowPiletidRow = ((PiletidRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        null};
+                if ((parentSeansidRowByPiletid_Seansid != null)) {
+                    columnValuesArray[1] = parentSeansidRowByPiletid_Seansid[0];
+                }
+                rowPiletidRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowPiletidRow);
+                return rowPiletidRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public PiletidRow FindBypilId(int pilId) {
+                return ((PiletidRow)(this.Rows.Find(new object[] {
+                            pilId})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                PiletidDataTable cln = ((PiletidDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new PiletidDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal void InitVars() {
+                this.columnpilId = base.Columns["pilId"];
+                this.columnSeansid_seaID = base.Columns["Seansid_seaID"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            private void InitClass() {
+                this.columnpilId = new global::System.Data.DataColumn("pilId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpilId);
+                this.columnSeansid_seaID = new global::System.Data.DataColumn("Seansid_seaID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSeansid_seaID);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnpilId}, true));
+                this.columnpilId.AutoIncrement = true;
+                this.columnpilId.AutoIncrementSeed = -1;
+                this.columnpilId.AutoIncrementStep = -1;
+                this.columnpilId.AllowDBNull = false;
+                this.columnpilId.ReadOnly = true;
+                this.columnpilId.Unique = true;
+                this.columnSeansid_seaID.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public PiletidRow NewPiletidRow() {
+                return ((PiletidRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new PiletidRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(PiletidRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.PiletidRowChanged != null)) {
+                    this.PiletidRowChanged(this, new PiletidRowChangeEvent(((PiletidRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.PiletidRowChanging != null)) {
+                    this.PiletidRowChanging(this, new PiletidRowChangeEvent(((PiletidRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.PiletidRowDeleted != null)) {
+                    this.PiletidRowDeleted(this, new PiletidRowChangeEvent(((PiletidRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.PiletidRowDeleting != null)) {
+                    this.PiletidRowDeleting(this, new PiletidRowChangeEvent(((PiletidRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void RemovePiletidRow(PiletidRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                KinoDataSet ds = new KinoDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "PiletidDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1473,16 +1792,20 @@ namespace KinoAndme {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class PiletidDataTable : global::System.Data.TypedTableBase<PiletidRow> {
+        public partial class FilmidDataTable : global::System.Data.TypedTableBase<FilmidRow> {
             
-            private global::System.Data.DataColumn columnpilId;
+            private global::System.Data.DataColumn columnfilID;
             
-            private global::System.Data.DataColumn columnSeansid_seaID;
+            private global::System.Data.DataColumn columnpealkiri;
+            
+            private global::System.Data.DataColumn columnzanr;
+            
+            private global::System.Data.DataColumn columnaeg;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public PiletidDataTable() {
-                this.TableName = "Piletid";
+            public FilmidDataTable() {
+                this.TableName = "Filmid";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -1490,7 +1813,7 @@ namespace KinoAndme {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal PiletidDataTable(global::System.Data.DataTable table) {
+            internal FilmidDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1507,24 +1830,40 @@ namespace KinoAndme {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected PiletidDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected FilmidDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn pilIdColumn {
+            public global::System.Data.DataColumn filIDColumn {
                 get {
-                    return this.columnpilId;
+                    return this.columnfilID;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Seansid_seaIDColumn {
+            public global::System.Data.DataColumn pealkiriColumn {
                 get {
-                    return this.columnSeansid_seaID;
+                    return this.columnpealkiri;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn zanrColumn {
+                get {
+                    return this.columnzanr;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn aegColumn {
+                get {
+                    return this.columnaeg;
                 }
             }
             
@@ -1539,56 +1878,55 @@ namespace KinoAndme {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public PiletidRow this[int index] {
+            public FilmidRow this[int index] {
                 get {
-                    return ((PiletidRow)(this.Rows[index]));
+                    return ((FilmidRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event PiletidRowChangeEventHandler PiletidRowChanging;
+            public event FilmidRowChangeEventHandler FilmidRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event PiletidRowChangeEventHandler PiletidRowChanged;
+            public event FilmidRowChangeEventHandler FilmidRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event PiletidRowChangeEventHandler PiletidRowDeleting;
+            public event FilmidRowChangeEventHandler FilmidRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event PiletidRowChangeEventHandler PiletidRowDeleted;
+            public event FilmidRowChangeEventHandler FilmidRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddPiletidRow(PiletidRow row) {
+            public void AddFilmidRow(FilmidRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public PiletidRow AddPiletidRow(SeansidRow parentSeansidRowByPiletid_Seansid) {
-                PiletidRow rowPiletidRow = ((PiletidRow)(this.NewRow()));
+            public FilmidRow AddFilmidRow(string pealkiri, string zanr, System.TimeSpan aeg) {
+                FilmidRow rowFilmidRow = ((FilmidRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        null};
-                if ((parentSeansidRowByPiletid_Seansid != null)) {
-                    columnValuesArray[1] = parentSeansidRowByPiletid_Seansid[0];
-                }
-                rowPiletidRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowPiletidRow);
-                return rowPiletidRow;
+                        pealkiri,
+                        zanr,
+                        aeg};
+                rowFilmidRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowFilmidRow);
+                return rowFilmidRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public PiletidRow FindBypilId(int pilId) {
-                return ((PiletidRow)(this.Rows.Find(new object[] {
-                            pilId})));
+            public FilmidRow FindByfilID(int filID) {
+                return ((FilmidRow)(this.Rows.Find(new object[] {
+                            filID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                PiletidDataTable cln = ((PiletidDataTable)(base.Clone()));
+                FilmidDataTable cln = ((FilmidDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1596,58 +1934,68 @@ namespace KinoAndme {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new PiletidDataTable();
+                return new FilmidDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnpilId = base.Columns["pilId"];
-                this.columnSeansid_seaID = base.Columns["Seansid_seaID"];
+                this.columnfilID = base.Columns["filID"];
+                this.columnpealkiri = base.Columns["pealkiri"];
+                this.columnzanr = base.Columns["zanr"];
+                this.columnaeg = base.Columns["aeg"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnpilId = new global::System.Data.DataColumn("pilId", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnpilId);
-                this.columnSeansid_seaID = new global::System.Data.DataColumn("Seansid_seaID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSeansid_seaID);
+                this.columnfilID = new global::System.Data.DataColumn("filID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfilID);
+                this.columnpealkiri = new global::System.Data.DataColumn("pealkiri", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnpealkiri);
+                this.columnzanr = new global::System.Data.DataColumn("zanr", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnzanr);
+                this.columnaeg = new global::System.Data.DataColumn("aeg", typeof(global::System.TimeSpan), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnaeg);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnpilId}, true));
-                this.columnpilId.AutoIncrement = true;
-                this.columnpilId.AutoIncrementSeed = -1;
-                this.columnpilId.AutoIncrementStep = -1;
-                this.columnpilId.AllowDBNull = false;
-                this.columnpilId.ReadOnly = true;
-                this.columnpilId.Unique = true;
-                this.columnSeansid_seaID.AllowDBNull = false;
+                                this.columnfilID}, true));
+                this.columnfilID.AutoIncrement = true;
+                this.columnfilID.AutoIncrementSeed = -1;
+                this.columnfilID.AutoIncrementStep = -1;
+                this.columnfilID.AllowDBNull = false;
+                this.columnfilID.ReadOnly = true;
+                this.columnfilID.Unique = true;
+                this.columnpealkiri.AllowDBNull = false;
+                this.columnpealkiri.MaxLength = 50;
+                this.columnzanr.AllowDBNull = false;
+                this.columnzanr.MaxLength = 30;
+                this.columnaeg.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public PiletidRow NewPiletidRow() {
-                return ((PiletidRow)(this.NewRow()));
+            public FilmidRow NewFilmidRow() {
+                return ((FilmidRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new PiletidRow(builder);
+                return new FilmidRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(PiletidRow);
+                return typeof(FilmidRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.PiletidRowChanged != null)) {
-                    this.PiletidRowChanged(this, new PiletidRowChangeEvent(((PiletidRow)(e.Row)), e.Action));
+                if ((this.FilmidRowChanged != null)) {
+                    this.FilmidRowChanged(this, new FilmidRowChangeEvent(((FilmidRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1655,8 +2003,8 @@ namespace KinoAndme {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.PiletidRowChanging != null)) {
-                    this.PiletidRowChanging(this, new PiletidRowChangeEvent(((PiletidRow)(e.Row)), e.Action));
+                if ((this.FilmidRowChanging != null)) {
+                    this.FilmidRowChanging(this, new FilmidRowChangeEvent(((FilmidRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1664,8 +2012,8 @@ namespace KinoAndme {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.PiletidRowDeleted != null)) {
-                    this.PiletidRowDeleted(this, new PiletidRowChangeEvent(((PiletidRow)(e.Row)), e.Action));
+                if ((this.FilmidRowDeleted != null)) {
+                    this.FilmidRowDeleted(this, new FilmidRowChangeEvent(((FilmidRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1673,14 +2021,14 @@ namespace KinoAndme {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.PiletidRowDeleting != null)) {
-                    this.PiletidRowDeleting(this, new PiletidRowChangeEvent(((PiletidRow)(e.Row)), e.Action));
+                if ((this.FilmidRowDeleting != null)) {
+                    this.FilmidRowDeleting(this, new FilmidRowChangeEvent(((FilmidRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemovePiletidRow(PiletidRow row) {
+            public void RemoveFilmidRow(FilmidRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1707,7 +2055,7 @@ namespace KinoAndme {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "PiletidDataTable";
+                attribute2.FixedValue = "FilmidDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1753,18 +2101,24 @@ namespace KinoAndme {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class SaalidDataTable : global::System.Data.TypedTableBase<SaalidRow> {
+        public partial class BronidDataTable : global::System.Data.TypedTableBase<BronidRow> {
             
-            private global::System.Data.DataColumn columnsaaID;
+            private global::System.Data.DataColumn columnbronID;
             
-            private global::System.Data.DataColumn columnnumber;
+            private global::System.Data.DataColumn columnkasutajaID;
             
-            private global::System.Data.DataColumn columnkohtade_arv;
+            private global::System.Data.DataColumn columnkohID;
+            
+            private global::System.Data.DataColumn columnseansID;
+            
+            private global::System.Data.DataColumn columnbron_aeg;
+            
+            private global::System.Data.DataColumn columnstaatus;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SaalidDataTable() {
-                this.TableName = "Saalid";
+            public BronidDataTable() {
+                this.TableName = "Bronid";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -1772,7 +2126,7 @@ namespace KinoAndme {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal SaalidDataTable(global::System.Data.DataTable table) {
+            internal BronidDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -1789,32 +2143,56 @@ namespace KinoAndme {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            protected SaalidDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected BronidDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn saaIDColumn {
+            public global::System.Data.DataColumn bronIDColumn {
                 get {
-                    return this.columnsaaID;
+                    return this.columnbronID;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn numberColumn {
+            public global::System.Data.DataColumn kasutajaIDColumn {
                 get {
-                    return this.columnnumber;
+                    return this.columnkasutajaID;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn kohtade_arvColumn {
+            public global::System.Data.DataColumn kohIDColumn {
                 get {
-                    return this.columnkohtade_arv;
+                    return this.columnkohID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn seansIDColumn {
+                get {
+                    return this.columnseansID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn bron_aegColumn {
+                get {
+                    return this.columnbron_aeg;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn staatusColumn {
+                get {
+                    return this.columnstaatus;
                 }
             }
             
@@ -1829,54 +2207,66 @@ namespace KinoAndme {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SaalidRow this[int index] {
+            public BronidRow this[int index] {
                 get {
-                    return ((SaalidRow)(this.Rows[index]));
+                    return ((BronidRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event SaalidRowChangeEventHandler SaalidRowChanging;
+            public event BronidRowChangeEventHandler BronidRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event SaalidRowChangeEventHandler SaalidRowChanged;
+            public event BronidRowChangeEventHandler BronidRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event SaalidRowChangeEventHandler SaalidRowDeleting;
+            public event BronidRowChangeEventHandler BronidRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public event SaalidRowChangeEventHandler SaalidRowDeleted;
+            public event BronidRowChangeEventHandler BronidRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void AddSaalidRow(SaalidRow row) {
+            public void AddBronidRow(BronidRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SaalidRow AddSaalidRow(int number, int kohtade_arv) {
-                SaalidRow rowSaalidRow = ((SaalidRow)(this.NewRow()));
+            public BronidRow AddBronidRow(KasutajaRow parentKasutajaRowByFK__Bronid__kasutaja__71D1E811, KohadRow parentKohadRowByFK__Bronid__kohID__72C60C4A, SeansidRow parentSeansidRowByFK__Bronid__seansID__73BA3083, System.DateTime bron_aeg, string staatus) {
+                BronidRow rowBronidRow = ((BronidRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        number,
-                        kohtade_arv};
-                rowSaalidRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowSaalidRow);
-                return rowSaalidRow;
+                        null,
+                        null,
+                        null,
+                        bron_aeg,
+                        staatus};
+                if ((parentKasutajaRowByFK__Bronid__kasutaja__71D1E811 != null)) {
+                    columnValuesArray[1] = parentKasutajaRowByFK__Bronid__kasutaja__71D1E811[0];
+                }
+                if ((parentKohadRowByFK__Bronid__kohID__72C60C4A != null)) {
+                    columnValuesArray[2] = parentKohadRowByFK__Bronid__kohID__72C60C4A[0];
+                }
+                if ((parentSeansidRowByFK__Bronid__seansID__73BA3083 != null)) {
+                    columnValuesArray[3] = parentSeansidRowByFK__Bronid__seansID__73BA3083[0];
+                }
+                rowBronidRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowBronidRow);
+                return rowBronidRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SaalidRow FindBysaaID(int saaID) {
-                return ((SaalidRow)(this.Rows.Find(new object[] {
-                            saaID})));
+            public BronidRow FindBybronID(int bronID) {
+                return ((BronidRow)(this.Rows.Find(new object[] {
+                            bronID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                SaalidDataTable cln = ((SaalidDataTable)(base.Clone()));
+                BronidDataTable cln = ((BronidDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -1884,62 +2274,74 @@ namespace KinoAndme {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new SaalidDataTable();
+                return new BronidDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             internal void InitVars() {
-                this.columnsaaID = base.Columns["saaID"];
-                this.columnnumber = base.Columns["number"];
-                this.columnkohtade_arv = base.Columns["kohtade_arv"];
+                this.columnbronID = base.Columns["bronID"];
+                this.columnkasutajaID = base.Columns["kasutajaID"];
+                this.columnkohID = base.Columns["kohID"];
+                this.columnseansID = base.Columns["seansID"];
+                this.columnbron_aeg = base.Columns["bron_aeg"];
+                this.columnstaatus = base.Columns["staatus"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             private void InitClass() {
-                this.columnsaaID = new global::System.Data.DataColumn("saaID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnsaaID);
-                this.columnnumber = new global::System.Data.DataColumn("number", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnnumber);
-                this.columnkohtade_arv = new global::System.Data.DataColumn("kohtade_arv", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnkohtade_arv);
+                this.columnbronID = new global::System.Data.DataColumn("bronID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnbronID);
+                this.columnkasutajaID = new global::System.Data.DataColumn("kasutajaID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnkasutajaID);
+                this.columnkohID = new global::System.Data.DataColumn("kohID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnkohID);
+                this.columnseansID = new global::System.Data.DataColumn("seansID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnseansID);
+                this.columnbron_aeg = new global::System.Data.DataColumn("bron_aeg", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnbron_aeg);
+                this.columnstaatus = new global::System.Data.DataColumn("staatus", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstaatus);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnsaaID}, true));
-                this.columnsaaID.AutoIncrement = true;
-                this.columnsaaID.AutoIncrementSeed = -1;
-                this.columnsaaID.AutoIncrementStep = -1;
-                this.columnsaaID.AllowDBNull = false;
-                this.columnsaaID.ReadOnly = true;
-                this.columnsaaID.Unique = true;
-                this.columnnumber.AllowDBNull = false;
-                this.columnkohtade_arv.AllowDBNull = false;
+                                this.columnbronID}, true));
+                this.columnbronID.AutoIncrement = true;
+                this.columnbronID.AutoIncrementSeed = -1;
+                this.columnbronID.AutoIncrementStep = -1;
+                this.columnbronID.AllowDBNull = false;
+                this.columnbronID.ReadOnly = true;
+                this.columnbronID.Unique = true;
+                this.columnkasutajaID.AllowDBNull = false;
+                this.columnkohID.AllowDBNull = false;
+                this.columnseansID.AllowDBNull = false;
+                this.columnstaatus.AllowDBNull = false;
+                this.columnstaatus.MaxLength = 20;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SaalidRow NewSaalidRow() {
-                return ((SaalidRow)(this.NewRow()));
+            public BronidRow NewBronidRow() {
+                return ((BronidRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new SaalidRow(builder);
+                return new BronidRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(SaalidRow);
+                return typeof(BronidRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.SaalidRowChanged != null)) {
-                    this.SaalidRowChanged(this, new SaalidRowChangeEvent(((SaalidRow)(e.Row)), e.Action));
+                if ((this.BronidRowChanged != null)) {
+                    this.BronidRowChanged(this, new BronidRowChangeEvent(((BronidRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1947,8 +2349,8 @@ namespace KinoAndme {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.SaalidRowChanging != null)) {
-                    this.SaalidRowChanging(this, new SaalidRowChangeEvent(((SaalidRow)(e.Row)), e.Action));
+                if ((this.BronidRowChanging != null)) {
+                    this.BronidRowChanging(this, new BronidRowChangeEvent(((BronidRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1956,8 +2358,8 @@ namespace KinoAndme {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.SaalidRowDeleted != null)) {
-                    this.SaalidRowDeleted(this, new SaalidRowChangeEvent(((SaalidRow)(e.Row)), e.Action));
+                if ((this.BronidRowDeleted != null)) {
+                    this.BronidRowDeleted(this, new BronidRowChangeEvent(((BronidRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1965,14 +2367,14 @@ namespace KinoAndme {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.SaalidRowDeleting != null)) {
-                    this.SaalidRowDeleting(this, new SaalidRowChangeEvent(((SaalidRow)(e.Row)), e.Action));
+                if ((this.BronidRowDeleting != null)) {
+                    this.BronidRowDeleting(this, new BronidRowChangeEvent(((BronidRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public void RemoveSaalidRow(SaalidRow row) {
+            public void RemoveBronidRow(BronidRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1999,7 +2401,7 @@ namespace KinoAndme {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "SaalidDataTable";
+                attribute2.FixedValue = "BronidDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -2685,76 +3087,6 @@ namespace KinoAndme {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class FilmidRow : global::System.Data.DataRow {
-            
-            private FilmidDataTable tableFilmid;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal FilmidRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableFilmid = ((FilmidDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int filID {
-                get {
-                    return ((int)(this[this.tableFilmid.filIDColumn]));
-                }
-                set {
-                    this[this.tableFilmid.filIDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string pealkiri {
-                get {
-                    return ((string)(this[this.tableFilmid.pealkiriColumn]));
-                }
-                set {
-                    this[this.tableFilmid.pealkiriColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string zanr {
-                get {
-                    return ((string)(this[this.tableFilmid.zanrColumn]));
-                }
-                set {
-                    this[this.tableFilmid.zanrColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public System.TimeSpan aeg {
-                get {
-                    return ((global::System.TimeSpan)(this[this.tableFilmid.aegColumn]));
-                }
-                set {
-                    this[this.tableFilmid.aegColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SeansidRow[] GetSeansidRows() {
-                if ((this.Table.ChildRelations["Seansid_Filmid"] == null)) {
-                    return new SeansidRow[0];
-                }
-                else {
-                    return ((SeansidRow[])(base.GetChildRows(this.Table.ChildRelations["Seansid_Filmid"])));
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
         public partial class KasutajaRow : global::System.Data.DataRow {
             
             private KasutajaDataTable tableKasutaja;
@@ -2840,12 +3172,152 @@ namespace KinoAndme {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public BronidRow[] GetBronidRows() {
+                if ((this.Table.ChildRelations["FK__Bronid__kasutaja__71D1E811"] == null)) {
+                    return new BronidRow[0];
+                }
+                else {
+                    return ((BronidRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Bronid__kasutaja__71D1E811"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public TellimusedRow[] GetTellimusedRows() {
                 if ((this.Table.ChildRelations["Tellimused_Kasutaja"] == null)) {
                     return new TellimusedRow[0];
                 }
                 else {
                     return ((TellimusedRow[])(base.GetChildRows(this.Table.ChildRelations["Tellimused_Kasutaja"])));
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class SaalidRow : global::System.Data.DataRow {
+            
+            private SaalidDataTable tableSaalid;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal SaalidRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableSaalid = ((SaalidDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int saaID {
+                get {
+                    return ((int)(this[this.tableSaalid.saaIDColumn]));
+                }
+                set {
+                    this[this.tableSaalid.saaIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int number {
+                get {
+                    return ((int)(this[this.tableSaalid.numberColumn]));
+                }
+                set {
+                    this[this.tableSaalid.numberColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int kohtade_arv {
+                get {
+                    return ((int)(this[this.tableSaalid.kohtade_arvColumn]));
+                }
+                set {
+                    this[this.tableSaalid.kohtade_arvColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public KohadRow[] GetKohadRows() {
+                if ((this.Table.ChildRelations["Kohad_Saalid"] == null)) {
+                    return new KohadRow[0];
+                }
+                else {
+                    return ((KohadRow[])(base.GetChildRows(this.Table.ChildRelations["Kohad_Saalid"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public SeansidRow[] GetSeansidRows() {
+                if ((this.Table.ChildRelations["Seansid_Saalid"] == null)) {
+                    return new SeansidRow[0];
+                }
+                else {
+                    return ((SeansidRow[])(base.GetChildRows(this.Table.ChildRelations["Seansid_Saalid"])));
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class PiletidRow : global::System.Data.DataRow {
+            
+            private PiletidDataTable tablePiletid;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal PiletidRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tablePiletid = ((PiletidDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int pilId {
+                get {
+                    return ((int)(this[this.tablePiletid.pilIdColumn]));
+                }
+                set {
+                    this[this.tablePiletid.pilIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int Seansid_seaID {
+                get {
+                    return ((int)(this[this.tablePiletid.Seansid_seaIDColumn]));
+                }
+                set {
+                    this[this.tablePiletid.Seansid_seaIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public SeansidRow SeansidRow {
+                get {
+                    return ((SeansidRow)(this.GetParentRow(this.Table.ParentRelations["Piletid_Seansid"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["Piletid_Seansid"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public TellimusedRow[] GetTellimusedRows() {
+                if ((this.Table.ChildRelations["Tellimused_Piletid"] == null)) {
+                    return new TellimusedRow[0];
+                }
+                else {
+                    return ((TellimusedRow[])(base.GetChildRows(this.Table.ChildRelations["Tellimused_Piletid"])));
                 }
             }
         }
@@ -2918,41 +3390,182 @@ namespace KinoAndme {
                     this.SetParentRow(value, this.Table.ParentRelations["Kohad_Saalid"]);
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public BronidRow[] GetBronidRows() {
+                if ((this.Table.ChildRelations["FK__Bronid__kohID__72C60C4A"] == null)) {
+                    return new BronidRow[0];
+                }
+                else {
+                    return ((BronidRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Bronid__kohID__72C60C4A"])));
+                }
+            }
         }
         
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class PiletidRow : global::System.Data.DataRow {
+        public partial class FilmidRow : global::System.Data.DataRow {
             
-            private PiletidDataTable tablePiletid;
+            private FilmidDataTable tableFilmid;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal PiletidRow(global::System.Data.DataRowBuilder rb) : 
+            internal FilmidRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tablePiletid = ((PiletidDataTable)(this.Table));
+                this.tableFilmid = ((FilmidDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int pilId {
+            public int filID {
                 get {
-                    return ((int)(this[this.tablePiletid.pilIdColumn]));
+                    return ((int)(this[this.tableFilmid.filIDColumn]));
                 }
                 set {
-                    this[this.tablePiletid.pilIdColumn] = value;
+                    this[this.tableFilmid.filIDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int Seansid_seaID {
+            public string pealkiri {
                 get {
-                    return ((int)(this[this.tablePiletid.Seansid_seaIDColumn]));
+                    return ((string)(this[this.tableFilmid.pealkiriColumn]));
                 }
                 set {
-                    this[this.tablePiletid.Seansid_seaIDColumn] = value;
+                    this[this.tableFilmid.pealkiriColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string zanr {
+                get {
+                    return ((string)(this[this.tableFilmid.zanrColumn]));
+                }
+                set {
+                    this[this.tableFilmid.zanrColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.TimeSpan aeg {
+                get {
+                    return ((global::System.TimeSpan)(this[this.tableFilmid.aegColumn]));
+                }
+                set {
+                    this[this.tableFilmid.aegColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public SeansidRow[] GetSeansidRows() {
+                if ((this.Table.ChildRelations["Seansid_Filmid"] == null)) {
+                    return new SeansidRow[0];
+                }
+                else {
+                    return ((SeansidRow[])(base.GetChildRows(this.Table.ChildRelations["Seansid_Filmid"])));
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class BronidRow : global::System.Data.DataRow {
+            
+            private BronidDataTable tableBronid;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            internal BronidRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableBronid = ((BronidDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int bronID {
+                get {
+                    return ((int)(this[this.tableBronid.bronIDColumn]));
+                }
+                set {
+                    this[this.tableBronid.bronIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int kasutajaID {
+                get {
+                    return ((int)(this[this.tableBronid.kasutajaIDColumn]));
+                }
+                set {
+                    this[this.tableBronid.kasutajaIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int kohID {
+                get {
+                    return ((int)(this[this.tableBronid.kohIDColumn]));
+                }
+                set {
+                    this[this.tableBronid.kohIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int seansID {
+                get {
+                    return ((int)(this[this.tableBronid.seansIDColumn]));
+                }
+                set {
+                    this[this.tableBronid.seansIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public System.DateTime bron_aeg {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableBronid.bron_aegColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'bron_aeg\' в таблице \'Bronid\' равно DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBronid.bron_aegColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string staatus {
+                get {
+                    return ((string)(this[this.tableBronid.staatusColumn]));
+                }
+                set {
+                    this[this.tableBronid.staatusColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public KohadRow KohadRow {
+                get {
+                    return ((KohadRow)(this.GetParentRow(this.Table.ParentRelations["FK__Bronid__kohID__72C60C4A"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__Bronid__kohID__72C60C4A"]);
                 }
             }
             
@@ -2960,92 +3573,34 @@ namespace KinoAndme {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public SeansidRow SeansidRow {
                 get {
-                    return ((SeansidRow)(this.GetParentRow(this.Table.ParentRelations["Piletid_Seansid"])));
+                    return ((SeansidRow)(this.GetParentRow(this.Table.ParentRelations["FK__Bronid__seansID__73BA3083"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["Piletid_Seansid"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__Bronid__seansID__73BA3083"]);
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public TellimusedRow[] GetTellimusedRows() {
-                if ((this.Table.ChildRelations["Tellimused_Piletid"] == null)) {
-                    return new TellimusedRow[0];
-                }
-                else {
-                    return ((TellimusedRow[])(base.GetChildRows(this.Table.ChildRelations["Tellimused_Piletid"])));
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class SaalidRow : global::System.Data.DataRow {
-            
-            private SaalidDataTable tableSaalid;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            internal SaalidRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableSaalid = ((SaalidDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int saaID {
+            public KasutajaRow KasutajaRow {
                 get {
-                    return ((int)(this[this.tableSaalid.saaIDColumn]));
+                    return ((KasutajaRow)(this.GetParentRow(this.Table.ParentRelations["FK__Bronid__kasutaja__71D1E811"])));
                 }
                 set {
-                    this[this.tableSaalid.saaIDColumn] = value;
+                    this.SetParentRow(value, this.Table.ParentRelations["FK__Bronid__kasutaja__71D1E811"]);
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int number {
-                get {
-                    return ((int)(this[this.tableSaalid.numberColumn]));
-                }
-                set {
-                    this[this.tableSaalid.numberColumn] = value;
-                }
+            public bool Isbron_aegNull() {
+                return this.IsNull(this.tableBronid.bron_aegColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public int kohtade_arv {
-                get {
-                    return ((int)(this[this.tableSaalid.kohtade_arvColumn]));
-                }
-                set {
-                    this[this.tableSaalid.kohtade_arvColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public KohadRow[] GetKohadRows() {
-                if ((this.Table.ChildRelations["Kohad_Saalid"] == null)) {
-                    return new KohadRow[0];
-                }
-                else {
-                    return ((KohadRow[])(base.GetChildRows(this.Table.ChildRelations["Kohad_Saalid"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SeansidRow[] GetSeansidRows() {
-                if ((this.Table.ChildRelations["Seansid_Saalid"] == null)) {
-                    return new SeansidRow[0];
-                }
-                else {
-                    return ((SeansidRow[])(base.GetChildRows(this.Table.ChildRelations["Seansid_Saalid"])));
-                }
+            public void Setbron_aegNull() {
+                this[this.tableBronid.bron_aegColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3139,6 +3694,17 @@ namespace KinoAndme {
                     return ((PiletidRow[])(base.GetChildRows(this.Table.ChildRelations["Piletid_Seansid"])));
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public BronidRow[] GetBronidRows() {
+                if ((this.Table.ChildRelations["FK__Bronid__seansID__73BA3083"] == null)) {
+                    return new BronidRow[0];
+                }
+                else {
+                    return ((BronidRow[])(base.GetChildRows(this.Table.ChildRelations["FK__Bronid__seansID__73BA3083"])));
+                }
+            }
         }
         
         /// <summary>
@@ -3212,17 +3778,6 @@ namespace KinoAndme {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public KasutajaRow KasutajaRow {
-                get {
-                    return ((KasutajaRow)(this.GetParentRow(this.Table.ParentRelations["Tellimused_Kasutaja"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["Tellimused_Kasutaja"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public PiletidRow PiletidRow {
                 get {
                     return ((PiletidRow)(this.GetParentRow(this.Table.ParentRelations["Tellimused_Piletid"])));
@@ -3231,38 +3786,15 @@ namespace KinoAndme {
                     this.SetParentRow(value, this.Table.ParentRelations["Tellimused_Piletid"]);
                 }
             }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class FilmidRowChangeEvent : global::System.EventArgs {
-            
-            private FilmidRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public FilmidRowChangeEvent(FilmidRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public FilmidRow Row {
+            public KasutajaRow KasutajaRow {
                 get {
-                    return this.eventRow;
+                    return ((KasutajaRow)(this.GetParentRow(this.Table.ParentRelations["Tellimused_Kasutaja"])));
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["Tellimused_Kasutaja"]);
                 }
             }
         }
@@ -3305,22 +3837,22 @@ namespace KinoAndme {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class KohadRowChangeEvent : global::System.EventArgs {
+        public class SaalidRowChangeEvent : global::System.EventArgs {
             
-            private KohadRow eventRow;
+            private SaalidRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public KohadRowChangeEvent(KohadRow row, global::System.Data.DataRowAction action) {
+            public SaalidRowChangeEvent(SaalidRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public KohadRow Row {
+            public SaalidRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -3373,22 +3905,90 @@ namespace KinoAndme {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public class SaalidRowChangeEvent : global::System.EventArgs {
+        public class KohadRowChangeEvent : global::System.EventArgs {
             
-            private SaalidRow eventRow;
+            private KohadRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SaalidRowChangeEvent(SaalidRow row, global::System.Data.DataRowAction action) {
+            public KohadRowChangeEvent(KohadRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public SaalidRow Row {
+            public KohadRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class FilmidRowChangeEvent : global::System.EventArgs {
+            
+            private FilmidRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public FilmidRowChangeEvent(FilmidRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public FilmidRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public class BronidRowChangeEvent : global::System.EventArgs {
+            
+            private BronidRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public BronidRowChangeEvent(BronidRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public BronidRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -3474,362 +4074,6 @@ namespace KinoAndme {
 }
 namespace KinoAndme.KinoDataSetTableAdapters {
     
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class FilmidTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private global::System.Data.SqlClient.SqlConnection _connection;
-        
-        private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
-        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public FilmidTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Filmid";
-            tableMapping.ColumnMappings.Add("filID", "filID");
-            tableMapping.ColumnMappings.Add("pealkiri", "pealkiri");
-            tableMapping.ColumnMappings.Add("zanr", "zanr");
-            tableMapping.ColumnMappings.Add("aeg", "aeg");
-            this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Filmid] WHERE (([filID] = @Original_filID) AND ([pealkiri] = @" +
-                "Original_pealkiri) AND ([zanr] = @Original_zanr) AND ([aeg] = @Original_aeg))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_filID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "filID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_pealkiri", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pealkiri", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_zanr", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "zanr", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_aeg", global::System.Data.SqlDbType.Time, 0, global::System.Data.ParameterDirection.Input, 0, 0, "aeg", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Filmid] ([pealkiri], [zanr], [aeg]) VALUES (@pealkiri, @zanr, " +
-                "@aeg);\r\nSELECT filID, pealkiri, zanr, aeg FROM Filmid WHERE (filID = SCOPE_IDENT" +
-                "ITY())";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pealkiri", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pealkiri", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@zanr", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "zanr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@aeg", global::System.Data.SqlDbType.Time, 0, global::System.Data.ParameterDirection.Input, 0, 0, "aeg", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Filmid] SET [pealkiri] = @pealkiri, [zanr] = @zanr, [aeg] = @aeg WHERE (([filID] = @Original_filID) AND ([pealkiri] = @Original_pealkiri) AND ([zanr] = @Original_zanr) AND ([aeg] = @Original_aeg));
-SELECT filID, pealkiri, zanr, aeg FROM Filmid WHERE (filID = @filID)";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pealkiri", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pealkiri", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@zanr", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "zanr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@aeg", global::System.Data.SqlDbType.Time, 0, global::System.Data.ParameterDirection.Input, 0, 0, "aeg", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_filID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "filID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_pealkiri", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pealkiri", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_zanr", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "zanr", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_aeg", global::System.Data.SqlDbType.Time, 0, global::System.Data.ParameterDirection.Input, 0, 0, "aeg", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@filID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "filID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::KinoAndme.Properties.Settings.Default.KinoConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT filID, pealkiri, zanr, aeg FROM dbo.Filmid";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(KinoDataSet.FilmidDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual KinoDataSet.FilmidDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            KinoDataSet.FilmidDataTable dataTable = new KinoDataSet.FilmidDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(KinoDataSet.FilmidDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(KinoDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "Filmid");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_filID, string Original_pealkiri, string Original_zanr, System.TimeSpan Original_aeg) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_filID));
-            if ((Original_pealkiri == null)) {
-                throw new global::System.ArgumentNullException("Original_pealkiri");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_pealkiri));
-            }
-            if ((Original_zanr == null)) {
-                throw new global::System.ArgumentNullException("Original_zanr");
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_zanr));
-            }
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((System.TimeSpan)(Original_aeg));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string pealkiri, string zanr, System.TimeSpan aeg) {
-            if ((pealkiri == null)) {
-                throw new global::System.ArgumentNullException("pealkiri");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(pealkiri));
-            }
-            if ((zanr == null)) {
-                throw new global::System.ArgumentNullException("zanr");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(zanr));
-            }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((System.TimeSpan)(aeg));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string pealkiri, string zanr, System.TimeSpan aeg, int Original_filID, string Original_pealkiri, string Original_zanr, System.TimeSpan Original_aeg, int filID) {
-            if ((pealkiri == null)) {
-                throw new global::System.ArgumentNullException("pealkiri");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(pealkiri));
-            }
-            if ((zanr == null)) {
-                throw new global::System.ArgumentNullException("zanr");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(zanr));
-            }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((System.TimeSpan)(aeg));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_filID));
-            if ((Original_pealkiri == null)) {
-                throw new global::System.ArgumentNullException("Original_pealkiri");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_pealkiri));
-            }
-            if ((Original_zanr == null)) {
-                throw new global::System.ArgumentNullException("Original_zanr");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_zanr));
-            }
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((System.TimeSpan)(Original_aeg));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(filID));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string pealkiri, string zanr, System.TimeSpan aeg, int Original_filID, string Original_pealkiri, string Original_zanr, System.TimeSpan Original_aeg) {
-            return this.Update(pealkiri, zanr, aeg, Original_filID, Original_pealkiri, Original_zanr, Original_aeg, Original_filID);
-        }
-    }
     
     /// <summary>
     ///Represents the connection and commands used to retrieve and save data.
@@ -4395,6 +4639,611 @@ SELECT kasID, nimi, logi, parool, rool FROM Kasutaja WHERE (kasID = @kasID)";
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class SaalidTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public SaalidTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "Saalid";
+            tableMapping.ColumnMappings.Add("saaID", "saaID");
+            tableMapping.ColumnMappings.Add("number", "number");
+            tableMapping.ColumnMappings.Add("kohtade_arv", "kohtade_arv");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Saalid] WHERE (([saaID] = @Original_saaID) AND ([number] = @Or" +
+                "iginal_number) AND ([kohtade_arv] = @Original_kohtade_arv))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_saaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "saaID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_number", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "number", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_kohtade_arv", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kohtade_arv", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Saalid] ([number], [kohtade_arv]) VALUES (@number, @kohtade_ar" +
+                "v);\r\nSELECT saaID, number, kohtade_arv FROM Saalid WHERE (saaID = SCOPE_IDENTITY" +
+                "())";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@number", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "number", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@kohtade_arv", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kohtade_arv", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Saalid] SET [number] = @number, [kohtade_arv] = @kohtade_arv WHERE (([saaID] = @Original_saaID) AND ([number] = @Original_number) AND ([kohtade_arv] = @Original_kohtade_arv));
+SELECT saaID, number, kohtade_arv FROM Saalid WHERE (saaID = @saaID)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@number", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "number", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@kohtade_arv", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kohtade_arv", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_saaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "saaID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_number", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "number", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_kohtade_arv", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kohtade_arv", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@saaID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "saaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::KinoAndme.Properties.Settings.Default.KinoConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT saaID, number, kohtade_arv FROM dbo.Saalid";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(KinoDataSet.SaalidDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual KinoDataSet.SaalidDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            KinoDataSet.SaalidDataTable dataTable = new KinoDataSet.SaalidDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(KinoDataSet.SaalidDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(KinoDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "Saalid");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_saaID, int Original_number, int Original_kohtade_arv) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_saaID));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_number));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_kohtade_arv));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(int number, int kohtade_arv) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(number));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(kohtade_arv));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(int number, int kohtade_arv, int Original_saaID, int Original_number, int Original_kohtade_arv, int saaID) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(number));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(kohtade_arv));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_saaID));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_number));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_kohtade_arv));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(saaID));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(int number, int kohtade_arv, int Original_saaID, int Original_number, int Original_kohtade_arv) {
+            return this.Update(number, kohtade_arv, Original_saaID, Original_number, Original_kohtade_arv, Original_saaID);
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class PiletidTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public PiletidTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "Piletid";
+            tableMapping.ColumnMappings.Add("pilId", "pilId");
+            tableMapping.ColumnMappings.Add("Seansid_seaID", "Seansid_seaID");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Piletid] WHERE (([pilId] = @Original_pilId) AND ([Seansid_seaI" +
+                "D] = @Original_Seansid_seaID))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_pilId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pilId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Seansid_seaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Seansid_seaID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Piletid] ([Seansid_seaID]) VALUES (@Seansid_seaID);\r\nSELECT pi" +
+                "lId, Seansid_seaID FROM Piletid WHERE (pilId = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Seansid_seaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Seansid_seaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Piletid] SET [Seansid_seaID] = @Seansid_seaID WHERE (([pilId] = @Or" +
+                "iginal_pilId) AND ([Seansid_seaID] = @Original_Seansid_seaID));\r\nSELECT pilId, S" +
+                "eansid_seaID FROM Piletid WHERE (pilId = @pilId)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Seansid_seaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Seansid_seaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_pilId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pilId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Seansid_seaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Seansid_seaID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pilId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "pilId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::KinoAndme.Properties.Settings.Default.KinoConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT pilId, Seansid_seaID FROM dbo.Piletid";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(KinoDataSet.PiletidDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual KinoDataSet.PiletidDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            KinoDataSet.PiletidDataTable dataTable = new KinoDataSet.PiletidDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(KinoDataSet.PiletidDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(KinoDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "Piletid");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_pilId, int Original_Seansid_seaID) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_pilId));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_Seansid_seaID));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(int Seansid_seaID) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Seansid_seaID));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(int Seansid_seaID, int Original_pilId, int Original_Seansid_seaID, int pilId) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Seansid_seaID));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_pilId));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_Seansid_seaID));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(pilId));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(int Seansid_seaID, int Original_pilId, int Original_Seansid_seaID) {
+            return this.Update(Seansid_seaID, Original_pilId, Original_Seansid_seaID, Original_pilId);
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
     public partial class KohadTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
@@ -4712,7 +5561,7 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class PiletidTableAdapter : global::System.ComponentModel.Component {
+    public partial class FilmidTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -4726,7 +5575,7 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public PiletidTableAdapter() {
+        public FilmidTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -4823,33 +5672,43 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Piletid";
-            tableMapping.ColumnMappings.Add("pilId", "pilId");
-            tableMapping.ColumnMappings.Add("Seansid_seaID", "Seansid_seaID");
+            tableMapping.DataSetTable = "Filmid";
+            tableMapping.ColumnMappings.Add("filID", "filID");
+            tableMapping.ColumnMappings.Add("pealkiri", "pealkiri");
+            tableMapping.ColumnMappings.Add("zanr", "zanr");
+            tableMapping.ColumnMappings.Add("aeg", "aeg");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Piletid] WHERE (([pilId] = @Original_pilId) AND ([Seansid_seaI" +
-                "D] = @Original_Seansid_seaID))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Filmid] WHERE (([filID] = @Original_filID) AND ([pealkiri] = @" +
+                "Original_pealkiri) AND ([zanr] = @Original_zanr) AND ([aeg] = @Original_aeg))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_pilId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pilId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Seansid_seaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Seansid_seaID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_filID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "filID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_pealkiri", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pealkiri", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_zanr", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "zanr", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_aeg", global::System.Data.SqlDbType.Time, 0, global::System.Data.ParameterDirection.Input, 0, 0, "aeg", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Piletid] ([Seansid_seaID]) VALUES (@Seansid_seaID);\r\nSELECT pi" +
-                "lId, Seansid_seaID FROM Piletid WHERE (pilId = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Filmid] ([pealkiri], [zanr], [aeg]) VALUES (@pealkiri, @zanr, " +
+                "@aeg);\r\nSELECT filID, pealkiri, zanr, aeg FROM Filmid WHERE (filID = SCOPE_IDENT" +
+                "ITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Seansid_seaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Seansid_seaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pealkiri", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pealkiri", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@zanr", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "zanr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@aeg", global::System.Data.SqlDbType.Time, 0, global::System.Data.ParameterDirection.Input, 0, 0, "aeg", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Piletid] SET [Seansid_seaID] = @Seansid_seaID WHERE (([pilId] = @Or" +
-                "iginal_pilId) AND ([Seansid_seaID] = @Original_Seansid_seaID));\r\nSELECT pilId, S" +
-                "eansid_seaID FROM Piletid WHERE (pilId = @pilId)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Filmid] SET [pealkiri] = @pealkiri, [zanr] = @zanr, [aeg] = @aeg WHERE (([filID] = @Original_filID) AND ([pealkiri] = @Original_pealkiri) AND ([zanr] = @Original_zanr) AND ([aeg] = @Original_aeg));
+SELECT filID, pealkiri, zanr, aeg FROM Filmid WHERE (filID = @filID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Seansid_seaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Seansid_seaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_pilId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pilId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Seansid_seaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Seansid_seaID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pilId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "pilId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@pealkiri", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pealkiri", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@zanr", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "zanr", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@aeg", global::System.Data.SqlDbType.Time, 0, global::System.Data.ParameterDirection.Input, 0, 0, "aeg", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_filID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "filID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_pealkiri", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "pealkiri", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_zanr", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "zanr", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_aeg", global::System.Data.SqlDbType.Time, 0, global::System.Data.ParameterDirection.Input, 0, 0, "aeg", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@filID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "filID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4865,7 +5724,7 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT pilId, Seansid_seaID FROM dbo.Piletid";
+            this._commandCollection[0].CommandText = "SELECT filID, pealkiri, zanr, aeg FROM dbo.Filmid";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -4873,7 +5732,7 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(KinoDataSet.PiletidDataTable dataTable) {
+        public virtual int Fill(KinoDataSet.FilmidDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -4886,9 +5745,9 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual KinoDataSet.PiletidDataTable GetData() {
+        public virtual KinoDataSet.FilmidDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            KinoDataSet.PiletidDataTable dataTable = new KinoDataSet.PiletidDataTable();
+            KinoDataSet.FilmidDataTable dataTable = new KinoDataSet.FilmidDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4896,7 +5755,7 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(KinoDataSet.PiletidDataTable dataTable) {
+        public virtual int Update(KinoDataSet.FilmidDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -4904,7 +5763,7 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(KinoDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "Piletid");
+            return this.Adapter.Update(dataSet, "Filmid");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4926,9 +5785,21 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_pilId, int Original_Seansid_seaID) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_pilId));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_Seansid_seaID));
+        public virtual int Delete(int Original_filID, string Original_pealkiri, string Original_zanr, System.TimeSpan Original_aeg) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_filID));
+            if ((Original_pealkiri == null)) {
+                throw new global::System.ArgumentNullException("Original_pealkiri");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_pealkiri));
+            }
+            if ((Original_zanr == null)) {
+                throw new global::System.ArgumentNullException("Original_zanr");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_zanr));
+            }
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((System.TimeSpan)(Original_aeg));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4949,8 +5820,20 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Seansid_seaID) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Seansid_seaID));
+        public virtual int Insert(string pealkiri, string zanr, System.TimeSpan aeg) {
+            if ((pealkiri == null)) {
+                throw new global::System.ArgumentNullException("pealkiri");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(pealkiri));
+            }
+            if ((zanr == null)) {
+                throw new global::System.ArgumentNullException("zanr");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(zanr));
+            }
+            this.Adapter.InsertCommand.Parameters[2].Value = ((System.TimeSpan)(aeg));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4971,11 +5854,35 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Seansid_seaID, int Original_pilId, int Original_Seansid_seaID, int pilId) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Seansid_seaID));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_pilId));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_Seansid_seaID));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(pilId));
+        public virtual int Update(string pealkiri, string zanr, System.TimeSpan aeg, int Original_filID, string Original_pealkiri, string Original_zanr, System.TimeSpan Original_aeg, int filID) {
+            if ((pealkiri == null)) {
+                throw new global::System.ArgumentNullException("pealkiri");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(pealkiri));
+            }
+            if ((zanr == null)) {
+                throw new global::System.ArgumentNullException("zanr");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(zanr));
+            }
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((System.TimeSpan)(aeg));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_filID));
+            if ((Original_pealkiri == null)) {
+                throw new global::System.ArgumentNullException("Original_pealkiri");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_pealkiri));
+            }
+            if ((Original_zanr == null)) {
+                throw new global::System.ArgumentNullException("Original_zanr");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_zanr));
+            }
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((System.TimeSpan)(Original_aeg));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(filID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4996,8 +5903,8 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Seansid_seaID, int Original_pilId, int Original_Seansid_seaID) {
-            return this.Update(Seansid_seaID, Original_pilId, Original_Seansid_seaID, Original_pilId);
+        public virtual int Update(string pealkiri, string zanr, System.TimeSpan aeg, int Original_filID, string Original_pealkiri, string Original_zanr, System.TimeSpan Original_aeg) {
+            return this.Update(pealkiri, zanr, aeg, Original_filID, Original_pealkiri, Original_zanr, Original_aeg, Original_filID);
         }
     }
     
@@ -5010,7 +5917,7 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class SaalidTableAdapter : global::System.ComponentModel.Component {
+    public partial class BronidTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -5024,7 +5931,7 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public SaalidTableAdapter() {
+        public BronidTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -5121,38 +6028,55 @@ SELECT kohID, Saalid_saaID, rida, koha_number FROM Kohad WHERE (kohID = @kohID)"
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Saalid";
-            tableMapping.ColumnMappings.Add("saaID", "saaID");
-            tableMapping.ColumnMappings.Add("number", "number");
-            tableMapping.ColumnMappings.Add("kohtade_arv", "kohtade_arv");
+            tableMapping.DataSetTable = "Bronid";
+            tableMapping.ColumnMappings.Add("bronID", "bronID");
+            tableMapping.ColumnMappings.Add("kasutajaID", "kasutajaID");
+            tableMapping.ColumnMappings.Add("kohID", "kohID");
+            tableMapping.ColumnMappings.Add("seansID", "seansID");
+            tableMapping.ColumnMappings.Add("bron_aeg", "bron_aeg");
+            tableMapping.ColumnMappings.Add("staatus", "staatus");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Saalid] WHERE (([saaID] = @Original_saaID) AND ([number] = @Or" +
-                "iginal_number) AND ([kohtade_arv] = @Original_kohtade_arv))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Bronid] WHERE (([bronID] = @Original_bronID) AND ([kasutajaID] = @Original_kasutajaID) AND ([kohID] = @Original_kohID) AND ([seansID] = @Original_seansID) AND ((@IsNull_bron_aeg = 1 AND [bron_aeg] IS NULL) OR ([bron_aeg] = @Original_bron_aeg)) AND ([staatus] = @Original_staatus))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_saaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "saaID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_number", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "number", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_kohtade_arv", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kohtade_arv", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_bronID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bronID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_kasutajaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kasutajaID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_kohID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kohID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_seansID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "seansID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_bron_aeg", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bron_aeg", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_bron_aeg", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bron_aeg", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_staatus", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "staatus", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Saalid] ([number], [kohtade_arv]) VALUES (@number, @kohtade_ar" +
-                "v);\r\nSELECT saaID, number, kohtade_arv FROM Saalid WHERE (saaID = SCOPE_IDENTITY" +
-                "())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Bronid] ([kasutajaID], [kohID], [seansID], [bron_aeg], [staatu" +
+                "s]) VALUES (@kasutajaID, @kohID, @seansID, @bron_aeg, @staatus);\r\nSELECT bronID," +
+                " kasutajaID, kohID, seansID, bron_aeg, staatus FROM Bronid WHERE (bronID = SCOPE" +
+                "_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@number", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "number", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@kohtade_arv", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kohtade_arv", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@kasutajaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kasutajaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@kohID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kohID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@seansID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "seansID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bron_aeg", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bron_aeg", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@staatus", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "staatus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Saalid] SET [number] = @number, [kohtade_arv] = @kohtade_arv WHERE (([saaID] = @Original_saaID) AND ([number] = @Original_number) AND ([kohtade_arv] = @Original_kohtade_arv));
-SELECT saaID, number, kohtade_arv FROM Saalid WHERE (saaID = @saaID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Bronid] SET [kasutajaID] = @kasutajaID, [kohID] = @kohID, [seansID] = @seansID, [bron_aeg] = @bron_aeg, [staatus] = @staatus WHERE (([bronID] = @Original_bronID) AND ([kasutajaID] = @Original_kasutajaID) AND ([kohID] = @Original_kohID) AND ([seansID] = @Original_seansID) AND ((@IsNull_bron_aeg = 1 AND [bron_aeg] IS NULL) OR ([bron_aeg] = @Original_bron_aeg)) AND ([staatus] = @Original_staatus));
+SELECT bronID, kasutajaID, kohID, seansID, bron_aeg, staatus FROM Bronid WHERE (bronID = @bronID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@number", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "number", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@kohtade_arv", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kohtade_arv", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_saaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "saaID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_number", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "number", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_kohtade_arv", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kohtade_arv", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@saaID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "saaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@kasutajaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kasutajaID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@kohID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kohID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@seansID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "seansID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bron_aeg", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bron_aeg", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@staatus", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "staatus", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_bronID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bronID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_kasutajaID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kasutajaID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_kohID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "kohID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_seansID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "seansID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_bron_aeg", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bron_aeg", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_bron_aeg", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "bron_aeg", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_staatus", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "staatus", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@bronID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "bronID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5168,7 +6092,7 @@ SELECT saaID, number, kohtade_arv FROM Saalid WHERE (saaID = @saaID)";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT saaID, number, kohtade_arv FROM dbo.Saalid";
+            this._commandCollection[0].CommandText = "SELECT bronID, kasutajaID, kohID, seansID, bron_aeg, staatus FROM dbo.Bronid";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -5176,7 +6100,7 @@ SELECT saaID, number, kohtade_arv FROM Saalid WHERE (saaID = @saaID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(KinoDataSet.SaalidDataTable dataTable) {
+        public virtual int Fill(KinoDataSet.BronidDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -5189,9 +6113,9 @@ SELECT saaID, number, kohtade_arv FROM Saalid WHERE (saaID = @saaID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual KinoDataSet.SaalidDataTable GetData() {
+        public virtual KinoDataSet.BronidDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            KinoDataSet.SaalidDataTable dataTable = new KinoDataSet.SaalidDataTable();
+            KinoDataSet.BronidDataTable dataTable = new KinoDataSet.BronidDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -5199,7 +6123,7 @@ SELECT saaID, number, kohtade_arv FROM Saalid WHERE (saaID = @saaID)";
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(KinoDataSet.SaalidDataTable dataTable) {
+        public virtual int Update(KinoDataSet.BronidDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -5207,7 +6131,7 @@ SELECT saaID, number, kohtade_arv FROM Saalid WHERE (saaID = @saaID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(KinoDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "Saalid");
+            return this.Adapter.Update(dataSet, "Bronid");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5229,10 +6153,25 @@ SELECT saaID, number, kohtade_arv FROM Saalid WHERE (saaID = @saaID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_saaID, int Original_number, int Original_kohtade_arv) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_saaID));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_number));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_kohtade_arv));
+        public virtual int Delete(int Original_bronID, int Original_kasutajaID, int Original_kohID, int Original_seansID, global::System.Nullable<global::System.DateTime> Original_bron_aeg, string Original_staatus) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_bronID));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_kasutajaID));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_kohID));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_seansID));
+            if ((Original_bron_aeg.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((System.DateTime)(Original_bron_aeg.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((Original_staatus == null)) {
+                throw new global::System.ArgumentNullException("Original_staatus");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_staatus));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5253,9 +6192,22 @@ SELECT saaID, number, kohtade_arv FROM Saalid WHERE (saaID = @saaID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int number, int kohtade_arv) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(number));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(kohtade_arv));
+        public virtual int Insert(int kasutajaID, int kohID, int seansID, global::System.Nullable<global::System.DateTime> bron_aeg, string staatus) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(kasutajaID));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(kohID));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(seansID));
+            if ((bron_aeg.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((System.DateTime)(bron_aeg.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((staatus == null)) {
+                throw new global::System.ArgumentNullException("staatus");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(staatus));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5276,13 +6228,41 @@ SELECT saaID, number, kohtade_arv FROM Saalid WHERE (saaID = @saaID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int number, int kohtade_arv, int Original_saaID, int Original_number, int Original_kohtade_arv, int saaID) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(number));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(kohtade_arv));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_saaID));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_number));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_kohtade_arv));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(saaID));
+        public virtual int Update(int kasutajaID, int kohID, int seansID, global::System.Nullable<global::System.DateTime> bron_aeg, string staatus, int Original_bronID, int Original_kasutajaID, int Original_kohID, int Original_seansID, global::System.Nullable<global::System.DateTime> Original_bron_aeg, string Original_staatus, int bronID) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(kasutajaID));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(kohID));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(seansID));
+            if ((bron_aeg.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((System.DateTime)(bron_aeg.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((staatus == null)) {
+                throw new global::System.ArgumentNullException("staatus");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(staatus));
+            }
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_bronID));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_kasutajaID));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_kohID));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_seansID));
+            if ((Original_bron_aeg.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((System.DateTime)(Original_bron_aeg.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            if ((Original_staatus == null)) {
+                throw new global::System.ArgumentNullException("Original_staatus");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_staatus));
+            }
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(bronID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5303,8 +6283,8 @@ SELECT saaID, number, kohtade_arv FROM Saalid WHERE (saaID = @saaID)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int number, int kohtade_arv, int Original_saaID, int Original_number, int Original_kohtade_arv) {
-            return this.Update(number, kohtade_arv, Original_saaID, Original_number, Original_kohtade_arv, Original_saaID);
+        public virtual int Update(int kasutajaID, int kohID, int seansID, global::System.Nullable<global::System.DateTime> bron_aeg, string staatus, int Original_bronID, int Original_kasutajaID, int Original_kohID, int Original_seansID, global::System.Nullable<global::System.DateTime> Original_bron_aeg, string Original_staatus) {
+            return this.Update(kasutajaID, kohID, seansID, bron_aeg, staatus, Original_bronID, Original_kasutajaID, Original_kohID, Original_seansID, Original_bron_aeg, Original_staatus, Original_bronID);
         }
     }
     
@@ -5982,15 +6962,17 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
         
         private UpdateOrderOption _updateOrder;
         
-        private FilmidTableAdapter _filmidTableAdapter;
-        
         private KasutajaTableAdapter _kasutajaTableAdapter;
         
-        private KohadTableAdapter _kohadTableAdapter;
+        private SaalidTableAdapter _saalidTableAdapter;
         
         private PiletidTableAdapter _piletidTableAdapter;
         
-        private SaalidTableAdapter _saalidTableAdapter;
+        private KohadTableAdapter _kohadTableAdapter;
+        
+        private FilmidTableAdapter _filmidTableAdapter;
+        
+        private BronidTableAdapter _bronidTableAdapter;
         
         private SeansidTableAdapter _seansidTableAdapter;
         
@@ -6016,20 +6998,6 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public FilmidTableAdapter FilmidTableAdapter {
-            get {
-                return this._filmidTableAdapter;
-            }
-            set {
-                this._filmidTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
         public KasutajaTableAdapter KasutajaTableAdapter {
             get {
                 return this._kasutajaTableAdapter;
@@ -6044,12 +7012,12 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public KohadTableAdapter KohadTableAdapter {
+        public SaalidTableAdapter SaalidTableAdapter {
             get {
-                return this._kohadTableAdapter;
+                return this._saalidTableAdapter;
             }
             set {
-                this._kohadTableAdapter = value;
+                this._saalidTableAdapter = value;
             }
         }
         
@@ -6072,12 +7040,40 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public SaalidTableAdapter SaalidTableAdapter {
+        public KohadTableAdapter KohadTableAdapter {
             get {
-                return this._saalidTableAdapter;
+                return this._kohadTableAdapter;
             }
             set {
-                this._saalidTableAdapter = value;
+                this._kohadTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public FilmidTableAdapter FilmidTableAdapter {
+            get {
+                return this._filmidTableAdapter;
+            }
+            set {
+                this._filmidTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public BronidTableAdapter BronidTableAdapter {
+            get {
+                return this._bronidTableAdapter;
+            }
+            set {
+                this._bronidTableAdapter = value;
             }
         }
         
@@ -6128,25 +7124,29 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
                 if ((this._connection != null)) {
                     return this._connection;
                 }
-                if (((this._filmidTableAdapter != null) 
-                            && (this._filmidTableAdapter.Connection != null))) {
-                    return this._filmidTableAdapter.Connection;
-                }
                 if (((this._kasutajaTableAdapter != null) 
                             && (this._kasutajaTableAdapter.Connection != null))) {
                     return this._kasutajaTableAdapter.Connection;
                 }
-                if (((this._kohadTableAdapter != null) 
-                            && (this._kohadTableAdapter.Connection != null))) {
-                    return this._kohadTableAdapter.Connection;
+                if (((this._saalidTableAdapter != null) 
+                            && (this._saalidTableAdapter.Connection != null))) {
+                    return this._saalidTableAdapter.Connection;
                 }
                 if (((this._piletidTableAdapter != null) 
                             && (this._piletidTableAdapter.Connection != null))) {
                     return this._piletidTableAdapter.Connection;
                 }
-                if (((this._saalidTableAdapter != null) 
-                            && (this._saalidTableAdapter.Connection != null))) {
-                    return this._saalidTableAdapter.Connection;
+                if (((this._kohadTableAdapter != null) 
+                            && (this._kohadTableAdapter.Connection != null))) {
+                    return this._kohadTableAdapter.Connection;
+                }
+                if (((this._filmidTableAdapter != null) 
+                            && (this._filmidTableAdapter.Connection != null))) {
+                    return this._filmidTableAdapter.Connection;
+                }
+                if (((this._bronidTableAdapter != null) 
+                            && (this._bronidTableAdapter.Connection != null))) {
+                    return this._bronidTableAdapter.Connection;
                 }
                 if (((this._seansidTableAdapter != null) 
                             && (this._seansidTableAdapter.Connection != null))) {
@@ -6169,19 +7169,22 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
-                if ((this._filmidTableAdapter != null)) {
-                    count = (count + 1);
-                }
                 if ((this._kasutajaTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._kohadTableAdapter != null)) {
+                if ((this._saalidTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._piletidTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._saalidTableAdapter != null)) {
+                if ((this._kohadTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._filmidTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._bronidTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._seansidTableAdapter != null)) {
@@ -6201,21 +7204,21 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private int UpdateUpdatedRows(KinoDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._filmidTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Filmid.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._filmidTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._saalidTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Saalid.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._saalidTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._filmidTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Filmid.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._filmidTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -6255,6 +7258,15 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._bronidTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Bronid.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._bronidTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._tellimusedTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Tellimused.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -6274,19 +7286,19 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private int UpdateInsertedRows(KinoDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
-            if ((this._filmidTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Filmid.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._filmidTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._saalidTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Saalid.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._saalidTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._filmidTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Filmid.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._filmidTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -6322,6 +7334,14 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._bronidTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Bronid.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._bronidTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._tellimusedTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Tellimused.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -6345,6 +7365,14 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._tellimusedTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._bronidTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Bronid.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._bronidTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -6380,19 +7408,19 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._saalidTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Saalid.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._saalidTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._filmidTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Filmid.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._filmidTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._saalidTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Saalid.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._saalidTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -6435,18 +7463,13 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
             if ((dataSet.HasChanges() == false)) {
                 return 0;
             }
-            if (((this._filmidTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._filmidTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
-                        "r, должны использовать одинаковую строку подключения.");
-            }
             if (((this._kasutajaTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._kasutajaTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
                         "r, должны использовать одинаковую строку подключения.");
             }
-            if (((this._kohadTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._kohadTableAdapter.Connection) == false))) {
+            if (((this._saalidTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._saalidTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
                         "r, должны использовать одинаковую строку подключения.");
             }
@@ -6455,8 +7478,18 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
                         "r, должны использовать одинаковую строку подключения.");
             }
-            if (((this._saalidTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._saalidTableAdapter.Connection) == false))) {
+            if (((this._kohadTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._kohadTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
+                        "r, должны использовать одинаковую строку подключения.");
+            }
+            if (((this._filmidTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._filmidTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
+                        "r, должны использовать одинаковую строку подключения.");
+            }
+            if (((this._bronidTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._bronidTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Все адаптеры таблицы, управляемые диспетчером адаптера таблицы TableAdapterManage" +
                         "r, должны использовать одинаковую строку подключения.");
             }
@@ -6502,15 +7535,6 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
             try {
                 // ---- Prepare for update -----------
                 //
-                if ((this._filmidTableAdapter != null)) {
-                    revertConnections.Add(this._filmidTableAdapter, this._filmidTableAdapter.Connection);
-                    this._filmidTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._filmidTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._filmidTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._filmidTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._filmidTableAdapter.Adapter);
-                    }
-                }
                 if ((this._kasutajaTableAdapter != null)) {
                     revertConnections.Add(this._kasutajaTableAdapter, this._kasutajaTableAdapter.Connection);
                     this._kasutajaTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
@@ -6520,13 +7544,13 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
                         adaptersWithAcceptChangesDuringUpdate.Add(this._kasutajaTableAdapter.Adapter);
                     }
                 }
-                if ((this._kohadTableAdapter != null)) {
-                    revertConnections.Add(this._kohadTableAdapter, this._kohadTableAdapter.Connection);
-                    this._kohadTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._kohadTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._kohadTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._kohadTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._kohadTableAdapter.Adapter);
+                if ((this._saalidTableAdapter != null)) {
+                    revertConnections.Add(this._saalidTableAdapter, this._saalidTableAdapter.Connection);
+                    this._saalidTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._saalidTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._saalidTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._saalidTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._saalidTableAdapter.Adapter);
                     }
                 }
                 if ((this._piletidTableAdapter != null)) {
@@ -6538,13 +7562,31 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
                         adaptersWithAcceptChangesDuringUpdate.Add(this._piletidTableAdapter.Adapter);
                     }
                 }
-                if ((this._saalidTableAdapter != null)) {
-                    revertConnections.Add(this._saalidTableAdapter, this._saalidTableAdapter.Connection);
-                    this._saalidTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._saalidTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._saalidTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._saalidTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._saalidTableAdapter.Adapter);
+                if ((this._kohadTableAdapter != null)) {
+                    revertConnections.Add(this._kohadTableAdapter, this._kohadTableAdapter.Connection);
+                    this._kohadTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._kohadTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._kohadTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._kohadTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._kohadTableAdapter.Adapter);
+                    }
+                }
+                if ((this._filmidTableAdapter != null)) {
+                    revertConnections.Add(this._filmidTableAdapter, this._filmidTableAdapter.Connection);
+                    this._filmidTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._filmidTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._filmidTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._filmidTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._filmidTableAdapter.Adapter);
+                    }
+                }
+                if ((this._bronidTableAdapter != null)) {
+                    revertConnections.Add(this._bronidTableAdapter, this._bronidTableAdapter.Connection);
+                    this._bronidTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._bronidTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._bronidTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._bronidTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._bronidTableAdapter.Adapter);
                     }
                 }
                 if ((this._seansidTableAdapter != null)) {
@@ -6623,25 +7665,29 @@ SELECT telID, Piletid_pilId, Kasutaja_kasID, vaartus, status FROM Tellimused WHE
                 if (workConnOpened) {
                     workConnection.Close();
                 }
-                if ((this._filmidTableAdapter != null)) {
-                    this._filmidTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._filmidTableAdapter]));
-                    this._filmidTableAdapter.Transaction = null;
-                }
                 if ((this._kasutajaTableAdapter != null)) {
                     this._kasutajaTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._kasutajaTableAdapter]));
                     this._kasutajaTableAdapter.Transaction = null;
                 }
-                if ((this._kohadTableAdapter != null)) {
-                    this._kohadTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._kohadTableAdapter]));
-                    this._kohadTableAdapter.Transaction = null;
+                if ((this._saalidTableAdapter != null)) {
+                    this._saalidTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._saalidTableAdapter]));
+                    this._saalidTableAdapter.Transaction = null;
                 }
                 if ((this._piletidTableAdapter != null)) {
                     this._piletidTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._piletidTableAdapter]));
                     this._piletidTableAdapter.Transaction = null;
                 }
-                if ((this._saalidTableAdapter != null)) {
-                    this._saalidTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._saalidTableAdapter]));
-                    this._saalidTableAdapter.Transaction = null;
+                if ((this._kohadTableAdapter != null)) {
+                    this._kohadTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._kohadTableAdapter]));
+                    this._kohadTableAdapter.Transaction = null;
+                }
+                if ((this._filmidTableAdapter != null)) {
+                    this._filmidTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._filmidTableAdapter]));
+                    this._filmidTableAdapter.Transaction = null;
+                }
+                if ((this._bronidTableAdapter != null)) {
+                    this._bronidTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._bronidTableAdapter]));
+                    this._bronidTableAdapter.Transaction = null;
                 }
                 if ((this._seansidTableAdapter != null)) {
                     this._seansidTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._seansidTableAdapter]));

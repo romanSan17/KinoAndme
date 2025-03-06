@@ -1,38 +1,27 @@
 ﻿using KinoAndme.KinoDataSetTableAdapters;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace KinoAndme
 {
     public partial class ChooseFilm : Form
     {
-        
         private int currentFilmIndex = 0;
         private KinoDataSet.FilmidDataTable filmidTable;
         private FilmidTableAdapter filmidAdapter = new FilmidTableAdapter();
-
-        private string[] filmPosters =
-        {
-            @"poster\It.jpg",
-            @"poster\Pulp-fiction.jpg",
-            @"poster\Godzilla.jpg",
-            @"poster\Spider-man.jpg"
-        };
+        private string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Kino;Integrated Security=True;Connect Timeout=30;";
 
         public ChooseFilm()
         {
             InitializeComponent();
-            LoadFilmData(); 
-            UpdateFilmInfo(); 
+            LoadFilmData();
+            UpdateFilmInfo();
         }
+
         private void LoadFilmData()
         {
             try
@@ -41,7 +30,7 @@ namespace KinoAndme
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка при загрузке данных: {ex.Message}");
+                MessageBox.Show($"Viga andmete laadimisel: {ex.Message}");
             }
         }
 
@@ -49,17 +38,15 @@ namespace KinoAndme
         {
             if (filmidTable == null || filmidTable.Rows.Count == 0)
             {
-                MessageBox.Show("Данные о фильмах отсутствуют.");
+                MessageBox.Show("Andmed filmi kohta puuduvad.");
                 return;
             }
 
             var currentFilm = filmidTable[currentFilmIndex];
 
-
-            labelPealkiri.Text = $"Название: {currentFilm.pealkiri}";
-            labelZanr.Text = $"Жанр: {currentFilm.zanr}";
-            labelAeg.Text = $"Время сеанса: {currentFilm.aeg}";
-
+            labelPealkiri.Text = $"Pealkiri: {currentFilm.pealkiri}";
+            labelZanr.Text = $"Žanr: {currentFilm.zanr}";
+            labelAeg.Text = $"Seansi aeg: {currentFilm.aeg}";
 
             try
             {
@@ -68,25 +55,61 @@ namespace KinoAndme
             catch (FileNotFoundException)
             {
                 pictureBox1.Image = null;
-                MessageBox.Show($"Постер для фильма '{currentFilm.pealkiri}' не найден.");
+                MessageBox.Show($"Filmi plakat '{currentFilm.pealkiri}' ei leitud.");
             }
         }
 
-
         private void forward_Click(object sender, EventArgs e)
         {
-            currentFilmIndex++;
-            if (currentFilmIndex >= filmidTable.Rows.Count) currentFilmIndex = 0;
+            currentFilmIndex = (currentFilmIndex + 1) % filmidTable.Rows.Count;
             UpdateFilmInfo();
         }
 
         private void back_Click(object sender, EventArgs e)
         {
-            currentFilmIndex--;
-            if (currentFilmIndex < 0) currentFilmIndex = filmidTable.Rows.Count - 1;
+            currentFilmIndex = (currentFilmIndex - 1 + filmidTable.Rows.Count) % filmidTable.Rows.Count;
             UpdateFilmInfo();
         }
 
+        private int GetSessionID(int filmID)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT seaID FROM Seansid WHERE Filmid_filID = @filID";
+                    SqlCommand cmd = new SqlCommand(query, connection);
+                    cmd.Parameters.AddWithValue("@filID", filmID);
 
+                    connection.Open();
+                    object result = cmd.ExecuteScalar();
+
+                    return result != null ? Convert.ToInt32(result) : -1;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Viga seansi vastuvõtmisel " + ex.Message, "Viga", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var currentFilm = filmidTable[currentFilmIndex];
+            int selectedFilmID = currentFilm.filID;
+            int selectedSessionID = GetSessionID(selectedFilmID);
+
+            if (selectedSessionID == -1)
+            {
+                MessageBox.Show("Valitud filmi jaoks ei leitud seanssi.");
+                return;
+            }
+
+            // Открываем форму с местами для выбранного сеанса
+            Seats seatsForm = new Seats(selectedFilmID, selectedSessionID);
+            seatsForm.Show();
+            this.Hide();
+        }
     }
 }

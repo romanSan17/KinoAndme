@@ -33,7 +33,7 @@ namespace KinoAndme
             }
             else
             {
-                MessageBox.Show("Неверный логин или пароль.");
+                MessageBox.Show("Vale sisselogimine või salasõna.");
             }
         }
         private bool IsValidUser(string login, string password)
@@ -47,7 +47,7 @@ namespace KinoAndme
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка при проверке данных: {ex.Message}");
+                MessageBox.Show($"Andmete valideerimisviga: {ex.Message}");
                 return false;
             }
         }
