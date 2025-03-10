@@ -207,48 +207,48 @@ namespace KinoAndme
             chooseFilmForm.Show();
         }
 
-        private void GeneratePDF(string movieTitle, int seatRow, int seatNumber, DateTime sessionTime)
-        {
-            try
-            {
-                // Путь для сохранения билета (на рабочий стол пользователя)
-                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                string filePath = Path.Combine(desktopPath, $"Билет_{DateTime.Now:yyyyMMddHHmmss}.pdf");
+        //private void GeneratePDF(string movieTitle, int seatRow, int seatNumber, DateTime sessionTime)
+        //{
+        //    try
+        //    {
+        //        // Путь для сохранения билета (на рабочий стол пользователя)
+        //        string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        //        string filePath = Path.Combine(desktopPath, $"Билет_{DateTime.Now:yyyyMMddHHmmss}.pdf");
 
-                // Создание документа
-                Document doc = new Document();
-                PdfWriter.GetInstance(doc, new FileStream(filePath, FileMode.Create));
+        //        // Создание документа
+        //        Document doc = new Document();
+        //        PdfWriter.GetInstance(doc, new FileStream(filePath, FileMode.Create));
 
-                doc.Open();
+        //        doc.Open();
 
-                // Используем iTextSharp.text.Font (избегаем конфликта)
-                iTextSharp.text.Font titleFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 16, iTextSharp.text.Font.BOLD);
-                iTextSharp.text.Font textFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.NORMAL);
+        //        // Используем iTextSharp.text.Font (избегаем конфликта)
+        //        iTextSharp.text.Font titleFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 16, iTextSharp.text.Font.BOLD);
+        //        iTextSharp.text.Font textFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.NORMAL);
 
-                // Добавляем заголовок
-                Paragraph title = new Paragraph("Kinopilet.", titleFont);
-                title.Alignment = Element.ALIGN_CENTER;
-                doc.Add(title);
+        //        // Добавляем заголовок
+        //        Paragraph title = new Paragraph("Kinopilet.", titleFont);
+        //        title.Alignment = Element.ALIGN_CENTER;
+        //        doc.Add(title);
 
-                doc.Add(new Paragraph("\n")); // Отступ
+        //        doc.Add(new Paragraph("\n")); // Отступ
 
-                // Добавляем информацию о билете
-                doc.Add(new Paragraph($"Film: {movieTitle}", textFont));
-                doc.Add(new Paragraph($"Seansi aeg {sessionTime:dd.MM.yyyy HH:mm}", textFont));
-                doc.Add(new Paragraph($"Rida: {seatRow}, Asukoht: {seatNumber}", textFont));
+        //        // Добавляем информацию о билете
+        //        doc.Add(new Paragraph($"Film: {movieTitle}", textFont));
+        //        doc.Add(new Paragraph($"Seansi aeg {sessionTime:dd.MM.yyyy HH:mm}", textFont));
+        //        doc.Add(new Paragraph($"Rida: {seatRow}, Asukoht: {seatNumber}", textFont));
 
-                doc.Add(new Paragraph("\nNautige näitust!", textFont));
+        //        doc.Add(new Paragraph("\nNautige näitust!", textFont));
 
-                // Закрываем документ
-                doc.Close();
+        //        // Закрываем документ
+        //        doc.Close();
 
-                // Оповещение пользователя
-                MessageBox.Show($"Pilet salvestatakse töölauale:\n{filePath}", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Viga PDF: {ex.Message}", "Viga", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        //        // Оповещение пользователя
+        //        MessageBox.Show($"Pilet salvestatakse töölauale:\n{filePath}", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"Viga PDF: {ex.Message}", "Viga", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
     }
 }
