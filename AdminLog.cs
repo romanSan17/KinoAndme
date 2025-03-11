@@ -14,17 +14,33 @@ namespace KinoAndme
 {
     public partial class AdminLog : Form
     {
-        private string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Kino;Integrated Security=True;";
+        private string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Kino;Integrated Security=True;Connect Timeout=30;";
 
         public AdminLog()
         {
             InitializeComponent();
         }
 
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void adminAutoris_Click(object sender, EventArgs e)
         {
             string login = loginA.Text.Trim();
             string password = paroolA.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(login) || string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Palun täitke kõik väljad!", "Viga", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             try
             {
@@ -57,32 +73,35 @@ namespace KinoAndme
 
         private bool CheckUserLogin(string login, string password)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string query = "SELECT COUNT(*) FROM Kasutaja WHERE login = @login AND parool = @password";
-                SqlCommand cmd = new SqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@login", login);
-                cmd.Parameters.AddWithValue("@password", password);
+                conn.Open();
+                string query = "SELECT COUNT(*) FROM Kasutaja WHERE logi = @login AND parool = @password";
 
-                connection.Open();
-                int result = Convert.ToInt32(cmd.ExecuteScalar());
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@login", login);
+                    cmd.Parameters.AddWithValue("@password", password);
 
-                return result > 0;
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    return count > 0;
+                }
             }
         }
 
         private string GetUserRole(string login)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string query = "SELECT roll FROM Kasutaja WHERE login = @login";
-                SqlCommand cmd = new SqlCommand(query, connection);
-                cmd.Parameters.AddWithValue("@login", login);
+                conn.Open();
+                string query = "SELECT rool FROM Kasutaja WHERE logi = @login";
 
-                connection.Open();
-                object result = cmd.ExecuteScalar();
-
-                return result?.ToString();
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@login", login);
+                    object result = cmd.ExecuteScalar();
+                    return result?.ToString();
+                }
             }
         }
     }

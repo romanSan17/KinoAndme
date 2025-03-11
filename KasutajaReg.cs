@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,8 @@ namespace KinoAndme
 {
     public partial class KasutajaReg : Form
     {
-        private KinoDataSetTableAdapters.KasutajaTableAdapter kasutajaAdapter = new KinoDataSetTableAdapters.KasutajaTableAdapter();
+        private string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Kino;Integrated Security=True;Connect Timeout=30;";
+
         public KasutajaReg()
         {
             InitializeComponent();
@@ -23,7 +25,6 @@ namespace KinoAndme
             string nimi = nimiR.Text;
             string logi = loginR.Text;
             string parool = paroolR.Text;
-
             string rool = "user";
 
             if (string.IsNullOrWhiteSpace(nimi) || string.IsNullOrWhiteSpace(logi) || string.IsNullOrWhiteSpace(parool))
@@ -32,18 +33,39 @@ namespace KinoAndme
                 return;
             }
 
-            try
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                kasutajaAdapter.InsertKasutaja(nimi, logi, parool, rool);
-                MessageBox.Show("Registreerimine oli edukas!", "Edu", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                try
+                {
+                    conn.Open();
+                    string query = "INSERT INTO Kasutaja (nimi, logi, parool, rool) VALUES (@nimi, @logi, @parool, @rool)";
 
-                nimiR.Clear();
-                loginR.Clear();
-                paroolR.Clear();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Registreerimisviga: {ex.Message}", "Viga", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@nimi", nimi);
+                        cmd.Parameters.AddWithValue("@logi", logi);
+                        cmd.Parameters.AddWithValue("@parool", parool);
+                        cmd.Parameters.AddWithValue("@rool", rool);
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Registreerimine oli edukas!", "Edu", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            nimiR.Clear();
+                            loginR.Clear();
+                            paroolR.Clear();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Midagi läks valesti, proovige uuesti", "Viga", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Registreerimisviga: {ex.Message}", "Viga", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }
